@@ -44,3 +44,5 @@ pagination:
   permalink: '/page:num/'
   extension: html
   indexpage: 'international'
+
+baseurl: '/newtech1'
