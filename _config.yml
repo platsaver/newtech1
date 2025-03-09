@@ -36,13 +36,5 @@ plugins:
   - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-paginate-v2
-
-pagination:
-  enabled: true
-  per_page: 2
-  permalink: '/page:num/'
-  extension: html
-  indexpage: 'international'
 
 baseurl: '/newtech1'
