@@ -1,0 +1,46 @@
+# Basic Site Info
+title: Jekyll News
+description: "Built with Jekyll"
+author: platsaver
+
+# Site Flag
+flag:
+  show: true
+  path: /assets/flag.png
+
+# Comments
+disqus:
+  enabled: true
+  shortname: jekyll-news-demo  #REPLACEME
+
+# Analytics
+google_analytics: G-GRV8PX7ZN1
+
+# Ads
+adsense:
+  enabled: true
+  data-ad-client: ca-pub-9280169319319657  #REPLACEME
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title/
+  staff:
+    output: true
+    permalink: /about/staff/:title
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate-v2
+
+pagination:
+  enabled: true
+  per_page: 2
+  permalink: '/page:num/'
+  extension: html
+  indexpage: 'international'
