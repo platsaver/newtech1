@@ -36,3 +36,5 @@ plugins:
   - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
+
+baseurl: /newtech1 
