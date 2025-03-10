@@ -1,7 +1,34 @@
 <div>
   {%- include flag.html -%}
-      <nav class="header-nav">
-        <ul class="nav-list">
+  <nav class="header-nav">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-list desktop-nav">
+      {%- assign default_paths = site.pages | map: "path" -%}
+      {%- assign page_paths = site.header_pages | default: default_paths -%}
+      {%- for path in page_paths -%}
+        {%- assign my_page = site.pages | where: "path", path | first -%}
+        {%- if my_page.title -%}
+          {%- assign title = my_page.title -%}
+        {%- endif -%}
+        {%- if my_page.nav_nav_title -%}
+          {%- assign title = my_page.nav_title -%}
+        {%- endif -%}
+        {%- if title != "" -%}
+          {%- unless my_page.exclude -%}
+          <li>
+            <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ title | escape }}</a>
+          </li>
+          {%- endunless -%}
+        {%- endif -%}
+        {%- assign title = "" -%}
+      {%- endfor -%}
+    </ul>
+    <div class="sidebar">
+      <ul class="nav-list sidebar-nav">
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
         {%- for path in page_paths -%}
@@ -12,7 +39,6 @@
           {%- if my_page.nav_title -%}
             {%- assign title = my_page.nav_title -%}
           {%- endif -%}
-      
           {%- if title != "" -%}
             {%- unless my_page.exclude -%}
             <li>
@@ -22,6 +48,26 @@
           {%- endif -%}
           {%- assign title = "" -%}
         {%- endfor -%}
-        </ul>
-      </nav>
+      </ul>
+    </div>
+  </nav>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.querySelector('.sidebar');
+  
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      sidebar.classList.toggle('active');
+    });
+  
+    // Đóng sidebar khi click ra ngoài
+    document.addEventListener('click', function(event) {
+      if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+        hamburger.classList.remove('active');
+        sidebar.classList.remove('active');
+      }
+    });
+  });
+  </script>

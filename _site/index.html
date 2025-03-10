@@ -32,7 +32,7 @@
       padding: 5px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      width: 150px; /* Điều chỉnh chiều rộng theo ý bạn */
+      width: 150px; /* Điều chỉnh chiều rộng */
       font-size: 14px;
     }
 /* Quy tắc mặc định - Áp dụng cho tất cả ảnh trong thẻ <p> */
@@ -67,7 +67,87 @@
   }
 }
 
+
   </style>
+  <style>
+    .header-nav {
+      position: relative;
+    }
+    
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .desktop-nav {
+      display: flex;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+    
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+    
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #fff;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    
+    .sidebar.active {
+      left: 0;
+    }
+    
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px 0;
+    }
+    
+    @media screen and (max-width: 708px) {  /* Đã đổi từ 634px thành 708px */
+      .hamburger {
+        display: block;
+      }
+    
+      .desktop-nav {
+        display: none;
+      }
+    }
+    
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+    </style>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     
@@ -86,7 +166,26 @@
   <img class="header-flag" src="/newtech1/assets/flag.png" alt="Jekyll News"/>
 </a>
 <nav class="header-nav">
-        <ul class="nav-list"><li>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-list desktop-nav"><li>
+            <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+          </li><li>
+            <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+          </li><li>
+            <a class="nav-link" href="/newtech1/">Trang chủ</a>
+          </li><li>
+            <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+          </li><li>
+            <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+          </li><li>
+            <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+          </li></ul>
+    <div class="sidebar">
+      <ul class="nav-list sidebar-nav"><li>
               <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
             </li><li>
               <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
@@ -99,8 +198,28 @@
             </li><li>
               <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
             </li></ul>
-      </nav>
+    </div>
+  </nav>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.querySelector('.sidebar');
+  
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      sidebar.classList.toggle('active');
+    });
+  
+    // Đóng sidebar khi click ra ngoài
+    document.addEventListener('click', function(event) {
+      if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+        hamburger.classList.remove('active');
+        sidebar.classList.remove('active');
+      }
+    });
+  });
+  </script>
     <main class="page-content" aria-label="Content">
         <div class="featured-image-container">
   <div class="featured-stories-container"><div class="featured-story" style="background-image: url('/newtech1/assets/img/ngaodat.jpg');">
