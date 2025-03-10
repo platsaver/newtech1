@@ -10,6 +10,7 @@ featured-image:
   credit: TTXVN
 layout: post
 category: Quốc tế
+keywords: [Indonesia, Tổng Bí thư, Tô Lâm, lễ đón, đại bác, Jakarta]
 ---
 <style>
   mark{

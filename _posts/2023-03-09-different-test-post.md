@@ -10,6 +10,7 @@ featured-image:
   credit: AFP
 layout: post
 category: Quốc tế
+keywords: ['Mật vụ Mỹ', 'Nhà Trắng', 'súng', 'Donald Trump', 'điều tra']
 ---
 
 # Mật vụ Mỹ bắn người mang súng gần Nhà Trắng

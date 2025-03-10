@@ -1,0 +1,268 @@
+---
+layout: base
+---
+<div class="search-results">
+  <h1>Tìm kiếm bài viết</h1>
+  
+  <div class="search-form">
+    <input type="text" id="search-input" placeholder="Nhập từ khóa tìm kiếm..." value="{{ page.query }}">
+    <div class="search-filters">
+      <select id="category-filter">
+        <!-- Các tùy chọn danh mục sẽ được thêm bằng JavaScript -->
+      </select>
+      <select id="sort-options">
+        <option value="date">Mới nhất</option>
+        <option value="title">Theo tiêu đề (A-Z)</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="search-stats">
+    <!-- Thống kê tìm kiếm sẽ hiển thị ở đây -->
+  </div>
+  
+  <div id="results">
+    <!-- Kết quả tìm kiếm sẽ hiển thị ở đây -->
+  </div>
+</div>
+<script>
+  // posts-data.js - Tệp lưu trữ dữ liệu từ front matter
+const sitePostsData = [
+  // Dữ liệu sẽ được tự động tạo từ Jekyll
+  {% for post in site.posts %}
+  {
+    title: {{ post.title | jsonify }},
+    subhed: {{ post.subhed | jsonify }},
+    url: {{ post.url | jsonify }},
+    date: {{ post.date | date: "%Y-%m-%d" | jsonify }},
+    formattedDate: {{ post.date | date: "%d/%m/%Y" | jsonify }},
+    category: {{ post.category | jsonify }},
+    keywords: {{ post.keywords | jsonify }},
+    author: {{ post.author | jsonify }},
+    featuredImage: {{ post.featured-image | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+</script>
+<script>// search-filter.js - Xử lý tìm kiếm và lọc kết quả
+  document.addEventListener('DOMContentLoaded', function() {
+    // Chỉ thực hiện code này khi đang ở trang search.html
+    if (!window.location.pathname.includes('search.html')) {
+      return; // Thoát nếu không phải trang search.html
+    }
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    // Kiểm tra các tham số từ URL
+    const queryParam = urlParams.get('query') || urlParams.get('q') || '';
+    const categoryParam = urlParams.get('category') || '';
+    
+    const searchInput = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('results');
+    const statsContainer = document.querySelector('.search-stats');
+    const categoryFilter = document.getElementById('category-filter');
+    const sortOptions = document.getElementById('sort-options');
+    
+    // Khởi tạo các thành phần tìm kiếm
+    function initSearch() {
+      // Đặt giá trị từ query parameter vào ô tìm kiếm nếu có
+      if (searchInput) {
+        searchInput.value = queryParam;
+      }
+      
+      // Tạo bộ lọc danh mục và thiết lập giá trị từ URL nếu có
+      if (categoryFilter) {
+        const categories = [...new Set(sitePostsData.map(post => post.category).filter(Boolean))];
+        categories.unshift('Tất cả danh mục');
+        
+        categories.forEach(category => {
+          const option = document.createElement('option');
+          option.value = category === 'Tất cả danh mục' ? '' : category;
+          option.textContent = category;
+          categoryFilter.appendChild(option);
+        });
+        
+        // Thiết lập giá trị cho categoryFilter từ URL nếu có
+        if (categoryParam) {
+          // Tìm option phù hợp với categoryParam
+          for (let i = 0; i < categoryFilter.options.length; i++) {
+            if (categoryFilter.options[i].value === categoryParam) {
+              categoryFilter.selectedIndex = i;
+              break;
+            }
+          }
+        }
+        
+        // Xử lý sự kiện khi thay đổi danh mục
+        categoryFilter.addEventListener('change', function() {
+          // Cập nhật URL khi thay đổi danh mục
+          const newUrl = new URL(window.location);
+          
+          if (this.value) {
+            newUrl.searchParams.set('category', this.value);
+            // Xóa tham số query nếu đang lọc theo danh mục
+            newUrl.searchParams.delete('query');
+            newUrl.searchParams.delete('q');
+            if (searchInput) searchInput.value = '';
+          } else {
+            newUrl.searchParams.delete('category');
+          }
+          
+          window.history.pushState({}, '', newUrl);
+          performSearch();
+        });
+      }
+      
+      // Xử lý sắp xếp nếu có
+      if (sortOptions) {
+        sortOptions.addEventListener('change', performSearch);
+      }
+      
+      // Xử lý sự kiện tìm kiếm khi nhập
+      if (searchInput) {
+        searchInput.addEventListener('input', debounce(function() {
+          // Xóa tham số category khi người dùng nhập tìm kiếm mới
+          if (categoryFilter && searchInput.value.trim()) {
+            categoryFilter.value = '';
+          }
+          performSearch();
+        }, 300));
+        
+        // Xử lý form submit để cập nhật URL
+        const form = searchInput.closest('form') || searchInput.parentElement;
+        if (form) {
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchValue = searchInput.value.trim();
+            
+            if (searchValue) {
+              const newUrl = new URL(window.location);
+              newUrl.searchParams.set('query', searchValue);
+              // Xóa tham số category khi tìm kiếm
+              newUrl.searchParams.delete('category');
+              if (categoryFilter) categoryFilter.value = '';
+              
+              window.history.pushState({}, '', newUrl);
+            }
+            
+            performSearch();
+          });
+        }
+      }
+      
+      // Thực hiện tìm kiếm ban đầu với tham số từ URL
+      performSearch();
+    }
+    
+    // Hàm tìm kiếm và lọc kết quả
+    function performSearch() {
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : queryParam.toLowerCase().trim();
+      const selectedCategory = categoryFilter ? categoryFilter.value : categoryParam;
+      const sortBy = sortOptions ? sortOptions.value : 'date';
+      
+      // Lọc kết quả dựa trên tiêu chí tìm kiếm
+      let results = sitePostsData.filter(post => {
+        // Kiểm tra kết quả phù hợp với query
+        let matchesQuery = true; // Mặc định là true nếu không có query
+        
+        if (query) {
+          matchesQuery = false;
+          // Kiểm tra tiêu đề và mô tả phụ
+          if (post.title && post.title.toLowerCase().includes(query) || 
+              (post.subhed && post.subhed.toLowerCase().includes(query))) {
+            matchesQuery = true;
+          }
+          
+          // Kiểm tra từng keyword
+          if (!matchesQuery && post.keywords && Array.isArray(post.keywords)) {
+            for (let i = 0; i < post.keywords.length; i++) {
+              const keyword = post.keywords[i];
+              if (keyword) {
+                const keywordLower = keyword.toLowerCase();
+                if (keywordLower === query || keywordLower.includes(query) || query.includes(keywordLower)) {
+                  matchesQuery = true;
+                  break; // Dừng vòng lặp ngay khi tìm thấy kết quả phù hợp
+                }
+              }
+            }
+          }
+        }
+        
+        // Kiểm tra kết quả phù hợp với danh mục đã chọn
+        const matchesCategory = !selectedCategory || (post.category && post.category === selectedCategory);
+        
+        return matchesQuery && matchesCategory;
+      });
+      
+      // Sắp xếp kết quả
+      results.sort((a, b) => {
+        if (sortBy === 'date') {
+          return new Date(b.date) - new Date(a.date); // Mới nhất trước
+        } else if (sortBy === 'title') {
+          return a.title.localeCompare(b.title, 'vi'); // Sắp xếp theo bảng chữ cái
+        }
+        return 0;
+      });
+      
+      // Hiển thị kết quả
+      displayResults(results, query, selectedCategory);
+    }
+    
+    // Hiển thị kết quả tìm kiếm
+    function displayResults(results, query, selectedCategory) {
+      if (!resultsContainer) return;
+      
+      resultsContainer.innerHTML = '';
+      
+      if (results.length === 0) {
+        if (query) {
+          resultsContainer.innerHTML = `<p>Không tìm thấy kết quả nào cho "${query}"</p>`;
+        } else if (selectedCategory) {
+          resultsContainer.innerHTML = `<p>Không tìm thấy kết quả nào trong danh mục "${selectedCategory}"</p>`;
+        } else {
+          resultsContainer.innerHTML = `<p>Không có bài viết nào</p>`;
+        }
+      } else {
+        results.forEach(post => {
+          const resultItem = document.createElement('div');
+          resultItem.className = 'result-item';
+          
+          const html = `
+            <h2><a href="${post.url}">${post.title}</a></h2>
+            ${post.subhed ? `<p>${post.subhed}</p>` : ''}
+            ${post.keywords && post.keywords.length > 0 ? `<p><strong>Từ khóa:</strong> ${post.keywords.join(', ')}</p>` : ''}
+            <p><strong>Danh mục:</strong> ${post.category || 'Không có danh mục'}</p>
+            <p><small>${post.formattedDate}</small></p>
+          `;
+          
+          resultItem.innerHTML = html;
+          resultsContainer.appendChild(resultItem);
+        });
+      }
+      
+      // Cập nhật thống kê
+      if (statsContainer) {
+        if (query && query !== "null") {
+          statsContainer.innerHTML = `<p>Tìm thấy ${results.length} kết quả cho: "${query}"</p>`;
+        } else if (selectedCategory) {
+          statsContainer.innerHTML = `<p>Tìm thấy ${results.length} kết quả trong danh mục: "${selectedCategory}"</p>`;
+        } else {
+          statsContainer.innerHTML = `<p>Đang hiển thị ${results.length} bài viết</p>`;
+        }
+      }
+    }
+    
+    // Hàm debounce để tránh gọi tìm kiếm quá nhiều lần
+    function debounce(func, delay) {
+      let timeout;
+      return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), delay);
+      };
+    }
+    
+    // Khởi chạy
+    initSearch();
+  });
+</script>

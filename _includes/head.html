@@ -49,6 +49,23 @@
 
 
   <title>{{ page.title }} | {{ site.title }}</title>
+  <style>
+    .search-container {
+  position: relative;
+}
+
+.search-container input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 150px; /* Điều chỉnh chiều rộng theo ý bạn */
+  font-size: 14px;
+}
+  </style>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    
+  </script>
 
   {%- include head-custom.html -%}
 </head>

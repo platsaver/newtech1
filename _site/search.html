@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/newtech1/assets/css/style.css">
+  <script src="https://unpkg.com/akar-icons-fonts"></script>
+
+  <!-- Analytics -->
+    
+
+  <!-- AdSense -->
+  
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:site_name" content="Jekyll News" />
+  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1/newtech1/assets/flag.png" />
+  <!-- OpenGraph Type--><meta property="og:type" content="website"/><!-- Description --><meta name="description" content="Built with Jekyll" />
+  <meta property="og:description" content="Built with Jekyll" />
+
+
+  <title> | Jekyll News</title>
+  <style>
+    .search-container {
+  position: relative;
+}
+
+.search-container input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 150px; /* Điều chỉnh chiều rộng theo ý bạn */
+  font-size: 14px;
+}
+  </style>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    
+  </script></head>
+
+  <body>
+    <!-- Form tìm kiếm ở thanh điều hướng -->
+<div class="search-container">
+    <form action="/newtech1/search.html" method="get">
+      <input type="text" name="query" placeholder="Tìm kiếm..." />
+      <!-- Đổi name từ "q" thành "query" để khớp với mã JavaScript -->
+    </form>
+  </div>
+    <div>
+<a href="/newtech1/index.html">
+  <img class="header-flag" src="/newtech1/assets/flag.png" alt="Jekyll News"/>
+</a>
+<nav class="header-nav">
+        <ul class="nav-list"><li>
+              <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+            </li><li>
+              <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+            </li><li>
+              <a class="nav-link" href="/newtech1/">Trang chủ</a>
+            </li><li>
+              <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+            </li><li>
+              <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+            </li><li>
+              <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+            </li></ul>
+      </nav>
+</div>
+    <main class="page-content" aria-label="Content">
+        <div class="search-results">
+  <h1>Tìm kiếm bài viết</h1>
+  
+  <div class="search-form">
+    <input type="text" id="search-input" placeholder="Nhập từ khóa tìm kiếm..." value="">
+    <div class="search-filters">
+      <select id="category-filter">
+        <!-- Các tùy chọn danh mục sẽ được thêm bằng JavaScript -->
+      </select>
+      <select id="sort-options">
+        <option value="date">Mới nhất</option>
+        <option value="title">Theo tiêu đề (A-Z)</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="search-stats">
+    <!-- Thống kê tìm kiếm sẽ hiển thị ở đây -->
+  </div>
+  
+  <div id="results">
+    <!-- Kết quả tìm kiếm sẽ hiển thị ở đây -->
+  </div>
+</div>
+<script>
+  // posts-data.js - Tệp lưu trữ dữ liệu từ front matter
+const sitePostsData = [
+  // Dữ liệu sẽ được tự động tạo từ Jekyll
+  
+  {
+    title: "Đấu giá thành công loạt lô đất từng được 'trả 30 tỷ đồng một m2' ",
+    subhed: "36 thửa đất tại xã Quang Tiến, huyện Sóc Sơn được đấu giá thành công, trong đó lô trúng cao nhất gần 49 triệu đồng một m2.",
+    url: "/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post8/",
+    date: "2025-03-10",
+    formattedDate: "10/03/2025",
+    category: "Bất động sản",
+    keywords: ["đấu giá đất","Sóc Sơn","Quang Tiến","bất động sản","30 tỷ đồng"],
+    author: "Ngọc Diễm",
+    featuredImage: {"path":"/newtech1/assets/img/ngaodat.jpg","cutline":"Khu đất trong phiên đấu giá hồi cuối tháng 11 ở huyện Sóc Sơn được một người trả đến 30 tỷ đồng một m2.","credit":"Giang Huy"}
+  },
+  
+  {
+    title: "Bình Dương có khu nhà ở xã hội theo tiêu chuẩn xanh",
+    subhed: "Nằm cạnh các khu công nghiệp lớn như Vsip 2, Đồng An 2... khu dân cư rộng 26 ha được định hướng xây dựng nhà ở xã hội theo tiêu chuẩn xanh.",
+    url: "/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post7/",
+    date: "2025-03-10",
+    formattedDate: "10/03/2025",
+    category: "Bất động sản",
+    keywords: ["Bình Dương","nhà ở xã hội","tiêu chuẩn xanh","khu công nghiệp"],
+    author: "Phước Tuấn",
+    featuredImage: {"path":"/newtech1/assets/img/chuanxanh.jpg","cutline":"","credit":"VNExpress"}
+  },
+  
+  {
+    title: "Tổng Bí thư: Tạo thuận lợi cho doanh nghiệp Indonesia đầu tư tại Việt Nam",
+    subhed: "Tiếp lãnh đạo các tập đoàn, doanh nghiệp lớn của Indonesia, Tổng Bí thư khẳng định Việt Nam sẽ tiếp tục cải cách thể chế, tạo thuận lợi cho doanh nghiệp đầu tư, hợp tác.",
+    url: "/newtech1/kinh%20doanh/2025/03/10/test-post6/",
+    date: "2025-03-10",
+    formattedDate: "10/03/2025",
+    category: "Kinh doanh",
+    keywords: ["Tổng Bí thư","Indonesia","đầu tư","doanh nghiệp","cải cách","hợp tác"],
+    author: "Phương Dung",
+    featuredImage: {"path":"/newtech1/assets/img/thuanloi1.jpg","cutline":"Tổng Bí thư Tô Lâm tiếp ông Budiarsa Sastrawinata, Giám đốc điều hành Tập đoàn Ciputra của Indonesia.","credit":"TTXVN"}
+  },
+  
+  {
+    title: "Chủ mưu vụ lũng đoạn đấu giá đất 30 tỷ đồng một m2 bị tuyên 3 năm tù",
+    subhed: "Tòa đánh giá sai phạm của 6 bị cáo trong phiên đấu giá đất 30 tỷ đồng mỗi m2 đã \"gây rối loạn thị trường bất động sản, gây bức xúc bất bình trong xã hội\", cần nghiêm trị để răn đe.",
+    url: "/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post9/",
+    date: "2025-03-09",
+    formattedDate: "09/03/2025",
+    category: "Pháp luật",
+    keywords: ["lũng đoạn","đấu giá đất","Sóc Sơn","bất động sản","30 tỷ đồng","Phạm Ngọc Tuấn"],
+    author: "Thanh Lam",
+    featuredImage: {"path":"/newtech1/assets/img/lungdoandat1.jpg","cutline":"Phạm Ngọc Tuấn được xác định là người \"khởi xướng, rủ rê, bàn bạc, chỉ đạo cả nhóm\" phạm tội.","credit":"Danh Lam"}
+  },
+  
+  {
+    title: "Thủ đoạn mạo danh trường học gọi điện hoàn học phí",
+    subhed: "Công an cảnh báo đang có thủ đoạn lợi dụng chính sách miễn học phí cho học sinh công lập để giả danh nhà trường gọi điện thông báo \"hoàn học phí\" nhằm chiếm đoạt tài sản.",
+    url: "/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post4/",
+    date: "2025-03-09",
+    formattedDate: "09/03/2025",
+    category: "Pháp luật",
+    keywords: ["lừa đảo","học phí","mạo danh","công an","trường học","chiếm đoạt"],
+    author: "Phạm Dự",
+    featuredImage: {"path":"/newtech1/assets/img/lua_dao.jpg","cutline":"Cuộc gọi lừa đảo thường đến từ các số máy lạ.","credit":"Ngọc Thành"}
+  },
+  
+  {
+    title: "Cảnh sát đánh sập web cá độ bóng đá 400 tỷ đồng ở Kiên Giang",
+    subhed: "Công an Kiên Giang cáo buộc Nguyễn Đăng Khoa, 51 tuổi, và đồng phạm điều hành trang web cá độ bóng đá với giao dịch khoảng 400 tỷ đồng trong 6 tháng.",
+    url: "/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post3/",
+    date: "2025-03-09",
+    formattedDate: "09/03/2025",
+    category: "Pháp luật",
+    keywords: ["cá độ bóng đá","Kiên Giang","Nguyễn Đăng Khoa","công an","400 tỷ đồng"],
+    author: "Ngọc Tài - Hoàng Đô",
+    featuredImage: {"path":"/newtech1/assets/img/cado1.jpg","cutline":"Nguyễn Đăng Khoa (thứ hai bên phải) cùng nhóm điều hành trang web cá độ bóng đá.","credit":"Hoàng Đô"}
+  },
+  
+  {
+    title: "Syria kêu gọi đoàn kết sau loạt đụng độ khiến hơn 1.000 người chết",
+    subhed: "Lãnh đạo Syria kêu gọi cả nước đoàn kết, sau khi lực lượng an ninh và phe ủng hộ cựu tổng thống Assad đụng độ khiến hơn 1.000 người chết.",
+    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post/",
+    date: "2025-03-09",
+    formattedDate: "09/03/2025",
+    category: "Quốc tế",
+    keywords: ["Syria","đoàn kết","xung đột","nội chiến","Assad","thương vong"],
+    author: "(Theo AFP, SOHR)",
+    featuredImage: {"path":"/newtech1/assets/img/AFP-20250225-36YK6LT-v1-HighRe-8403-2812-1741521564.jpg","cutline":"Tổng thống lâm thời Syria Ahmed al-Sharaa phát biểu tại Damascus ngày 25/2.","credit":"AFP"}
+  },
+  
+  {
+    title: "Không có đợt phát hành trái phiếu doanh nghiệp nào trong tháng 2.",
+    subhed: "Tháng 2, không có đợt phát hành trái phiếu doanh nghiệp nào diễn ra, theo dữ liệu của VBMA.",
+    url: "/newtech1/kinh%20doanh/2025/03/09/test-post-5/",
+    date: "2025-03-09",
+    formattedDate: "09/03/2025",
+    category: "Kinh doanh",
+    keywords: ["trái phiếu","doanh nghiệp","VBMA","tài chính","tháng 2"],
+    author: "Phương Dung",
+    featuredImage: {"path":"/newtech1/assets/img/traiphieu1.jpg","cutline":"Không có đợt phát hành trái phiếu nào trong tháng hai","credit":"VNExpress"}
+  },
+  
+  {
+    title: "NATO Đứng Ngồi Không Yên Khi Mỹ Đổi Lập Trường Về Nga",
+    subhed: "Những động thái cải thiện quan hệ với Nga gần đây của chính quyền ông Trump khiến các thành viên NATO gấp rút chuẩn bị tương lai không còn Mỹ sát cánh.",
+    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post2/",
+    date: "2025-03-09",
+    formattedDate: "09/03/2025",
+    category: "Quốc tế",
+    keywords: ["NATO","Mỹ","Nga","Trump","quan hệ quốc tế","căng thẳng"],
+    author: "Thùy Lâm (Theo WSJ, Moscow Times, NBC News)",
+    featuredImage: {"path":"/newtech1/assets/img/Trump-Zelensky-5752-1741067676.jpg","cutline":null,"credit":"AFP"}
+  },
+  
+  {
+    title: "Indonesia bắn đại bác chào mừng Tổng Bí thư Tô Lâm",
+    subhed: "Indonesia bắn 7 phát đại bác khi Tổng Bí thư Tô Lâm và phu nhân đáp xuống sân bay ở Jakarta, nghi thức thể hiện sự coi trọng chuyến thăm.",
+    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/another-test-post/",
+    date: "2025-03-09",
+    formattedDate: "09/03/2025",
+    category: "Quốc tế",
+    keywords: ["Indonesia","Tổng Bí thư","Tô Lâm","lễ đón","đại bác","Jakarta"],
+    author: "Nguyễn Tiến",
+    featuredImage: {"path":"/newtech1/assets/img/5563187178137268715a-174150836-4320-1997-1741508514.jpg","cutline":"Tổng Bí thư Tô Lâm và phu nhân rời chuyên cơ tại sân bay quân sự Halim Perdanakusuma, Jakarta, Indonesia ngày 9/3.","credit":"TTXVN"}
+  },
+  
+  {
+    title: "Mật vụ Mỹ bắn người mang súng gần Nhà Trắng",
+    subhed: "Mật vụ Mỹ đụng độ và bắn một người đàn ông có vũ trang ở gần Nhà Trắng, sau khi nhận tin báo từ cảnh sát.",
+    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/different-test-post/",
+    date: "2025-03-09",
+    formattedDate: "09/03/2025",
+    category: "Quốc tế",
+    keywords: ["Mật vụ Mỹ","Nhà Trắng","súng","Donald Trump","điều tra"],
+    author: "Như Tâm (Theo Reuters, Fox News)",
+    featuredImage: {"path":"/newtech1/assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg","cutline":"Sĩ quan mật vụ đứng gác gần Nhà Trắng ngày 10/12/2024.","credit":"AFP"}
+  },
+  
+  {
+    title: "Đàn ông cả xóm rủ nhau dựng rạp, mở tiệc 8/3",
+    subhed: "17h, sau khi cùng đàn ông trong xóm hoàn thành 20 mâm cỗ, anh Đỗ Kiến Vọng thay vest, lên sân khấu khai mạc chương trình chào mừng 8/3.",
+    url: "/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/08/test-post10/",
+    date: "2025-03-08",
+    formattedDate: "08/03/2025",
+    category: "Đời sống",
+    keywords: ["8/3","đàn ông","lễ hội","tiệc","Đỗ Kiến Vọng","chương trình"],
+    author: "Thanh Lam",
+    featuredImage: {"path":"/newtech1/assets/img/phunuvn1.jpg","cutline":null,"credit":"Danh Lam"}
+  }
+  
+];
+</script>
+<script>// search-filter.js - Xử lý tìm kiếm và lọc kết quả
+  document.addEventListener('DOMContentLoaded', function() {
+    // Chỉ thực hiện code này khi đang ở trang search.html
+    if (!window.location.pathname.includes('search.html')) {
+      return; // Thoát nếu không phải trang search.html
+    }
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    // Kiểm tra các tham số từ URL
+    const queryParam = urlParams.get('query') || urlParams.get('q') || '';
+    const categoryParam = urlParams.get('category') || '';
+    
+    const searchInput = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('results');
+    const statsContainer = document.querySelector('.search-stats');
+    const categoryFilter = document.getElementById('category-filter');
+    const sortOptions = document.getElementById('sort-options');
+    
+    // Khởi tạo các thành phần tìm kiếm
+    function initSearch() {
+      // Đặt giá trị từ query parameter vào ô tìm kiếm nếu có
+      if (searchInput) {
+        searchInput.value = queryParam;
+      }
+      
+      // Tạo bộ lọc danh mục và thiết lập giá trị từ URL nếu có
+      if (categoryFilter) {
+        const categories = [...new Set(sitePostsData.map(post => post.category).filter(Boolean))];
+        categories.unshift('Tất cả danh mục');
+        
+        categories.forEach(category => {
+          const option = document.createElement('option');
+          option.value = category === 'Tất cả danh mục' ? '' : category;
+          option.textContent = category;
+          categoryFilter.appendChild(option);
+        });
+        
+        // Thiết lập giá trị cho categoryFilter từ URL nếu có
+        if (categoryParam) {
+          // Tìm option phù hợp với categoryParam
+          for (let i = 0; i < categoryFilter.options.length; i++) {
+            if (categoryFilter.options[i].value === categoryParam) {
+              categoryFilter.selectedIndex = i;
+              break;
+            }
+          }
+        }
+        
+        // Xử lý sự kiện khi thay đổi danh mục
+        categoryFilter.addEventListener('change', function() {
+          // Cập nhật URL khi thay đổi danh mục
+          const newUrl = new URL(window.location);
+          
+          if (this.value) {
+            newUrl.searchParams.set('category', this.value);
+            // Xóa tham số query nếu đang lọc theo danh mục
+            newUrl.searchParams.delete('query');
+            newUrl.searchParams.delete('q');
+            if (searchInput) searchInput.value = '';
+          } else {
+            newUrl.searchParams.delete('category');
+          }
+          
+          window.history.pushState({}, '', newUrl);
+          performSearch();
+        });
+      }
+      
+      // Xử lý sắp xếp nếu có
+      if (sortOptions) {
+        sortOptions.addEventListener('change', performSearch);
+      }
+      
+      // Xử lý sự kiện tìm kiếm khi nhập
+      if (searchInput) {
+        searchInput.addEventListener('input', debounce(function() {
+          // Xóa tham số category khi người dùng nhập tìm kiếm mới
+          if (categoryFilter && searchInput.value.trim()) {
+            categoryFilter.value = '';
+          }
+          performSearch();
+        }, 300));
+        
+        // Xử lý form submit để cập nhật URL
+        const form = searchInput.closest('form') || searchInput.parentElement;
+        if (form) {
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchValue = searchInput.value.trim();
+            
+            if (searchValue) {
+              const newUrl = new URL(window.location);
+              newUrl.searchParams.set('query', searchValue);
+              // Xóa tham số category khi tìm kiếm
+              newUrl.searchParams.delete('category');
+              if (categoryFilter) categoryFilter.value = '';
+              
+              window.history.pushState({}, '', newUrl);
+            }
+            
+            performSearch();
+          });
+        }
+      }
+      
+      // Thực hiện tìm kiếm ban đầu với tham số từ URL
+      performSearch();
+    }
+    
+    // Hàm tìm kiếm và lọc kết quả
+    function performSearch() {
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : queryParam.toLowerCase().trim();
+      const selectedCategory = categoryFilter ? categoryFilter.value : categoryParam;
+      const sortBy = sortOptions ? sortOptions.value : 'date';
+      
+      // Lọc kết quả dựa trên tiêu chí tìm kiếm
+      let results = sitePostsData.filter(post => {
+        // Kiểm tra kết quả phù hợp với query
+        let matchesQuery = true; // Mặc định là true nếu không có query
+        
+        if (query) {
+          matchesQuery = false;
+          // Kiểm tra tiêu đề và mô tả phụ
+          if (post.title && post.title.toLowerCase().includes(query) || 
+              (post.subhed && post.subhed.toLowerCase().includes(query))) {
+            matchesQuery = true;
+          }
+          
+          // Kiểm tra từng keyword
+          if (!matchesQuery && post.keywords && Array.isArray(post.keywords)) {
+            for (let i = 0; i < post.keywords.length; i++) {
+              const keyword = post.keywords[i];
+              if (keyword) {
+                const keywordLower = keyword.toLowerCase();
+                if (keywordLower === query || keywordLower.includes(query) || query.includes(keywordLower)) {
+                  matchesQuery = true;
+                  break; // Dừng vòng lặp ngay khi tìm thấy kết quả phù hợp
+                }
+              }
+            }
+          }
+        }
+        
+        // Kiểm tra kết quả phù hợp với danh mục đã chọn
+        const matchesCategory = !selectedCategory || (post.category && post.category === selectedCategory);
+        
+        return matchesQuery && matchesCategory;
+      });
+      
+      // Sắp xếp kết quả
+      results.sort((a, b) => {
+        if (sortBy === 'date') {
+          return new Date(b.date) - new Date(a.date); // Mới nhất trước
+        } else if (sortBy === 'title') {
+          return a.title.localeCompare(b.title, 'vi'); // Sắp xếp theo bảng chữ cái
+        }
+        return 0;
+      });
+      
+      // Hiển thị kết quả
+      displayResults(results, query, selectedCategory);
+    }
+    
+    // Hiển thị kết quả tìm kiếm
+    function displayResults(results, query, selectedCategory) {
+      if (!resultsContainer) return;
+      
+      resultsContainer.innerHTML = '';
+      
+      if (results.length === 0) {
+        if (query) {
+          resultsContainer.innerHTML = `<p>Không tìm thấy kết quả nào cho "${query}"</p>`;
+        } else if (selectedCategory) {
+          resultsContainer.innerHTML = `<p>Không tìm thấy kết quả nào trong danh mục "${selectedCategory}"</p>`;
+        } else {
+          resultsContainer.innerHTML = `<p>Không có bài viết nào</p>`;
+        }
+      } else {
+        results.forEach(post => {
+          const resultItem = document.createElement('div');
+          resultItem.className = 'result-item';
+          
+          const html = `
+            <h2><a href="${post.url}">${post.title}</a></h2>
+            ${post.subhed ? `<p>${post.subhed}</p>` : ''}
+            ${post.keywords && post.keywords.length > 0 ? `<p><strong>Từ khóa:</strong> ${post.keywords.join(', ')}</p>` : ''}
+            <p><strong>Danh mục:</strong> ${post.category || 'Không có danh mục'}</p>
+            <p><small>${post.formattedDate}</small></p>
+          `;
+          
+          resultItem.innerHTML = html;
+          resultsContainer.appendChild(resultItem);
+        });
+      }
+      
+      // Cập nhật thống kê
+      if (statsContainer) {
+        if (query && query !== "null") {
+          statsContainer.innerHTML = `<p>Tìm thấy ${results.length} kết quả cho: "${query}"</p>`;
+        } else if (selectedCategory) {
+          statsContainer.innerHTML = `<p>Tìm thấy ${results.length} kết quả trong danh mục: "${selectedCategory}"</p>`;
+        } else {
+          statsContainer.innerHTML = `<p>Đang hiển thị ${results.length} bài viết</p>`;
+        }
+      }
+    }
+    
+    // Hàm debounce để tránh gọi tìm kiếm quá nhiều lần
+    function debounce(func, delay) {
+      let timeout;
+      return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), delay);
+      };
+    }
+    
+    // Khởi chạy
+    initSearch();
+  });
+</script>
+    </main>
+    <div class="footer">
+  © 2025 platsaver | Built with Jekyll
+</div>
+  </body>
+</html>
