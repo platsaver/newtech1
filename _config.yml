@@ -1,3 +1,7 @@
+title: Jekyll News
+description: "Built with Jekyll"
+author: platsaver
+
 # Basic Site Info
 title: Jekyll News
 description: "Built with Jekyll"
@@ -24,7 +28,7 @@ adsense:
 # Collections
 collections:
   posts:
-    output: true
+    output: true                                                                                                                                                                                                                                          
     permalink: /:categories/:year/:month/:day/:title/
   staff:
     output: true
@@ -37,4 +41,8 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-baseurl: /newtech1
+baseurl: '/newtech1'  # Subdirectory where the site lives
+url: 'https://platsaver.github.io'
+
+github: 
+  username: platsaver
