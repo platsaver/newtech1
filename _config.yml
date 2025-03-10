@@ -37,4 +37,4 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-baseurl: /newtech1 
+baseurl: /newtech1
