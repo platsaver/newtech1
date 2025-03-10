@@ -24,7 +24,7 @@ Các sĩ quan mật vụ được cảnh sát thông báo về "một người c
 
 > "Khi các sĩ quan tiếp cận, người này rút súng ra và hai bên xảy ra đối đầu. Lực lượng mật vụ đã nổ súng. Nghi phạm được đưa tới bệnh viện ngay lập tức và chưa rõ tình trạng", **Sở Mật vụ Mỹ** cho hay.  
 
-![*Sĩ quan mật vụ đứng gác gần Nhà Trắng ngày 10/12/2024. Ảnh: AFP*](/assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg){: width="900px" height="590px"}
+![*Sĩ quan mật vụ đứng gác gần Nhà Trắng ngày 10/12/2024. Ảnh: AFP*](./assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg){: width="900px" height="590px"}
 
 ## Điều Tra & Ảnh Hưởng  
 
