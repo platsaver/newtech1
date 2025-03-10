@@ -27,19 +27,19 @@ layout: base
 </div>
 <script>
   // posts-data.js - Tệp lưu trữ dữ liệu từ front matter
-const sitePostsData = [
+  const sitePostsData = [
   // Dữ liệu sẽ được tự động tạo từ Jekyll
   {% for post in site.posts %}
   {
     title: {{ post.title | jsonify }},
     subhed: {{ post.subhed | jsonify }},
-    url: {{ post.url | jsonify }},
+    url: {{ site.baseurl | append: post.url | jsonify }},
     date: {{ post.date | date: "%Y-%m-%d" | jsonify }},
     formattedDate: {{ post.date | date: "%d/%m/%Y" | jsonify }},
     category: {{ post.category | jsonify }},
     keywords: {{ post.keywords | jsonify }},
     author: {{ post.author | jsonify }},
-    featuredImage: {{ post.featured-image | jsonify }}
+    featuredImage: {{ site.baseurl | append: post.featured-image | jsonify }}
   }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ];
