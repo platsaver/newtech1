@@ -45,3 +45,7 @@ baseurl: '/newtech1'  # Subdirectory where the site lives
 
 github: 
   username: platsaver
+
+disqus:
+  enabled: true
+  shortname: newtech1
