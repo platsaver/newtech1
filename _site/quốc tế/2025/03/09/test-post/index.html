@@ -28,16 +28,48 @@
   <title>Syria kêu gọi đoàn kết sau loạt đụng độ khiến hơn 1.000 người chết | Jekyll News</title>
   <style>
     .search-container {
-  position: relative;
+      position: relative;
+    }
+
+    .search-container input[type="text"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 150px; /* Điều chỉnh chiều rộng theo ý bạn */
+      font-size: 14px;
+    }
+/* Quy tắc mặc định - Áp dụng cho tất cả ảnh trong thẻ <p> */
+  p > img {
+  display: block; /* Đảm bảo ảnh là phần tử khối để dễ căn chỉnh */
+  margin: 0 auto; /* Căn giữa ảnh */
+  max-width: 100%; /* Đảm bảo ảnh không vượt quá chiều rộng phần tử cha */
+  height: auto; /* Giữ tỷ lệ khung hình */
 }
 
-.search-container input[type="text"] {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 150px; /* Điều chỉnh chiều rộng theo ý bạn */
-  font-size: 14px;
+/* Responsive cho màn hình dưới 904px */
+@media (max-width: 904px) {
+  p > img {
+    width: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều rộng */
+    max-width: none; /* Loại bỏ giới hạn chiều rộng */
+  }
 }
+
+/* Responsive cho màn hình dưới 768px */
+@media (max-width: 768px) {
+  p > img {
+    width: 90%; /* Ảnh chiếm 90% màn hình */
+    margin: 0 auto; /* Căn giữa ảnh */
+  }
+}
+
+/* Responsive cho màn hình dưới 480px */
+@media (max-width: 480px) {
+  p > img {
+    width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+    max-width: none; /* Không giới hạn kích thước */
+  }
+}
+
   </style>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
