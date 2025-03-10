@@ -5,7 +5,7 @@ author: Như Tâm (Theo Reuters, Fox News)
 author-title: Thực hiện
 date: 2025-03-09
 featured-image: 
-  path: /assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg
+  path: /newtech1/assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg
   cutline: Sĩ quan mật vụ đứng gác gần Nhà Trắng ngày 10/12/2024.
   credit: AFP
 layout: post
@@ -24,7 +24,7 @@ Các sĩ quan mật vụ được cảnh sát thông báo về "một người c
 
 > "Khi các sĩ quan tiếp cận, người này rút súng ra và hai bên xảy ra đối đầu. Lực lượng mật vụ đã nổ súng. Nghi phạm được đưa tới bệnh viện ngay lập tức và chưa rõ tình trạng", **Sở Mật vụ Mỹ** cho hay.  
 
-![*Sĩ quan mật vụ đứng gác gần Nhà Trắng ngày 10/12/2024. Ảnh: AFP*](./assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg){: width="900px" height="590px"}
+![*Sĩ quan mật vụ đứng gác gần Nhà Trắng ngày 10/12/2024. Ảnh: AFP*](/newtech1/assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg){: width="900px" height="590px"}
 
 ## Điều Tra & Ảnh Hưởng  
 
@@ -36,7 +36,7 @@ Các sĩ quan mật vụ được cảnh sát thông báo về "một người c
 
 Tại thời điểm xảy ra vụ việc, **Tổng thống Donald Trump** không có mặt tại Nhà Trắng. Ông đang ở **dinh thự Mar-a-Lago, Florida**, và dự kiến sẽ trở về Washington vào chiều **9/3**.  
 
-![*Vị trí mật vụ Mỹ đụng độ người đàn ông có vũ trang. Đồ họa: Sky News*](/assets/img/Capture-PNG-1741525537-9117-1741526464.png)  
+![*Vị trí mật vụ Mỹ đụng độ người đàn ông có vũ trang. Đồ họa: Sky News*](/newtech1/assets/img/Capture-PNG-1741525537-9117-1741526464.png)  
 
 ---
 

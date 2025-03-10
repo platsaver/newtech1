@@ -10,7 +10,7 @@ author: platsaver
 # Site Flag
 flag:
   show: true
-  path: /assets/flag.png
+  path: /newtech1/assets/flag.png
 
 # Comments
 disqus:
@@ -42,7 +42,6 @@ plugins:
   - jekyll-seo-tag
 
 baseurl: '/newtech1'  # Subdirectory where the site lives
-url: 'https://platsaver.github.io'
 
 github: 
   username: platsaver

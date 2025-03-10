@@ -5,7 +5,7 @@ author: Nguyễn Tiến
 date: 2025-03-09
 author-title: Thực hiện
 featured-image: 
-  path: /assets/img/5563187178137268715a-174150836-4320-1997-1741508514.jpg
+  path: /newtech1/assets/img/5563187178137268715a-174150836-4320-1997-1741508514.jpg
   cutline: Tổng Bí thư Tô Lâm và phu nhân rời chuyên cơ tại sân bay quân sự Halim Perdanakusuma, Jakarta, Indonesia ngày 9/3.
   credit: TTXVN
 layout: post
@@ -25,7 +25,7 @@ Tổng Bí thư Tô Lâm và phu nhân bước xuống thảm danh dự, đi gi�
 
 Indonesia đã bắn 7 phát đại bác chào mừng tại sân bay, nghi thức thể hiện sự coi trọng với chuyến thăm của Tổng Bí thư, phu nhân và đoàn đại biểu cấp cao Việt Nam.
 
-![Tổng Bí thư Tô Lâm tại sân bay Halim Perdanakusuma, Jakarta, Indonesia ngày 9/3](/assets/img/5563187178137268715a-174150836-4320-1997-1741508514.jpg){: width="900px" height="590px"}
+![Tổng Bí thư Tô Lâm tại sân bay Halim Perdanakusuma, Jakarta, Indonesia ngày 9/3](/newtech1/assets/img/5563187178137268715a-174150836-4320-1997-1741508514.jpg){: width="900px" height="590px"}
 *Tổng Bí thư Tô Lâm tại sân bay quân sự Halim Perdanakusuma, Jakarta, Indonesia ngày 9/3. Ảnh: TTXVN*
 
 ### Chuyến Thăm Lịch Sử
@@ -54,7 +54,7 @@ Indonesia và Việt Nam có quan hệ an ninh - quốc phòng từ **năm 1964*
 
 - **2023**: Việt Nam đón **105.000** lượt khách Indonesia, tăng **200%** so với năm 2022.
 - **2024**: Dự kiến đón **184.000** lượt khách, tăng **1,74 lần** so với năm 2023.
-![Tổng Bí thư Tô Lâm tại sân bay Halim Perdanakusuma, Jakarta, Indonesia ngày 9/3](/assets/img/tbt-indo-002-1741510583-1759-1741510594.jpg){: width="900px" height="590px"}
+![Tổng Bí thư Tô Lâm tại sân bay Halim Perdanakusuma, Jakarta, Indonesia ngày 9/3](/newtech1/assets/img/tbt-indo-002-1741510583-1759-1741510594.jpg){: width="900px" height="590px"}
 *Tổng Bí thư Tô Lâm tại sân bay quân sự Halim Perdanakusuma, Jakarta, Indonesia ngày 9/3. Ảnh: TTXVN*
 Chuyến thăm cũng diễn ra vào dịp **30 năm Việt Nam gia nhập ASEAN**, đánh dấu quá trình hội nhập khu vực và quốc tế. 
 
