@@ -49,3 +49,23 @@ github:
 disqus:
   enabled: true
   shortname: quan
+
+jekyll_admin:
+  homepage: "posts"
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      title: ""
+      subhed: ""
+      author: ""
+      author-title: ""
+      featured-image:
+        path: ""
+        cutline: ""
+        credit: ""
+      category: ""
+      keywords: []
