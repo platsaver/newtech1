@@ -512,15 +512,10 @@ hr {
 .grid-title {
   display: block;
   padding: 10px;
-  background-color: #f0f0f0; /* Màu nền */
   color: #333; /* Màu chữ */
   text-decoration: none; /* Bỏ gạch chân */
   border-radius: 5px; /* Bo góc */
   transition: background-color 0.3s ease; /* Hiệu ứng hover */
-}
-
-.grid-title:hover {
-  background-color: #ddd; /* Màu nền khi hover */
 }
 
 /* Responsive adjustments */
@@ -534,6 +529,12 @@ hr {
   .main-content{
     display: flex; 
     flex-direction: column;
+  }
+  div.grid-titles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột có kích thước bằng nhau */
+    grid-template-rows: repeat(2, 1fr); /* 2 hàng có kích thước bằng nhau */
+    gap: 10px; /* Khoảng cách giữa các ô */
   }
 }
 
