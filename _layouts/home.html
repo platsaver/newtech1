@@ -16,7 +16,7 @@ layout: base
             <div class="category-latest">
               <div class="latest-text">
                 <a class="post-list-headline" href="{{ site.baseurl }}{{ latest_post.url }}">{{ latest_post.title }}</a>
-                {%- assign date = latest_post.date | date: "%B %-d, %Y" -%}
+                {%- assign date = latest_post.date | date: "%d/%m/%Y" -%}
                 {%- if latest_post.author and latest_post.author-title -%}
                   <p class="post-list-byline">{{ latest_post.author }}, {{ latest_post.author-title }} | {{ date }}</p>
                 {%- else -%}

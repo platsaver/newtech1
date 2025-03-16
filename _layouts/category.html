@@ -20,7 +20,7 @@ layout: base
           {%- endif -%}
 
           <a class="post-list-headline" href="/newtech1{{ post.url }}">{{ post.title }}</a>
-          {%- assign date = post.date | date: "%B %-d, %Y" -%}
+          {%- assign date = post.date | date: "%d/%m/%Y" -%}
           {%- if post.author and post.author-title -%}
             <p class="post-list-byline">{{ post.author }}, {{ post.author-title }} | {{ date }}</p>
           {%- else -%}

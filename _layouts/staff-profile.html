@@ -18,7 +18,7 @@ layout: base
           <div class="featured-story" style="background-image: url('{{post.featured-image.path}}');">
             <div class="featured-story-text">
               <a class="featured-story-headline" href="{{ post.url }}">{{ post.title }}</a>
-              {%- assign date = post.date | date: "%B %-d, %Y" -%}
+              {%- assign date = post.date | date: "%d/%m/%Y" -%}
               <p class="featured-story-byline">{{ date }}</p>
             </div>
           </div>

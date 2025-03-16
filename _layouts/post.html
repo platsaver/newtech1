@@ -9,7 +9,7 @@ layout: base
   <h2 class="subhed">{{ page.subhed }}</h2>
 {%- endif -%}
 
-{%- assign date = page.date | date: "%B %-d, %Y" -%}
+{%- assign date = page.date | date: "%d/%m/%Y" -%}
 {%- if page.author and page.author-title -%}
   {%- for profile in site.staff -%}
     {%- if page.author == profile.title -%}
