@@ -565,3 +565,22 @@ hr {
   display: block; /* Hiển thị mô tả trên một dòng mới */
   margin-top: 5px; /* Khoảng cách giữa tiêu đề và mô tả */
 }
+
+/* CSS cho hình ảnh */
+img.list-image {
+  width: 500px; 
+  height: 300px;
+}
+
+/* Media query để xếp chồng lên nhau khi màn hình nhỏ hơn 790px */
+@media screen and (max-width: 790px) {
+  .post-list-post {
+    flex-direction: column !important; /* Xếp chồng lên nhau */
+    align-items: flex-start; /* Căn trái các phần tử */
+  }
+
+  img.list-image {
+    width: 100% !important; /* Hình ảnh chiếm toàn bộ chiều rộng */
+    height: auto !important; /* Chiều cao tự động */
+  }
+}
