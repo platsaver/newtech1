@@ -147,44 +147,6 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
     }
-
-    /*Pagination*/
-    .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    .pagination-button {
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      padding: 5px 10px;
-      margin: 0 5px;
-      cursor: pointer;
-      border-radius: 3px;
-    }
-
-    .pagination-button:hover {
-      background-color: #ddd;
-    }
-
-    .pagination-button.active {
-      background-color: #007bff;
-      color: white;
-      border-color: #007bff;
-    }
-
-    .prev-next {
-      background-color: #007bff;
-      color: white;
-      border: 1px solid #007bff;
-    }
-
-    .prev-next:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-    }
     
     /*Dropdown menu*/
     /* Đảm bảo menu chính hiển thị bình thường */
@@ -329,89 +291,6 @@
         });
       });
     </script>
-
-    <!--Pagination handler-->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-  const pages = document.querySelectorAll(".page");
-  const paginationButtons = document.querySelectorAll(".pagination-button");
-  const prevButton = document.getElementById("prev-page");
-  const nextButton = document.getElementById("next-page");
-
-  let currentPage = 1; // Trang hiện tại
-
-  // Hiển thị trang đầu tiên khi tải trang
-  showPage(currentPage);
-
-  // Thêm sự kiện click cho các nút pagination
-  paginationButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const pageNumber = parseInt(button.getAttribute("data-page"));
-      if (!isNaN(pageNumber)) {
-        currentPage = pageNumber;
-        showPage(currentPage);
-      }
-    });
-  });
-
-  // Sự kiện cho nút "Trang trước"
-  prevButton.addEventListener("click", function () {
-    if (currentPage > 1) {
-      currentPage--;
-      showPage(currentPage);
-    }
-  });
-
-  // Sự kiện cho nút "Trang sau"
-  nextButton.addEventListener("click", function () {
-    if (currentPage < pages.length) {
-      currentPage++;
-      showPage(currentPage);
-    }
-  });
-
-  // Hàm hiển thị trang cụ thể
-  function showPage(pageNumber) {
-    // Ẩn tất cả các trang
-    pages.forEach((page) => {
-      page.style.display = "none";
-    });
-
-    // Hiển thị trang được chọn
-    const selectedPage = document.querySelector(`.page[data-page="${pageNumber}"]`);
-    if (selectedPage) {
-      selectedPage.style.display = "block";
-    }
-
-    // Đánh dấu nút pagination được chọn
-    paginationButtons.forEach((button) => {
-      button.classList.remove("active");
-      const buttonPage = parseInt(button.getAttribute("data-page"));
-      if (buttonPage === pageNumber) {
-        button.classList.add("active");
-      }
-    });
-
-    // Vô hiệu hóa nút "Trang trước" nếu ở trang đầu tiên
-    if (currentPage === 1) {
-      prevButton.disabled = true;
-      prevButton.style.opacity = "0.5";
-    } else {
-      prevButton.disabled = false;
-      prevButton.style.opacity = "1";
-    }
-
-    // Vô hiệu hóa nút "Trang sau" nếu ở trang cuối cùng
-    if (currentPage === pages.length) {
-      nextButton.disabled = true;
-      nextButton.style.opacity = "0.5";
-    } else {
-      nextButton.disabled = false;
-      nextButton.style.opacity = "1";
-    }
-  }
-});
-    </script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     
@@ -497,11 +376,7 @@
 </div>
     <main class="page-content" aria-label="Content">
         <h1>Quốc tế</h1>
-<div id="post-list"><!-- Hiển thị bài viết của trang hiện tại --><div class="page" data-page="1" ><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/AFP-20250225-36YK6LT-v1-HighRe-8403-2812-1741521564.jpg" /><a class="post-list-headline" href="/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post.html">Syria kêu gọi đoàn kết sau loạt đụng độ khiến hơn 1.000 người chết</a><p class="post-list-byline">(Theo AFP, SOHR), Thực hiện | 09/03/2025</p><span class="post-list-summary">Syria kêu gọi đoàn kết sau loạt đụng độ khiến hơn 1.000 người chết Lãnh đạo Syria kêu gọi cả nước đoàn kết, sau khi lực lượng an ninh và phe ủng hộ cựu tổng...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/Trump-Zelensky-5752-1741067676.jpg" /><a class="post-list-headline" href="/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post2.html">NATO Đứng Ngồi Không Yên Khi Mỹ Đổi Lập Trường Về Nga</a><p class="post-list-byline">Thùy Lâm (Theo WSJ, Moscow Times, NBC News), Thực hiện | 09/03/2025</p><span class="post-list-summary">NATO Đứng Ngồi Không Yên Khi Mỹ Đổi Lập Trường Về Nga Những động thái cải thiện quan hệ với Nga gần đây của chính quyền ông Donald Trump khiến các thành viên NATO gấp...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/5563187178137268715a-174150836-4320-1997-1741508514.jpg" /><a class="post-list-headline" href="/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/another-test-post.html">Indonesia bắn đại bác chào mừng Tổng Bí thư Tô Lâm</a><p class="post-list-byline">Nguyễn Tiến, Thực hiện | 09/03/2025</p><span class="post-list-summary">Indonesia Bắn 7 Phát Đại Bác Chào Mừng Tổng Bí Thư Tô Lâm Chuyên cơ chở Tổng Bí thư Tô Lâm, phu nhân Ngô Phương Ly cùng đoàn đại biểu cấp cao Việt Nam đáp...</span></div></div><div class="page" data-page="2" style="display: none;"><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg" /><a class="post-list-headline" href="/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/different-test-post.html">Mật vụ Mỹ bắn người mang súng gần Nhà Trắng</a><p class="post-list-byline">Như Tâm (Theo Reuters, Fox News), Thực hiện | 09/03/2025</p><span class="post-list-summary">Mật vụ Mỹ bắn người mang súng gần Nhà Trắng Mật vụ Mỹ đụng độ và bắn một người đàn ông có vũ trang ở gần Nhà Trắng, sau khi nhận tin báo từ cảnh...</span></div></div></div>
-
-<!-- Pagination Controls -->
-<div class="pagination">
-  <button class="pagination-button prev-next" id="prev-page">← Trang trước</button><button class="pagination-button" data-page="1">1</button><button class="pagination-button prev-next" id="next-page">Trang sau →</button>
+<div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/AFP-20250225-36YK6LT-v1-HighRe-8403-2812-1741521564.jpg" /><a class="post-list-headline" href="/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post.html">Syria kêu gọi đoàn kết sau loạt đụng độ khiến hơn 1.000 người chết</a><p class="post-list-byline">(Theo AFP, SOHR), Thực hiện | 09/03/2025</p><span class="post-list-summary">Syria kêu gọi đoàn kết sau loạt đụng độ khiến hơn 1.000 người chết Lãnh đạo Syria kêu gọi cả nước đoàn kết, sau khi lực lượng an ninh và phe ủng hộ cựu tổng...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/Trump-Zelensky-5752-1741067676.jpg" /><a class="post-list-headline" href="/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post2.html">NATO Đứng Ngồi Không Yên Khi Mỹ Đổi Lập Trường Về Nga</a><p class="post-list-byline">Thùy Lâm (Theo WSJ, Moscow Times, NBC News), Thực hiện | 09/03/2025</p><span class="post-list-summary">NATO Đứng Ngồi Không Yên Khi Mỹ Đổi Lập Trường Về Nga Những động thái cải thiện quan hệ với Nga gần đây của chính quyền ông Donald Trump khiến các thành viên NATO gấp...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/5563187178137268715a-174150836-4320-1997-1741508514.jpg" /><a class="post-list-headline" href="/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/another-test-post.html">Indonesia bắn đại bác chào mừng Tổng Bí thư Tô Lâm</a><p class="post-list-byline">Nguyễn Tiến, Thực hiện | 09/03/2025</p><span class="post-list-summary">Indonesia Bắn 7 Phát Đại Bác Chào Mừng Tổng Bí Thư Tô Lâm Chuyên cơ chở Tổng Bí thư Tô Lâm, phu nhân Ngô Phương Ly cùng đoàn đại biểu cấp cao Việt Nam đáp...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg" /><a class="post-list-headline" href="/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/different-test-post.html">Mật vụ Mỹ bắn người mang súng gần Nhà Trắng</a><p class="post-list-byline">Như Tâm (Theo Reuters, Fox News), Thực hiện | 09/03/2025</p><span class="post-list-summary">Mật vụ Mỹ bắn người mang súng gần Nhà Trắng Mật vụ Mỹ đụng độ và bắn một người đàn ông có vũ trang ở gần Nhà Trắng, sau khi nhận tin báo từ cảnh...</span></div>
 </div>
     </main>
     <div class="footer">

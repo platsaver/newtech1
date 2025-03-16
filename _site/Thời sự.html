@@ -147,44 +147,6 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
     }
-
-    /*Pagination*/
-    .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    .pagination-button {
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      padding: 5px 10px;
-      margin: 0 5px;
-      cursor: pointer;
-      border-radius: 3px;
-    }
-
-    .pagination-button:hover {
-      background-color: #ddd;
-    }
-
-    .pagination-button.active {
-      background-color: #007bff;
-      color: white;
-      border-color: #007bff;
-    }
-
-    .prev-next {
-      background-color: #007bff;
-      color: white;
-      border: 1px solid #007bff;
-    }
-
-    .prev-next:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-    }
     
     /*Dropdown menu*/
     /* Đảm bảo menu chính hiển thị bình thường */
@@ -329,89 +291,6 @@
         });
       });
     </script>
-
-    <!--Pagination handler-->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-  const pages = document.querySelectorAll(".page");
-  const paginationButtons = document.querySelectorAll(".pagination-button");
-  const prevButton = document.getElementById("prev-page");
-  const nextButton = document.getElementById("next-page");
-
-  let currentPage = 1; // Trang hiện tại
-
-  // Hiển thị trang đầu tiên khi tải trang
-  showPage(currentPage);
-
-  // Thêm sự kiện click cho các nút pagination
-  paginationButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const pageNumber = parseInt(button.getAttribute("data-page"));
-      if (!isNaN(pageNumber)) {
-        currentPage = pageNumber;
-        showPage(currentPage);
-      }
-    });
-  });
-
-  // Sự kiện cho nút "Trang trước"
-  prevButton.addEventListener("click", function () {
-    if (currentPage > 1) {
-      currentPage--;
-      showPage(currentPage);
-    }
-  });
-
-  // Sự kiện cho nút "Trang sau"
-  nextButton.addEventListener("click", function () {
-    if (currentPage < pages.length) {
-      currentPage++;
-      showPage(currentPage);
-    }
-  });
-
-  // Hàm hiển thị trang cụ thể
-  function showPage(pageNumber) {
-    // Ẩn tất cả các trang
-    pages.forEach((page) => {
-      page.style.display = "none";
-    });
-
-    // Hiển thị trang được chọn
-    const selectedPage = document.querySelector(`.page[data-page="${pageNumber}"]`);
-    if (selectedPage) {
-      selectedPage.style.display = "block";
-    }
-
-    // Đánh dấu nút pagination được chọn
-    paginationButtons.forEach((button) => {
-      button.classList.remove("active");
-      const buttonPage = parseInt(button.getAttribute("data-page"));
-      if (buttonPage === pageNumber) {
-        button.classList.add("active");
-      }
-    });
-
-    // Vô hiệu hóa nút "Trang trước" nếu ở trang đầu tiên
-    if (currentPage === 1) {
-      prevButton.disabled = true;
-      prevButton.style.opacity = "0.5";
-    } else {
-      prevButton.disabled = false;
-      prevButton.style.opacity = "1";
-    }
-
-    // Vô hiệu hóa nút "Trang sau" nếu ở trang cuối cùng
-    if (currentPage === pages.length) {
-      nextButton.disabled = true;
-      nextButton.style.opacity = "0.5";
-    } else {
-      nextButton.disabled = false;
-      nextButton.style.opacity = "1";
-    }
-  }
-});
-    </script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     
@@ -497,11 +376,7 @@
 </div>
     <main class="page-content" aria-label="Content">
         <h1>Thời sự</h1>
-<div id="post-list"><!-- Hiển thị bài viết của trang hiện tại --><div class="page" data-page="1" ><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/chayrui1.webp" /><a class="post-list-headline" href="/newtech1/th%E1%BB%9Di%20s%E1%BB%B1/2025/03/16/testpost15.html">Ôtô cháy rụi giữa trung tâm Đà Nẵng</a><p class="post-list-byline">Ngọc Trường,  | 16/03/2025</p><span class="post-list-summary"><p>Ôtô 4 chỗ đậu qua đêm dưới lòng đường, khi chủ ra khởi động thì bất ngờ gầm xe phát ra tiếng nổ và bốc cháy dữ dội, sáng 14/3.</p></span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/tinhgian1.webp" /><a class="post-list-headline" href="/newtech1/th%E1%BB%9Di%20s%E1%BB%B1/2025/03/16/testpost14.html">TP HCM sẽ giới thiệu việc làm cho cán bộ bị tinh giản</a><p class="post-list-byline">Quỳnh Trần,  | 16/03/2025</p><span class="post-list-summary"><p>Cán bộ bị tinh giản do sắp xếp bộ máy muốn làm việc sẽ được TP HCM giới thiệu đến doanh nghiệp nhà nước, hỗ trợ khởi nghiệp hoặc kết nối với khối tư nhân.</p></span></div></div></div>
-
-<!-- Pagination Controls -->
-<div class="pagination">
-  <button class="pagination-button prev-next" id="prev-page">← Trang trước</button><button class="pagination-button prev-next" id="next-page">Trang sau →</button>
+<div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/chayrui1.webp" /><a class="post-list-headline" href="/th%E1%BB%9Di%20s%E1%BB%B1/2025/03/16/testpost15.html">Ôtô cháy rụi giữa trung tâm Đà Nẵng</a><p class="post-list-byline">Ngọc Trường,  | 16/03/2025</p><span class="post-list-summary"><p>Ôtô 4 chỗ đậu qua đêm dưới lòng đường, khi chủ ra khởi động thì bất ngờ gầm xe phát ra tiếng nổ và bốc cháy dữ dội, sáng 14/3.</p></span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/tinhgian1.webp" /><a class="post-list-headline" href="/th%E1%BB%9Di%20s%E1%BB%B1/2025/03/16/testpost14.html">TP HCM sẽ giới thiệu việc làm cho cán bộ bị tinh giản</a><p class="post-list-byline">Quỳnh Trần,  | 16/03/2025</p><span class="post-list-summary"><p>Cán bộ bị tinh giản do sắp xếp bộ máy muốn làm việc sẽ được TP HCM giới thiệu đến doanh nghiệp nhà nước, hỗ trợ khởi nghiệp hoặc kết nối với khối tư nhân.</p></span></div>
 </div>
     </main>
     <div class="footer">

@@ -147,44 +147,6 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
     }
-
-    /*Pagination*/
-    .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    .pagination-button {
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      padding: 5px 10px;
-      margin: 0 5px;
-      cursor: pointer;
-      border-radius: 3px;
-    }
-
-    .pagination-button:hover {
-      background-color: #ddd;
-    }
-
-    .pagination-button.active {
-      background-color: #007bff;
-      color: white;
-      border-color: #007bff;
-    }
-
-    .prev-next {
-      background-color: #007bff;
-      color: white;
-      border: 1px solid #007bff;
-    }
-
-    .prev-next:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-    }
     
     /*Dropdown menu*/
     /* Đảm bảo menu chính hiển thị bình thường */
@@ -329,89 +291,6 @@
         });
       });
     </script>
-
-    <!--Pagination handler-->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-  const pages = document.querySelectorAll(".page");
-  const paginationButtons = document.querySelectorAll(".pagination-button");
-  const prevButton = document.getElementById("prev-page");
-  const nextButton = document.getElementById("next-page");
-
-  let currentPage = 1; // Trang hiện tại
-
-  // Hiển thị trang đầu tiên khi tải trang
-  showPage(currentPage);
-
-  // Thêm sự kiện click cho các nút pagination
-  paginationButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const pageNumber = parseInt(button.getAttribute("data-page"));
-      if (!isNaN(pageNumber)) {
-        currentPage = pageNumber;
-        showPage(currentPage);
-      }
-    });
-  });
-
-  // Sự kiện cho nút "Trang trước"
-  prevButton.addEventListener("click", function () {
-    if (currentPage > 1) {
-      currentPage--;
-      showPage(currentPage);
-    }
-  });
-
-  // Sự kiện cho nút "Trang sau"
-  nextButton.addEventListener("click", function () {
-    if (currentPage < pages.length) {
-      currentPage++;
-      showPage(currentPage);
-    }
-  });
-
-  // Hàm hiển thị trang cụ thể
-  function showPage(pageNumber) {
-    // Ẩn tất cả các trang
-    pages.forEach((page) => {
-      page.style.display = "none";
-    });
-
-    // Hiển thị trang được chọn
-    const selectedPage = document.querySelector(`.page[data-page="${pageNumber}"]`);
-    if (selectedPage) {
-      selectedPage.style.display = "block";
-    }
-
-    // Đánh dấu nút pagination được chọn
-    paginationButtons.forEach((button) => {
-      button.classList.remove("active");
-      const buttonPage = parseInt(button.getAttribute("data-page"));
-      if (buttonPage === pageNumber) {
-        button.classList.add("active");
-      }
-    });
-
-    // Vô hiệu hóa nút "Trang trước" nếu ở trang đầu tiên
-    if (currentPage === 1) {
-      prevButton.disabled = true;
-      prevButton.style.opacity = "0.5";
-    } else {
-      prevButton.disabled = false;
-      prevButton.style.opacity = "1";
-    }
-
-    // Vô hiệu hóa nút "Trang sau" nếu ở trang cuối cùng
-    if (currentPage === pages.length) {
-      nextButton.disabled = true;
-      nextButton.style.opacity = "0.5";
-    } else {
-      nextButton.disabled = false;
-      nextButton.style.opacity = "1";
-    }
-  }
-});
-    </script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     
@@ -497,11 +376,7 @@
 </div>
     <main class="page-content" aria-label="Content">
         <h1>Đời sống</h1>
-<div id="post-list"><!-- Hiển thị bài viết của trang hiện tại --><div class="page" data-page="1" ><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/vuonrau1.webp" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost22.html">Anh nông dân kiếm triệu USD từ 'vườn rau một mét'</a><p class="post-list-byline">Bảo Nhiên,  | 16/03/2025</p><span class="post-list-summary">Huw Richards, 26 tuổi, người phát minh mô hình “vườn rau một mét” đã nhân gấp bội thu nhập bằng cách bán nông sản kết hợp bán tri thức Chàng trai ở xứ Wales bắt...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/thucpham0.webp" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost19.html">5 loại thực phẩm thường bị bảo quản sai</a><p class="post-list-byline">Ngọc Ngân,  | 16/03/2025</p><span class="post-list-summary">Các loại thực phẩm đặt nhầm chỗ trong tủ lạnh sẽ khiến chúng nhanh hỏng Sữa ở cánh cửa tủ lạnh Người dùng thường có thói quen này nhưng trên thực tế, việc đặt sữa...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/sinhvien1.webp" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost17.html">Trở thành sinh viên sau khi về hưu</a><p class="post-list-byline">Thanh Thanh,  | 16/03/2025</p><span class="post-list-summary"><p>Ở tuổi 56, con cái có công việc ổn định, bà Wang Xiaoxi quyết định du học để có thêm trải nghiệm cuộc sống.</p></span></div></div><div class="page" data-page="2" style="display: none;"><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/phunuvn1.jpg" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/08/test-post10.html">Đàn ông cả xóm rủ nhau dựng rạp, mở tiệc 8/3</a><p class="post-list-byline">Thanh Lam, Thực hiện | 08/03/2025</p><span class="post-list-summary">Hà Nội: Xóm Đoàn Kết tổ chức tiệc 8/3 đặc biệt cho phụ nữ 17h, sau khi cùng đàn ông trong xóm hoàn thành 20 mâm cỗ, anh Đỗ Kiến Vọng thay vest, lên sân...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/tietkiem1.webp" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2023/03/16/test-post20.html">Những việc không nên tiết kiệm</a><p class="post-list-byline">Nhật Minh,  | 16/03/2023</p><span class="post-list-summary"><p>Khi thu nhập giảm và phí sinh hoạt tăng, nhiều người cắt giảm chi phí bằng mọi cách nhưng tiết kiệm không đúng cách thường gây hậu quả khó lường.</p></span></div></div></div>
-
-<!-- Pagination Controls -->
-<div class="pagination">
-  <button class="pagination-button prev-next" id="prev-page">← Trang trước</button><button class="pagination-button" data-page="1">1</button><button class="pagination-button prev-next" id="next-page">Trang sau →</button>
+<div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/vuonrau1.webp" /><a class="post-list-headline" href="/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost22.html">Anh nông dân kiếm triệu USD từ 'vườn rau một mét'</a><p class="post-list-byline">Bảo Nhiên,  | 16/03/2025</p><span class="post-list-summary">Huw Richards, 26 tuổi, người phát minh mô hình “vườn rau một mét” đã nhân gấp bội thu nhập bằng cách bán nông sản kết hợp bán tri thức Chàng trai ở xứ Wales bắt...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/thucpham0.webp" /><a class="post-list-headline" href="/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost19.html">5 loại thực phẩm thường bị bảo quản sai</a><p class="post-list-byline">Ngọc Ngân,  | 16/03/2025</p><span class="post-list-summary">Các loại thực phẩm đặt nhầm chỗ trong tủ lạnh sẽ khiến chúng nhanh hỏng Sữa ở cánh cửa tủ lạnh Người dùng thường có thói quen này nhưng trên thực tế, việc đặt sữa...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/sinhvien1.webp" /><a class="post-list-headline" href="/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost17.html">Trở thành sinh viên sau khi về hưu</a><p class="post-list-byline">Thanh Thanh,  | 16/03/2025</p><span class="post-list-summary"><p>Ở tuổi 56, con cái có công việc ổn định, bà Wang Xiaoxi quyết định du học để có thêm trải nghiệm cuộc sống.</p></span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/phunuvn1.jpg" /><a class="post-list-headline" href="/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/08/test-post10.html">Đàn ông cả xóm rủ nhau dựng rạp, mở tiệc 8/3</a><p class="post-list-byline">Thanh Lam, Thực hiện | 08/03/2025</p><span class="post-list-summary">Hà Nội: Xóm Đoàn Kết tổ chức tiệc 8/3 đặc biệt cho phụ nữ 17h, sau khi cùng đàn ông trong xóm hoàn thành 20 mâm cỗ, anh Đỗ Kiến Vọng thay vest, lên sân...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/tietkiem1.webp" /><a class="post-list-headline" href="/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2023/03/16/test-post20.html">Những việc không nên tiết kiệm</a><p class="post-list-byline">Nhật Minh,  | 16/03/2023</p><span class="post-list-summary"><p>Khi thu nhập giảm và phí sinh hoạt tăng, nhiều người cắt giảm chi phí bằng mọi cách nhưng tiết kiệm không đúng cách thường gây hậu quả khó lường.</p></span></div>
 </div>
     </main>
     <div class="footer">
