@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/newtech1/assets/css/style.css">
+  <script src="https://unpkg.com/akar-icons-fonts"></script>
+
+  <!-- Analytics -->
+    
+
+  <!-- AdSense -->
+  
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Tài sản của tỷ phú Trần Đình Long giảm" />
+  <meta property="og:url" content="" />
+  <meta property="og:site_name" content="PNews" />
+  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1/newtech1/assets/img/typhu1.webp" />
+  <!-- OpenGraph Type--><meta property="og:type" content="article" />
+    <meta property="og:article:author" content="Việt Hưng" />
+    <meta property="og:article:section" content="Kinh doanh" />
+    <meta property="og:article:published_time" content="2025-03-16T00:00:00+07:00" /><!-- Description --><meta name="description" content="Trong bối cảnh VN-Index khởi sắc, ông Trần Đình Long là người duy nhất trong 5 tỷ phú Việt bị giảm tài sản từ đầu năm đến nay." />
+  <meta property="og:description" content="Trong bối cảnh VN-Index khởi sắc, ông Trần Đình Long là người duy nhất trong 5 tỷ phú Việt bị giảm tài sản từ đầu năm đến nay." />
+
+
+  <title>Tài sản của tỷ phú Trần Đình Long giảm | PNews</title>
+  <style>
+    .search-container {
+      position: relative;
+    }
+
+    .search-container input[type="text"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 150px; /* Điều chỉnh chiều rộng */
+      font-size: 14px;
+    }
+/* Quy tắc mặc định - Áp dụng cho tất cả ảnh trong thẻ <p> */
+  p > img {
+  display: block; /* Đảm bảo ảnh là phần tử khối để dễ căn chỉnh */
+  margin: 0 auto; /* Căn giữa ảnh */
+  max-width: 100%; /* Đảm bảo ảnh không vượt quá chiều rộng phần tử cha */
+  height: auto; /* Giữ tỷ lệ khung hình */
+}
+
+/* Responsive cho màn hình dưới 904px */
+@media (max-width: 904px) {
+  p > img {
+    width: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều rộng */
+    max-width: none; /* Loại bỏ giới hạn chiều rộng */
+  }
+}
+
+/* Responsive cho màn hình dưới 768px */
+@media (max-width: 768px) {
+  p > img {
+    width: 90%; /* Ảnh chiếm 90% màn hình */
+    margin: 0 auto; /* Căn giữa ảnh */
+  }
+}
+
+/* Responsive cho màn hình dưới 480px */
+@media (max-width: 480px) {
+  p > img {
+    width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+    max-width: none; /* Không giới hạn kích thước */
+  }
+}
+
+
+  </style>
+  <style>
+    .header-nav {
+      position: relative;
+    }
+    
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .desktop-nav {
+      display: flex;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+    
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+    
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #fff;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    
+    .sidebar.active {
+      left: 0;
+    }
+    
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px 0;
+    }
+    
+    @media screen and (max-width: 708px) {  /* Đã đổi từ 634px thành 708px */
+      .hamburger {
+        display: block;
+      }
+    
+      .desktop-nav {
+        display: none;
+      }
+    }
+    
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /*Pagination*/
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .pagination-button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .pagination-button:hover {
+      background-color: #ddd;
+    }
+
+    .pagination-button.active {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .prev-next {
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+    }
+
+    .prev-next:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    
+    /*Dropdown menu*/
+    /* Đảm bảo menu chính hiển thị bình thường */
+    .nav-list {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      position: relative; /* Để dropdown hiển thị đúng vị trí */
+    }
+
+    .nav-link {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #000;
+      display: block;
+    }
+
+    /* Ẩn dropdown mặc định */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      list-style: none;
+      padding: 10px 0;
+      min-width: 150px;
+      z-index: 1000;
+    }
+
+    .dropdown li a {
+      padding: 8px 15px;
+      color: #333;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown li a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Hiển thị dropdown khi hover (Desktop) */
+    .nav-item:hover .dropdown {
+      display: block;
+    }
+
+    /* Sidebar (Mobile) */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .sidebar-nav .nav-item {
+      position: relative;
+    }
+
+    .sidebar-nav .dropdown {
+      position: static; /* Không cần absolute trong sidebar */
+      display: none;
+      padding-left: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .sidebar-nav .dropdown.active {
+      display: block; /* Hiển thị khi click trên mobile */
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #000;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+    </style>
+    <!--Dropdown handler-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+        const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+    
+        // Xử lý hamburger menu
+        hamburger.addEventListener('click', function() {
+          this.classList.toggle('active');
+          sidebar.classList.toggle('active');
+        });
+    
+        // Đóng sidebar khi click ra ngoài
+        document.addEventListener('click', function(event) {
+          if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+          }
+        });
+    
+        // Xử lý dropdown trong sidebar (mobile)
+        navItems.forEach(item => {
+          item.addEventListener('click', function(e) {
+            const dropdown = this.querySelector('.dropdown');
+            if (dropdown) {
+              e.preventDefault(); // Ngăn chuyển hướng ngay lập tức
+              dropdown.classList.toggle('active');
+            }
+          });
+        });
+      });
+    </script>
+
+    <!--Pagination handler-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const pages = document.querySelectorAll(".page");
+  const paginationButtons = document.querySelectorAll(".pagination-button");
+  const prevButton = document.getElementById("prev-page");
+  const nextButton = document.getElementById("next-page");
+
+  let currentPage = 1; // Trang hiện tại
+
+  // Hiển thị trang đầu tiên khi tải trang
+  showPage(currentPage);
+
+  // Thêm sự kiện click cho các nút pagination
+  paginationButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const pageNumber = parseInt(button.getAttribute("data-page"));
+      if (!isNaN(pageNumber)) {
+        currentPage = pageNumber;
+        showPage(currentPage);
+      }
+    });
+  });
+
+  // Sự kiện cho nút "Trang trước"
+  prevButton.addEventListener("click", function () {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  // Sự kiện cho nút "Trang sau"
+  nextButton.addEventListener("click", function () {
+    if (currentPage < pages.length) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  // Hàm hiển thị trang cụ thể
+  function showPage(pageNumber) {
+    // Ẩn tất cả các trang
+    pages.forEach((page) => {
+      page.style.display = "none";
+    });
+
+    // Hiển thị trang được chọn
+    const selectedPage = document.querySelector(`.page[data-page="${pageNumber}"]`);
+    if (selectedPage) {
+      selectedPage.style.display = "block";
+    }
+
+    // Đánh dấu nút pagination được chọn
+    paginationButtons.forEach((button) => {
+      button.classList.remove("active");
+      const buttonPage = parseInt(button.getAttribute("data-page"));
+      if (buttonPage === pageNumber) {
+        button.classList.add("active");
+      }
+    });
+
+    // Vô hiệu hóa nút "Trang trước" nếu ở trang đầu tiên
+    if (currentPage === 1) {
+      prevButton.disabled = true;
+      prevButton.style.opacity = "0.5";
+    } else {
+      prevButton.disabled = false;
+      prevButton.style.opacity = "1";
+    }
+
+    // Vô hiệu hóa nút "Trang sau" nếu ở trang cuối cùng
+    if (currentPage === pages.length) {
+      nextButton.disabled = true;
+      nextButton.style.opacity = "0.5";
+    } else {
+      nextButton.disabled = false;
+      nextButton.style.opacity = "1";
+    }
+  }
+});
+    </script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    
+  </script></head>
+
+  <body>
+    <!-- Form tìm kiếm ở thanh điều hướng -->
+<div class="search-container">
+    <form action="/newtech1/search.html" method="get">
+      <input type="text" name="query" placeholder="Tìm kiếm..." />
+      <!-- Đổi name từ "q" thành "query" để khớp với mã JavaScript -->
+    </form>
+  </div>
+    <div>
+<a href="/newtech1/index.html">
+  <img class="header-flag" src="/newtech1/assets/57c2d4726267e16dbad01549dac68326.png" alt="PNews"/>
+</a>
+<nav class="header-nav">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Menu trên Desktop -->
+    <ul class="nav-list desktop-nav"><li class="nav-item">
+              <a class="nav-link" href="/newtech1/">Trang chủ</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+
+    <!-- Menu trong Sidebar (Mobile) -->
+    <div class="sidebar">
+      <ul class="nav-list sidebar-nav"><li class="nav-item">
+                <a class="nav-link" href="/newtech1/">Trang chủ</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+    </div>
+  </nav>
+</div>
+    <main class="page-content" aria-label="Content">
+        <h1 class="headline">Tài sản của tỷ phú Trần Đình Long giảm</h1><hr/ class="hed-rule"><h2 class="subhed">Trong bối cảnh VN-Index khởi sắc, ông Trần Đình Long là người duy nhất trong 5 tỷ phú Việt bị giảm tài sản từ đầu năm đến nay.</h2><h3 class="byline"><a href="">Việt Hưng</a>,  | March 16, 2025</h3><div class="featured-image-container">
+  <figure class="featured-image">
+    <img src="/newtech1/assets/img/typhu1.webp" alt=""/>
+    <figcaption> - Ảnh bởi Hòa Phát</figcaption>
+  </figure>
+  </div><article class="article-content">
+  <h1 id="trong-bối-cảnh-vn-index-khởi-sắc-ông-trần-đình-long-là-người-duy-nhất-trong-5-tỷ-phú-việt-bị-giảm-tài-sản-từ-đầu-năm-đến-nay">Trong bối cảnh VN-Index khởi sắc, ông Trần Đình Long là người duy nhất trong 5 tỷ phú Việt bị giảm tài sản từ đầu năm đến nay</h1>
+
+<p>Theo Forbes, tính đến ngày 15/3 tài sản của ông Trần Đình Long, Chủ tịch Hội đồng quản trị (HĐQT) Tập đoàn Hòa Phát đạt 2,4 tỷ USD, giảm 200 triệu USD so với đầu năm.</p>
+
+<p>Tỷ phú Trần Đình Long sở hữu 1,6 tỷ cổ phiếu HPG của Hòa Phát, tương đương gần 26% vốn của tập đoàn này.</p>
+
+<p>Thực tế, cổ phiếu HPG gần như đi ngang trong gần hai tháng đầu năm, quanh 26.000 - 27.000 đồng. Cổ phiếu HPG có tuần cuối tháng 2 tăng hơn 7%, nhưng lại giảm dần về thị giá hiện tại.</p>
+
+<p>Kết thúc phiên giao dịch ngày 14/3, HPG đạt mức giá 27.550 đồng một cổ phiếu, tăng hơn 1% so với đầu năm. Cổ phiếu của “vua thép” chỉ nhích nhẹ, trong bối cảnh VN-Index khởi sắc với mức tăng gần 5% từ đầu năm đến nay. Chỉ số sàn chứng khoán hiện ở mức 1.326 điểm.</p>
+
+<p>2018 là năm đầu tiên ông Trần Đình Long có tên trong danh sách tỷ phú của Forbes. Thời điểm đó, tài sản của Chủ tịch Hòa Phát là 1,3 tỷ USD, xếp hạng 1.756 thế giới. Tuy nhiên, liên tiếp hai năm 2019 và 2020, ông không có ở trong danh sách này.</p>
+
+<p><img src="/newtech1/assets/img/typhu1.webp" alt="Ông Trần Đình Long, Chủ tịch HĐQT Tập đoàn Hòa Phát." /><br />
+<em>Ông Trần Đình Long, Chủ tịch HĐQT Tập đoàn Hòa Phát. Ảnh: Hòa Phát</em></p>
+
+<p>Ngoài ông Trần Đình Long, Việt Nam còn 4 tỷ phú khác gồm ông Phạm Nhật Vượng (Chủ tịch HĐQT Vingroup), ông Hồ Hùng Anh (Chủ tịch HĐQT Techcombank), ông Nguyễn Đăng Quang (Chủ tịch HĐQT Masan) và bà Nguyễn Thị Phương Thảo (Chủ tịch HĐQT Sovico Group).</p>
+
+<p>Tính tới ngày 15/3, ông Trần Bá Dương, Chủ tịch HĐQT Công ty cổ phần Ôtô Trường Hải (Thaco) không còn trong danh sách tỷ phú của Forbes. Trước đó, ông Dương lần đầu lọt vào danh sách này năm 2018 và đã xuất hiện suốt 6 năm.</p>
+
+<p>Trong khi tài sản của ông Long giảm, các tỷ phú khác duy trì hoặc ghi nhận tài sản tăng từ đầu năm đến nay. Cụ thể, tài sản của tỷ phú Nguyễn Thị Phương Thảo không có sự thay đổi, đạt 2,8 tỷ USD. Bà Thảo hiện là Chủ tịch HĐQT Sovico Group, kiêm Chủ tịch HĐQT Hãng hàng không Vietjet.
+<img src="/newtech1/assets/img/typhu2.png" alt="" /></p>
+
+<p>Ba tỷ phú còn lại đều ghi nhận tài sản tăng. Trong đó, ông Phạm Nhật Vượng, người giàu nhất Việt Nam với tài sản 7,1 tỷ USD, tăng 2,7 tỷ USD từ đầu năm và lọt top 500 người giàu nhất hành tinh. Tương tự, tài sản của tỷ phú Nguyễn Đăng Quang và Hồ Hùng Anh thêm lần lượt 100 triệu USD và 300 triệu USD nhờ diễn biến khả quan của cổ phiếu MSN và TCB.</p>
+
+<p>Forbes thống kê tài sản của cá nhân dựa vào số lượng và giá cổ phiếu người này nắm giữ tại một thời điểm nhất định. Ngoài ra, họ cũng đánh giá nhiều tài sản khác của các tỷ phú khi xếp hạng, gồm sở hữu tại các công ty riêng, bất động sản, các tác phẩm nghệ thuật, du thuyền…</p>
+
+<p>Cổ phiếu HPG của tập đoàn tỷ phú Trần Đình Long chưa khởi sắc thời gian qua, song các công ty chứng khoán đều dự báo khả quan với mã này. Nhóm phân tích từ Chứng khoán BDIV (BSC) dự báo lợi nhuận của Hòa Phát có thể đạt hơn 25.000 tỷ đồng (khoảng 1 tỷ USD) vào 2026.</p>
+
+<p>Công ty chứng khoán này cho biết sản lượng thép của Hòa Phát trong giai đoạn 2025- 2026 có thể tăng trưởng lần lượt 33% và 22% so với năm liền trước nhờ dự án Dung Quất 2.
+<img src="/newtech1/assets/img/typhu3.png" alt="" /></p>
+
+<p>Tháng trước, Bộ Công Thương áp thuế chống bán phá giá tạm thời với một số sản phẩm thép cuộn cán nóng (HRC) nhập từ Trung Quốc. Động thái này dẫn đến sức ép cạnh tranh với thép giá rẻ từ Trung Quốc giảm xuống. BSC dự báo tỷ suất lợi nhuận gộp của HPG cải thiện trong các quý tới.</p>
+
+<p>Chứng khoán KB (KBSV) cũng cho rằng việc nhà chức trách áp thuế chống bán phá giá với HRC Trung Quốc sẽ giúp sản lượng bán hàng của Hòa Phát tăng. Bên cạnh đó, nhu cầu thị trường nội địa với thép xây dựng, HRC đi lên khi thị trường bất động sản phục hồi, nhiều dự án đầu tư công triển khai trên cả nước. Đây là động lực tăng trưởng chính cho tập đoàn này trong dài hạn.</p>
+
+<p>KBSV kỳ vọng giá thép nội địa điều chỉnh trung bình 2-5% trong hai năm tới, giúp biên lãi gộp của Hòa Phát có thể tăng 16%.</p>
+
+<p><strong>Việt Hưng</strong></p>
+
+</article> <!-- Disqus comments section goes here (if comments are enabled) --><div class="comments">
+ <div id="disqus_thread"></div>
+     
+ <script type="text/javascript">
+     
+ /* * * STOP! * * */
+ /* You shouldn't need to edit ANYTHING below to get this working! */
+ /* Instead, edit the key `disqus.shortname` in _config.yml */
+     
+ var disqus_config = function (){
+ this.page.url = 'http://localhost:4000/newtech1/kinh%20doanh/2025/03/16/testpost25.html';
+ this.page.identifier = '/kinh%20doanh/2025/03/16/testpost25.html';
+ };
+     
+ (function() {
+ var d = document, s = d.createElement('script');
+ s.type = 'text/javascript'; s.async = true;
+ s.src = 'https://quan.disqus.com/embed.js';
+ s.setAttribute('data-timestamp', +new Date());
+ (d.head || d.body).appendChild(s);
+ })();
+    
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+ </div>
+    </main>
+    <div class="footer">
+  © 2025 platsaver | Built with Jekyll
+</div>
+  </body>
+</html>

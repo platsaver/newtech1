@@ -16,13 +16,13 @@
   <!-- OpenGraph Metadata -->
   <meta property="og:title" content="Home" />
   <meta property="og:url" content="http://localhost:4000/newtech1/" />
-  <meta property="og:site_name" content="Jekyll News" />
-  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1/newtech1/assets/flag.png" />
+  <meta property="og:site_name" content="PNews" />
+  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1/newtech1/assets/57c2d4726267e16dbad01549dac68326.png" />
   <!-- OpenGraph Type--><meta property="og:type" content="website"/><!-- Description --><meta name="description" content="Built with Jekyll" />
   <meta property="og:description" content="Built with Jekyll" />
 
 
-  <title>Home | Jekyll News</title>
+  <title>Home | PNews</title>
   <style>
     .search-container {
       position: relative;
@@ -147,7 +147,271 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
     }
+
+    /*Pagination*/
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .pagination-button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .pagination-button:hover {
+      background-color: #ddd;
+    }
+
+    .pagination-button.active {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .prev-next {
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+    }
+
+    .prev-next:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    
+    /*Dropdown menu*/
+    /* Đảm bảo menu chính hiển thị bình thường */
+    .nav-list {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      position: relative; /* Để dropdown hiển thị đúng vị trí */
+    }
+
+    .nav-link {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #000;
+      display: block;
+    }
+
+    /* Ẩn dropdown mặc định */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      list-style: none;
+      padding: 10px 0;
+      min-width: 150px;
+      z-index: 1000;
+    }
+
+    .dropdown li a {
+      padding: 8px 15px;
+      color: #333;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown li a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Hiển thị dropdown khi hover (Desktop) */
+    .nav-item:hover .dropdown {
+      display: block;
+    }
+
+    /* Sidebar (Mobile) */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .sidebar-nav .nav-item {
+      position: relative;
+    }
+
+    .sidebar-nav .dropdown {
+      position: static; /* Không cần absolute trong sidebar */
+      display: none;
+      padding-left: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .sidebar-nav .dropdown.active {
+      display: block; /* Hiển thị khi click trên mobile */
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #000;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
     </style>
+    <!--Dropdown handler-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+        const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+    
+        // Xử lý hamburger menu
+        hamburger.addEventListener('click', function() {
+          this.classList.toggle('active');
+          sidebar.classList.toggle('active');
+        });
+    
+        // Đóng sidebar khi click ra ngoài
+        document.addEventListener('click', function(event) {
+          if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+          }
+        });
+    
+        // Xử lý dropdown trong sidebar (mobile)
+        navItems.forEach(item => {
+          item.addEventListener('click', function(e) {
+            const dropdown = this.querySelector('.dropdown');
+            if (dropdown) {
+              e.preventDefault(); // Ngăn chuyển hướng ngay lập tức
+              dropdown.classList.toggle('active');
+            }
+          });
+        });
+      });
+    </script>
+
+    <!--Pagination handler-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const pages = document.querySelectorAll(".page");
+  const paginationButtons = document.querySelectorAll(".pagination-button");
+  const prevButton = document.getElementById("prev-page");
+  const nextButton = document.getElementById("next-page");
+
+  let currentPage = 1; // Trang hiện tại
+
+  // Hiển thị trang đầu tiên khi tải trang
+  showPage(currentPage);
+
+  // Thêm sự kiện click cho các nút pagination
+  paginationButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const pageNumber = parseInt(button.getAttribute("data-page"));
+      if (!isNaN(pageNumber)) {
+        currentPage = pageNumber;
+        showPage(currentPage);
+      }
+    });
+  });
+
+  // Sự kiện cho nút "Trang trước"
+  prevButton.addEventListener("click", function () {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  // Sự kiện cho nút "Trang sau"
+  nextButton.addEventListener("click", function () {
+    if (currentPage < pages.length) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  // Hàm hiển thị trang cụ thể
+  function showPage(pageNumber) {
+    // Ẩn tất cả các trang
+    pages.forEach((page) => {
+      page.style.display = "none";
+    });
+
+    // Hiển thị trang được chọn
+    const selectedPage = document.querySelector(`.page[data-page="${pageNumber}"]`);
+    if (selectedPage) {
+      selectedPage.style.display = "block";
+    }
+
+    // Đánh dấu nút pagination được chọn
+    paginationButtons.forEach((button) => {
+      button.classList.remove("active");
+      const buttonPage = parseInt(button.getAttribute("data-page"));
+      if (buttonPage === pageNumber) {
+        button.classList.add("active");
+      }
+    });
+
+    // Vô hiệu hóa nút "Trang trước" nếu ở trang đầu tiên
+    if (currentPage === 1) {
+      prevButton.disabled = true;
+      prevButton.style.opacity = "0.5";
+    } else {
+      prevButton.disabled = false;
+      prevButton.style.opacity = "1";
+    }
+
+    // Vô hiệu hóa nút "Trang sau" nếu ở trang cuối cùng
+    if (currentPage === pages.length) {
+      nextButton.disabled = true;
+      nextButton.style.opacity = "0.5";
+    } else {
+      nextButton.disabled = false;
+      nextButton.style.opacity = "1";
+    }
+  }
+});
+    </script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     
@@ -163,7 +427,7 @@
   </div>
     <div>
 <a href="/newtech1/index.html">
-  <img class="header-flag" src="/newtech1/assets/flag.png" alt="Jekyll News"/>
+  <img class="header-flag" src="/newtech1/assets/57c2d4726267e16dbad01549dac68326.png" alt="PNews"/>
 </a>
 <nav class="header-nav">
     <div class="hamburger">
@@ -171,80 +435,162 @@
       <span></span>
       <span></span>
     </div>
-    <ul class="nav-list desktop-nav"><li>
-            <a class="nav-link" href="/newtech1/">Trang chủ</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
-          </li></ul>
-    <div class="sidebar">
-      <ul class="nav-list sidebar-nav"><li>
+
+    <!-- Menu trên Desktop -->
+    <ul class="nav-list desktop-nav"><li class="nav-item">
               <a class="nav-link" href="/newtech1/">Trang chủ</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
-            </li></ul>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+
+    <!-- Menu trong Sidebar (Mobile) -->
+    <div class="sidebar">
+      <ul class="nav-list sidebar-nav"><li class="nav-item">
+                <a class="nav-link" href="/newtech1/">Trang chủ</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
     </div>
   </nav>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const sidebar = document.querySelector('.sidebar');
-  
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');
-      sidebar.classList.toggle('active');
-    });
-  
-    // Đóng sidebar khi click ra ngoài
-    document.addEventListener('click', function(event) {
-      if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
-        hamburger.classList.remove('active');
-        sidebar.classList.remove('active');
-      }
-    });
-  });
-</script>
     <main class="page-content" aria-label="Content">
         <div class="featured-image-container">
   <div class="featured-stories-container">
-    <h2>Tin mới nhất</h2><div class="featured-story" style="background-image: url('/newtech1/assets/img/ngaodat.jpg');">
+    <h2>Tin mới nhất</h2><div class="featured-story" style="background-image: url('/newtech1/assets/img/banthao1.webp');">
             <div class="featured-story-text">
-              <a class="featured-story-headline" href="/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post8/">Đấu giá thành công loạt lô đất từng được 'trả 30 tỷ đồng một m2' </a><p class="featured-story-byline">Ngọc Diễm, Thực hiện | March 10, 2025</p></div>
-          </div><div class="featured-story" style="background-image: url('/newtech1/assets/img/chuanxanh.jpg');">
+              <a class="featured-story-headline" href="/newtech1/kinh%20doanh/2025/03/16/testpost27.html">Cổ phiếu liên quan ông Nguyễn Hồ Nam bị bán tháo</a><p class="featured-story-byline">Phương Đông,  | March 16, 2025</p></div>
+          </div><div class="featured-story" style="background-image: url('/newtech1/assets/img/bamboo1.webp');">
             <div class="featured-story-text">
-              <a class="featured-story-headline" href="/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post7/">Bình Dương có khu nhà ở xã hội theo tiêu chuẩn xanh</a><p class="featured-story-byline">Phước Tuấn, Thực hiện | March 10, 2025</p></div>
-          </div><div class="featured-story" style="background-image: url('/newtech1/assets/img/thuanloi1.jpg');">
+              <a class="featured-story-headline" href="/newtech1/kinh%20doanh/2025/03/16/testpost26.html">Ông Nguyễn Hồ Nam bị bán giải chấp gần 11 triệu cổ phiếu Bamboo Capital</a><p class="featured-story-byline">Tất Đạt,  | March 16, 2025</p></div>
+          </div><div class="featured-story" style="background-image: url('/newtech1/assets/img/typhu1.webp');">
             <div class="featured-story-text">
-              <a class="featured-story-headline" href="/newtech1/kinh%20doanh/2025/03/10/test-post6/">Tổng Bí thư: Tạo thuận lợi cho doanh nghiệp Indonesia đầu tư tại Việt Nam</a><p class="featured-story-byline">Phương Dung, Thực hiện | March 10, 2025</p></div>
+              <a class="featured-story-headline" href="/newtech1/kinh%20doanh/2025/03/16/testpost25.html">Tài sản của tỷ phú Trần Đình Long giảm</a><p class="featured-story-byline">Việt Hưng,  | March 16, 2025</p></div>
           </div></div>
 </div>
 <div class="content-container">
-  <div class="main-content"><div>
-        <h2>Đời sống</h2><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/phunuvn1.jpg" alt=""/><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/08/test-post10/">Đàn ông cả xóm rủ nhau dựng rạp, mở tiệc 8/3</a><p class="post-list-byline">Thanh Lam, Thực hiện | March 8, 2025</p><span class="post-list-summary">Hà Nội: Xóm Đoàn Kết tổ chức tiệc 8/3 đặc biệt cho phụ nữ 17h, sau khi cùng đàn ông trong xóm hoàn thành 20 mâm cỗ, anh Đỗ Kiến Vọng thay vest, lên sân...</span></div></div><div>
-        <h2>Quốc tế</h2><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg" alt=""/><a class="post-list-headline" href="/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/different-test-post/">Mật vụ Mỹ bắn người mang súng gần Nhà Trắng</a><p class="post-list-byline">Như Tâm (Theo Reuters, Fox News), Thực hiện | March 9, 2025</p><span class="post-list-summary">Mật vụ Mỹ bắn người mang súng gần Nhà Trắng Mật vụ Mỹ đụng độ và bắn một người đàn ông có vũ trang ở gần Nhà Trắng, sau khi nhận tin báo từ cảnh...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/5563187178137268715a-174150836-4320-1997-1741508514.jpg" alt=""/><a class="post-list-headline" href="/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/another-test-post/">Indonesia bắn đại bác chào mừng Tổng Bí thư Tô Lâm</a><p class="post-list-byline">Nguyễn Tiến, Thực hiện | March 9, 2025</p><span class="post-list-summary">Indonesia Bắn 7 Phát Đại Bác Chào Mừng Tổng Bí Thư Tô Lâm Chuyên cơ chở Tổng Bí thư Tô Lâm, phu nhân Ngô Phương Ly cùng đoàn đại biểu cấp cao Việt Nam đáp...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/Trump-Zelensky-5752-1741067676.jpg" alt=""/><a class="post-list-headline" href="/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post2/">NATO Đứng Ngồi Không Yên Khi Mỹ Đổi Lập Trường Về Nga</a><p class="post-list-byline">Thùy Lâm (Theo WSJ, Moscow Times, NBC News), Thực hiện | March 9, 2025</p><span class="post-list-summary">NATO Đứng Ngồi Không Yên Khi Mỹ Đổi Lập Trường Về Nga Những động thái cải thiện quan hệ với Nga gần đây của chính quyền ông Donald Trump khiến các thành viên NATO gấp...</span></div></div><div>
-        <h2>Kinh doanh</h2><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/thuanloi1.jpg" alt=""/><a class="post-list-headline" href="/newtech1/kinh%20doanh/2025/03/10/test-post6/">Tổng Bí thư: Tạo thuận lợi cho doanh nghiệp Indonesia đầu tư tại Việt Nam</a><p class="post-list-byline">Phương Dung, Thực hiện | March 10, 2025</p><span class="post-list-summary">Tổng Bí thư: Tạo thuận lợi cho doanh nghiệp Indonesia đầu tư tại Việt Nam Tiếp lãnh đạo các tập đoàn, doanh nghiệp lớn của Indonesia, Tổng Bí thư khẳng định Việt Nam sẽ tiếp...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/traiphieu1.jpg" alt=""/><a class="post-list-headline" href="/newtech1/kinh%20doanh/2025/03/09/test-post-5/">Không có đợt phát hành trái phiếu doanh nghiệp nào trong tháng 2.</a><p class="post-list-byline">Phương Dung, Thực hiện | March 9, 2025</p><span class="post-list-summary"><p>Tháng 2, không có đợt phát hành trái phiếu doanh nghiệp nào diễn ra, theo dữ liệu của VBMA.</p></span></div></div><div>
-        <h2>Pháp luật</h2><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/cado1.jpg" alt=""/><a class="post-list-headline" href="/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post3/">Cảnh sát đánh sập web cá độ bóng đá 400 tỷ đồng ở Kiên Giang</a><p class="post-list-byline">Ngọc Tài - Hoàng Đô, Thực hiện | March 9, 2025</p><span class="post-list-summary">🚔 Cảnh sát đánh sập web cá độ bóng đá 400 tỷ đồng ở Kiên Giang Công an Kiên Giang cáo buộc Nguyễn Đăng Khoa, 51 tuổi, và đồng phạm điều hành trang web cá...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/lua_dao.jpg" alt=""/><a class="post-list-headline" href="/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post4/">Thủ đoạn mạo danh trường học gọi điện hoàn học phí</a><p class="post-list-byline">Phạm Dự, Thực hiện | March 9, 2025</p><span class="post-list-summary">Thủ đoạn mạo danh trường học gọi điện hoàn học phí Hà NộiCông an cảnh báo đang có thủ đoạn lợi dụng chính sách miễn học phí cho học sinh công lập để giả danh...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/lungdoandat1.jpg" alt=""/><a class="post-list-headline" href="/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post9/">Chủ mưu vụ lũng đoạn đấu giá đất 30 tỷ đồng một m2 bị tuyên 3 năm tù</a><p class="post-list-byline">Thanh Lam, Thực hiện | March 9, 2025</p><span class="post-list-summary">Hà Nội: Xét xử vụ đấu giá đất 30 tỷ đồng/m² Tòa đánh giá sai phạm của 6 bị cáo trong phiên đấu giá đất 30 tỷ đồng mỗi m² đã “gây rối loạn thị...</span></div></div><div>
-        <h2>Bất động sản</h2><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/chuanxanh.jpg" alt=""/><a class="post-list-headline" href="/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post7/">Bình Dương có khu nhà ở xã hội theo tiêu chuẩn xanh</a><p class="post-list-byline">Phước Tuấn, Thực hiện | March 10, 2025</p><span class="post-list-summary">Bình Dương có khu nhà ở xã hội theo tiêu chuẩn xanh Nằm cạnh các khu công nghiệp lớn như Vsip 2, Đồng An 2… khu dân cư rộng 26 ha được định hướng xây...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/ngaodat.jpg" alt=""/><a class="post-list-headline" href="/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post8/">Đấu giá thành công loạt lô đất từng được 'trả 30 tỷ đồng một m2' </a><p class="post-list-byline">Ngọc Diễm, Thực hiện | March 10, 2025</p><span class="post-list-summary">Hà Nội: 36 thửa đất tại Sóc Sơn đấu giá thành công, lô cao nhất gần 49 triệu đồng/m² Công ty Đấu giá hợp danh Thanh Xuân tổ chức đấu giá quyền sử dụng đất...</span></div></div></div><div class="sidebar">
-    
-  </div></div>
+  <div class="main-content">
+    <!-- Hiển thị các category khác (trừ "Góc nhìn") -->
+    <div class="left-categories"><div class="category-section">
+            <h2>Đời sống</h2><!-- Phần hiển thị bài viết của category --><div class="category-latest">
+              <div class="latest-text">
+                <a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost17.html">Trở thành sinh viên sau khi về hưu</a><p class="post-list-byline">Thanh Thanh,  | March 16, 2025</p><span class="post-list-summary">Ở tuổi 56, con cái có công việc ổn định, bà Wang Xiaoxi quyết định du học để có thêm trải nghiệm cuộc sống.</span>
+              </div>
+              <div class="latest-image"><img src="/newtech1/assets/img/sinhvien1.webp" alt=""/></div>
+            </div>
+            <div class="other-posts"><div class="post-list-post">
+                  <a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost19.html">5 loại thực phẩm thường bị bảo quản sai</a>
+                </div><div class="post-list-post">
+                  <a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost22.html">Anh nông dân kiếm triệu USD từ 'vườn rau một mét'</a>
+                </div></div>
+          </div><div class="category-section">
+            <h2>Quốc tế</h2><!-- Phần hiển thị bài viết của category --><div class="category-latest">
+              <div class="latest-text">
+                <a class="post-list-headline" href="/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/different-test-post.html">Mật vụ Mỹ bắn người mang súng gần Nhà Trắng</a><p class="post-list-byline">Như Tâm (Theo Reuters, Fox News), Thực hiện | March 9, 2025</p><span class="post-list-summary">Mật vụ Mỹ bắn người mang súng gần Nhà Trắng Mật vụ Mỹ đụng độ và bắn một người đàn ông có vũ trang ở gần Nhà Trắng, sau khi nhận tin báo từ cảnh...</span>
+              </div>
+              <div class="latest-image"><img src="/newtech1/assets/img/AFP-20241210-2188644832-v1-Hig-1744-6727-1741526464.jpg" alt=""/></div>
+            </div>
+            <div class="other-posts"><div class="post-list-post">
+                  <a class="post-list-headline" href="/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/another-test-post.html">Indonesia bắn đại bác chào mừng Tổng Bí thư Tô Lâm</a>
+                </div><div class="post-list-post">
+                  <a class="post-list-headline" href="/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post2.html">NATO Đứng Ngồi Không Yên Khi Mỹ Đổi Lập Trường Về Nga</a>
+                </div></div>
+          </div><div class="category-section">
+            <h2>Kinh doanh</h2><!-- Phần hiển thị bài viết của category --><div class="category-latest">
+              <div class="latest-text">
+                <a class="post-list-headline" href="/newtech1/kinh%20doanh/2025/03/16/testpost25.html">Tài sản của tỷ phú Trần Đình Long giảm</a><p class="post-list-byline">Việt Hưng,  | March 16, 2025</p><span class="post-list-summary">Trong bối cảnh VN-Index khởi sắc, ông Trần Đình Long là người duy nhất trong 5 tỷ phú Việt bị giảm tài sản từ đầu năm đến nay Theo Forbes, tính đến ngày 15/3 tài...</span>
+              </div>
+              <div class="latest-image"><img src="/newtech1/assets/img/typhu1.webp" alt=""/></div>
+            </div>
+            <div class="other-posts"><div class="post-list-post">
+                  <a class="post-list-headline" href="/newtech1/kinh%20doanh/2025/03/16/testpost26.html">Ông Nguyễn Hồ Nam bị bán giải chấp gần 11 triệu cổ phiếu Bamboo Capital</a>
+                </div><div class="post-list-post">
+                  <a class="post-list-headline" href="/newtech1/kinh%20doanh/2025/03/16/testpost27.html">Cổ phiếu liên quan ông Nguyễn Hồ Nam bị bán tháo</a>
+                </div></div>
+          </div><div class="category-section">
+            <h2>Pháp luật</h2><!-- Phần hiển thị bài viết của category --><div class="category-latest">
+              <div class="latest-text">
+                <a class="post-list-headline" href="/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post3.html">Cảnh sát đánh sập web cá độ bóng đá 400 tỷ đồng ở Kiên Giang</a><p class="post-list-byline">Ngọc Tài - Hoàng Đô, Thực hiện | March 9, 2025</p><span class="post-list-summary">🚔 Cảnh sát đánh sập web cá độ bóng đá 400 tỷ đồng ở Kiên Giang Công an Kiên Giang cáo buộc Nguyễn Đăng Khoa, 51 tuổi, và đồng phạm điều hành trang web cá...</span>
+              </div>
+              <div class="latest-image"><img src="/newtech1/assets/img/cado1.jpg" alt=""/></div>
+            </div>
+            <div class="other-posts"><div class="post-list-post">
+                  <a class="post-list-headline" href="/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post4.html">Thủ đoạn mạo danh trường học gọi điện hoàn học phí</a>
+                </div><div class="post-list-post">
+                  <a class="post-list-headline" href="/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post9.html">Chủ mưu vụ lũng đoạn đấu giá đất 30 tỷ đồng một m2 bị tuyên 3 năm tù</a>
+                </div></div>
+          </div><div class="category-section">
+            <h2>Bất động sản</h2><!-- Phần hiển thị bài viết của category --><div class="category-latest">
+              <div class="latest-text">
+                <a class="post-list-headline" href="/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post7.html">Bình Dương có khu nhà ở xã hội theo tiêu chuẩn xanh</a><p class="post-list-byline">Phước Tuấn, Thực hiện | March 10, 2025</p><span class="post-list-summary">Bình Dương có khu nhà ở xã hội theo tiêu chuẩn xanh Nằm cạnh các khu công nghiệp lớn như Vsip 2, Đồng An 2… khu dân cư rộng 26 ha được định hướng xây...</span>
+              </div>
+              <div class="latest-image"><img src="/newtech1/assets/img/chuanxanh.jpg" alt=""/></div>
+            </div>
+            <div class="other-posts"><div class="post-list-post">
+                  <a class="post-list-headline" href="/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post8.html">Đấu giá thành công loạt lô đất từng được 'trả 30 tỷ đồng một m2' </a>
+                </div></div>
+          </div><div class="category-section">
+            <h2>Thời sự</h2><!-- Phần hiển thị bài viết của category --><div class="category-latest">
+              <div class="latest-text">
+                <a class="post-list-headline" href="/newtech1/th%E1%BB%9Di%20s%E1%BB%B1/2025/03/16/testpost14.html">TP HCM sẽ giới thiệu việc làm cho cán bộ bị tinh giản</a><p class="post-list-byline">Quỳnh Trần,  | March 16, 2025</p><span class="post-list-summary">Cán bộ bị tinh giản do sắp xếp bộ máy muốn làm việc sẽ được TP HCM giới thiệu đến doanh nghiệp nhà nước, hỗ trợ khởi nghiệp hoặc kết nối với khối tư nhân....</span>
+              </div>
+              <div class="latest-image"><img src="/newtech1/assets/img/tinhgian1.webp" alt=""/></div>
+            </div>
+            <div class="other-posts"><div class="post-list-post">
+                  <a class="post-list-headline" href="/newtech1/th%E1%BB%9Di%20s%E1%BB%B1/2025/03/16/testpost15.html">Ôtô cháy rụi giữa trung tâm Đà Nẵng</a>
+                </div></div>
+          </div></div>
 
+    <!-- Hiển thị riêng category "Góc nhìn" -->
+    <div class="right-categories">
+      <h2>Góc nhìn</h2>
+      <div class="grid-titles"><!-- Giới hạn 4 bài viết -->
+              <div class="grid-item">
+                <a class="grid-title" href="/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/test-post11.html">
+                  <strong>'Bẫy' mua hàng livestream</strong> <!-- Thêm thẻ <strong> để làm đậm tiêu đề --></a>
+              </div><!-- Giới hạn 4 bài viết -->
+              <div class="grid-item">
+                <a class="grid-title" href="/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/test-post12.html">
+                  <strong>Mua nhà bằng tiền của bố mẹ</strong> <!-- Thêm thẻ <strong> để làm đậm tiêu đề --></a>
+              </div><!-- Giới hạn 4 bài viết -->
+              <div class="grid-item">
+                <a class="grid-title" href="/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/testpost13.html">
+                  <strong>Người nước ngoài dùng Hàng Việt</strong> <!-- Thêm thẻ <strong> để làm đậm tiêu đề --></a>
+              </div><!-- Giới hạn 4 bài viết -->
+              <div class="grid-item">
+                <a class="grid-title" href="/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/testpost23.html">
+                  <strong>Nhập tỉnh - bỏ huyện thế nào?</strong> <!-- Thêm thẻ <strong> để làm đậm tiêu đề --></a>
+              </div><!-- Giới hạn 4 bài viết -->
+              <div class="grid-item">
+                <a class="grid-title" href="/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/testpost24.html">
+                  <strong>Người già, ai nuôi?</strong> <!-- Thêm thẻ <strong> để làm đậm tiêu đề --></a>
+              </div></div>
+    </div>
+  </div>
+</div>
     </main>
     <div class="footer">
   © 2025 platsaver | Built with Jekyll

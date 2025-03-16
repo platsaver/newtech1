@@ -1,5 +1,5 @@
 ---
-title: Indonesia bắn đại bác chào mừng Tổng Bí thư Tô Lâm 
+title: "Indonesia bắn đại bác chào mừng Tổng Bí thư Tô Lâm" 
 subhed: Indonesia bắn 7 phát đại bác khi Tổng Bí thư Tô Lâm và phu nhân đáp xuống sân bay ở Jakarta, nghi thức thể hiện sự coi trọng chuyến thăm.
 author: Nguyễn Tiến
 date: 2025-03-09

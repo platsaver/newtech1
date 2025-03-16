@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/newtech1/assets/css/style.css">
+  <script src="https://unpkg.com/akar-icons-fonts"></script>
+
+  <!-- Analytics -->
+    
+
+  <!-- AdSense -->
+  
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Ông Nguyễn Hồ Nam bị bán giải chấp gần 11 triệu cổ phiếu Bamboo Capital" />
+  <meta property="og:url" content="" />
+  <meta property="og:site_name" content="PNews" />
+  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1/newtech1/assets/img/bamboo1.webp" />
+  <!-- OpenGraph Type--><meta property="og:type" content="article" />
+    <meta property="og:article:author" content="Tất Đạt" />
+    <meta property="og:article:section" content="Kinh doanh" />
+    <meta property="og:article:published_time" content="2025-03-16T00:00:00+07:00" /><!-- Description --><meta name="description" content="Cựu Chủ tịch Bamboo Capital Nguyễn Hồ Nam bị công ty chứng khoán buộc bán giải chấp gần 11 triệu cổ phiếu BCG." />
+  <meta property="og:description" content="Cựu Chủ tịch Bamboo Capital Nguyễn Hồ Nam bị công ty chứng khoán buộc bán giải chấp gần 11 triệu cổ phiếu BCG." />
+
+
+  <title>Ông Nguyễn Hồ Nam bị bán giải chấp gần 11 triệu cổ phiếu Bamboo Capital | PNews</title>
+  <style>
+    .search-container {
+      position: relative;
+    }
+
+    .search-container input[type="text"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 150px; /* Điều chỉnh chiều rộng */
+      font-size: 14px;
+    }
+/* Quy tắc mặc định - Áp dụng cho tất cả ảnh trong thẻ <p> */
+  p > img {
+  display: block; /* Đảm bảo ảnh là phần tử khối để dễ căn chỉnh */
+  margin: 0 auto; /* Căn giữa ảnh */
+  max-width: 100%; /* Đảm bảo ảnh không vượt quá chiều rộng phần tử cha */
+  height: auto; /* Giữ tỷ lệ khung hình */
+}
+
+/* Responsive cho màn hình dưới 904px */
+@media (max-width: 904px) {
+  p > img {
+    width: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều rộng */
+    max-width: none; /* Loại bỏ giới hạn chiều rộng */
+  }
+}
+
+/* Responsive cho màn hình dưới 768px */
+@media (max-width: 768px) {
+  p > img {
+    width: 90%; /* Ảnh chiếm 90% màn hình */
+    margin: 0 auto; /* Căn giữa ảnh */
+  }
+}
+
+/* Responsive cho màn hình dưới 480px */
+@media (max-width: 480px) {
+  p > img {
+    width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+    max-width: none; /* Không giới hạn kích thước */
+  }
+}
+
+
+  </style>
+  <style>
+    .header-nav {
+      position: relative;
+    }
+    
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .desktop-nav {
+      display: flex;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+    
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+    
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #fff;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    
+    .sidebar.active {
+      left: 0;
+    }
+    
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px 0;
+    }
+    
+    @media screen and (max-width: 708px) {  /* Đã đổi từ 634px thành 708px */
+      .hamburger {
+        display: block;
+      }
+    
+      .desktop-nav {
+        display: none;
+      }
+    }
+    
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /*Pagination*/
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .pagination-button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .pagination-button:hover {
+      background-color: #ddd;
+    }
+
+    .pagination-button.active {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .prev-next {
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+    }
+
+    .prev-next:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    
+    /*Dropdown menu*/
+    /* Đảm bảo menu chính hiển thị bình thường */
+    .nav-list {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      position: relative; /* Để dropdown hiển thị đúng vị trí */
+    }
+
+    .nav-link {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #000;
+      display: block;
+    }
+
+    /* Ẩn dropdown mặc định */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      list-style: none;
+      padding: 10px 0;
+      min-width: 150px;
+      z-index: 1000;
+    }
+
+    .dropdown li a {
+      padding: 8px 15px;
+      color: #333;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown li a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Hiển thị dropdown khi hover (Desktop) */
+    .nav-item:hover .dropdown {
+      display: block;
+    }
+
+    /* Sidebar (Mobile) */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .sidebar-nav .nav-item {
+      position: relative;
+    }
+
+    .sidebar-nav .dropdown {
+      position: static; /* Không cần absolute trong sidebar */
+      display: none;
+      padding-left: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .sidebar-nav .dropdown.active {
+      display: block; /* Hiển thị khi click trên mobile */
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #000;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+    </style>
+    <!--Dropdown handler-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+        const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+    
+        // Xử lý hamburger menu
+        hamburger.addEventListener('click', function() {
+          this.classList.toggle('active');
+          sidebar.classList.toggle('active');
+        });
+    
+        // Đóng sidebar khi click ra ngoài
+        document.addEventListener('click', function(event) {
+          if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+          }
+        });
+    
+        // Xử lý dropdown trong sidebar (mobile)
+        navItems.forEach(item => {
+          item.addEventListener('click', function(e) {
+            const dropdown = this.querySelector('.dropdown');
+            if (dropdown) {
+              e.preventDefault(); // Ngăn chuyển hướng ngay lập tức
+              dropdown.classList.toggle('active');
+            }
+          });
+        });
+      });
+    </script>
+
+    <!--Pagination handler-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const pages = document.querySelectorAll(".page");
+  const paginationButtons = document.querySelectorAll(".pagination-button");
+  const prevButton = document.getElementById("prev-page");
+  const nextButton = document.getElementById("next-page");
+
+  let currentPage = 1; // Trang hiện tại
+
+  // Hiển thị trang đầu tiên khi tải trang
+  showPage(currentPage);
+
+  // Thêm sự kiện click cho các nút pagination
+  paginationButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const pageNumber = parseInt(button.getAttribute("data-page"));
+      if (!isNaN(pageNumber)) {
+        currentPage = pageNumber;
+        showPage(currentPage);
+      }
+    });
+  });
+
+  // Sự kiện cho nút "Trang trước"
+  prevButton.addEventListener("click", function () {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  // Sự kiện cho nút "Trang sau"
+  nextButton.addEventListener("click", function () {
+    if (currentPage < pages.length) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  // Hàm hiển thị trang cụ thể
+  function showPage(pageNumber) {
+    // Ẩn tất cả các trang
+    pages.forEach((page) => {
+      page.style.display = "none";
+    });
+
+    // Hiển thị trang được chọn
+    const selectedPage = document.querySelector(`.page[data-page="${pageNumber}"]`);
+    if (selectedPage) {
+      selectedPage.style.display = "block";
+    }
+
+    // Đánh dấu nút pagination được chọn
+    paginationButtons.forEach((button) => {
+      button.classList.remove("active");
+      const buttonPage = parseInt(button.getAttribute("data-page"));
+      if (buttonPage === pageNumber) {
+        button.classList.add("active");
+      }
+    });
+
+    // Vô hiệu hóa nút "Trang trước" nếu ở trang đầu tiên
+    if (currentPage === 1) {
+      prevButton.disabled = true;
+      prevButton.style.opacity = "0.5";
+    } else {
+      prevButton.disabled = false;
+      prevButton.style.opacity = "1";
+    }
+
+    // Vô hiệu hóa nút "Trang sau" nếu ở trang cuối cùng
+    if (currentPage === pages.length) {
+      nextButton.disabled = true;
+      nextButton.style.opacity = "0.5";
+    } else {
+      nextButton.disabled = false;
+      nextButton.style.opacity = "1";
+    }
+  }
+});
+    </script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    
+  </script></head>
+
+  <body>
+    <!-- Form tìm kiếm ở thanh điều hướng -->
+<div class="search-container">
+    <form action="/newtech1/search.html" method="get">
+      <input type="text" name="query" placeholder="Tìm kiếm..." />
+      <!-- Đổi name từ "q" thành "query" để khớp với mã JavaScript -->
+    </form>
+  </div>
+    <div>
+<a href="/newtech1/index.html">
+  <img class="header-flag" src="/newtech1/assets/57c2d4726267e16dbad01549dac68326.png" alt="PNews"/>
+</a>
+<nav class="header-nav">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Menu trên Desktop -->
+    <ul class="nav-list desktop-nav"><li class="nav-item">
+              <a class="nav-link" href="/newtech1/">Trang chủ</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+
+    <!-- Menu trong Sidebar (Mobile) -->
+    <div class="sidebar">
+      <ul class="nav-list sidebar-nav"><li class="nav-item">
+                <a class="nav-link" href="/newtech1/">Trang chủ</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+    </div>
+  </nav>
+</div>
+    <main class="page-content" aria-label="Content">
+        <h1 class="headline">Ông Nguyễn Hồ Nam bị bán giải chấp gần 11 triệu cổ phiếu Bamboo Capital</h1><hr/ class="hed-rule"><h2 class="subhed">Cựu Chủ tịch Bamboo Capital Nguyễn Hồ Nam bị công ty chứng khoán buộc bán giải chấp gần 11 triệu cổ phiếu BCG.</h2><h3 class="byline"><a href="">Tất Đạt</a>,  | March 16, 2025</h3><div class="featured-image-container">
+  <figure class="featured-image">
+    <img src="/newtech1/assets/img/bamboo1.webp" alt=""/>
+    <figcaption> - Ảnh bởi BCG</figcaption>
+  </figure>
+  </div><article class="article-content">
+  <h1 id="cựu-chủ-tịch-bamboo-capital-nguyễn-hồ-nam-bị-công-ty-chứng-khoán-buộc-bán-giải-chấp-gần-11-triệu-cổ-phiếu-bcg">Cựu Chủ tịch Bamboo Capital Nguyễn Hồ Nam bị công ty chứng khoán buộc bán giải chấp gần 11 triệu cổ phiếu BCG</h1>
+
+<p>Theo công bố thông tin mới đây, ông Nguyễn Hồ Nam còn nắm 81 triệu cổ phiếu tại Bamboo Capital, tương đương tỷ lệ sở hữu giảm về 9,21% vốn điều lệ doanh nghiệp.</p>
+
+<p>Điều này diễn ra sau khi ông Nam bị buộc bán giải chấp gần 10,7 triệu cổ phiếu BCG. Theo thị giá ngày thực hiện giao dịch này (6/3), thương vụ tương đương 57,3 tỷ đồng. Tuy vậy, với tỷ lệ sở hữu trên, ông Nam vẫn là cổ đông lớn của Bamboo Capital.</p>
+
+<p>Động thái kể trên diễn ra sau khi Bamboo Capital hồi đầu tháng 3 cho biết họ được cơ quan có thẩm quyền thông báo về quyết định khởi tố vụ án và khởi tố bị can với ông Nguyễn Hồ Nam. Công ty này cho biết thêm ông Nam không còn giữ các chức vụ tại Hội đồng quản trị (HĐQT), Ban kiểm soát và điều hành.</p>
+
+<p><img src="/newtech1/assets/img/bamboo1.webp" alt="Ông Nguyễn Hồ Nam." /><br />
+<em>Ông Nguyễn Hồ Nam. Ảnh: BCG</em></p>
+
+<p>Trước đó, công ty chứng khoán đã bán giải chấp 5,28 cổ phiếu BCG do Công ty TNHH MTV NHN nắm giữ. Đây là doanh nghiệp do ông Nguyễn Hồ Nam làm chủ sở hữu. Giá trị thương vụ khoảng 23 tỷ đồng.</p>
+
+<p>Sau giao dịch, Công ty NHN còn lại 52,8 triệu cổ phiếu BCG, tương đương 5,99% vốn. Cộng chung với phần sở hữu riêng của ông Nam, nhóm cổ đông này đang giữ 15,2% tại Bamboo Capital.</p>
+
+<p>Mới đây, ông Nguyễn Thanh Hùng, Phó chủ tịch BCG, đăng ký bán 6,5 triệu cổ phiếu từ ngày 12/3 đến 10/4 với lý do bán giải chấp theo yêu cầu công ty chứng khoán. Nếu giao dịch thành công, tỷ lệ sở hữu của ông Hùng sẽ giảm xuống còn khoảng 0,09%. Trước đó, bà Nguyễn Xuân Lan - vợ ông Hùng - cũng bị bán giải chấp gần 3,4 triệu cổ phiếu, kéo tỷ lệ sở hữu về 0,23%.</p>
+
+<p>Bán giải chấp cổ phiếu (force sell) thường xảy ra khi nhà đầu tư sử dụng giao dịch ký quỹ (margin) và giá cổ phiếu xuống dưới ngưỡng cho phép của công ty chứng khoán nhưng nhà đầu tư chưa nộp thêm tiền.</p>
+
+<p>Từ đầu tháng 3, BCG cùng các cổ phiếu cùng họ gồm BCR, BGE và TCD liên tục bị bán tháo, thị giá giảm mạnh. Từ mức 5.760 đồng một đơn vị vào cuối tháng 2, đến nay mã chứng khoán của Bamboo Capital hạ về 3.860 đồng, giảm gần một phần ba thị giá. Riêng giai đoạn sau thông tin ông Nguyễn Hồ Nam bị khởi tố, cổ phiếu BCG giảm sàn 3 phiên liên tục.</p>
+
+<p>Bamboo Capital hoạt động trong lĩnh vực bất động sản, xây dựng, cơ sở hạ tầng và năng lượng tái tạo. Năm ngoái, công ty này có doanh thu hơn 4.370 tỷ đồng và lãi sau thuế 845 tỷ đồng.</p>
+
+<p>Trước khi thành lập Bamboo Capital, ông Nguyễn Hồ Nam từng là Phó tổng giám đốc Sacombank và trưởng phòng tài chính - kế toán của Unilever Việt Nam. Ông cũng sáng lập và giữ chức Chủ tịch Công ty Chứng khoán Ngân hàng Sài Gòn Thương Tín (SBS).</p>
+
+<p>Ông Nam có thời gian dài giữ chức Chủ tịch HĐQT Bamboo Capital cho đến khi từ nhiệm vào tháng 4/2024. Thời điểm rời ban lãnh đạo Bamboo Capital cùng lúc ông được bầu vào HĐQT Eximbank. Sau đó nửa năm, đại hội đồng cổ đông Eximbank đã miễn nhiệm ông theo đề nghị của một nhóm sở hữu trên 5% vốn ngân hàng. Lý do nhóm này đưa ra là ông Nam không tham dự đầy đủ các cuộc họp HĐQT và các lần lấy ý kiến văn bản.</p>
+
+<p><strong>Tất Đạt</strong></p>
+
+</article> <!-- Disqus comments section goes here (if comments are enabled) --><div class="comments">
+ <div id="disqus_thread"></div>
+     
+ <script type="text/javascript">
+     
+ /* * * STOP! * * */
+ /* You shouldn't need to edit ANYTHING below to get this working! */
+ /* Instead, edit the key `disqus.shortname` in _config.yml */
+     
+ var disqus_config = function (){
+ this.page.url = 'http://localhost:4000/newtech1/kinh%20doanh/2025/03/16/testpost26.html';
+ this.page.identifier = '/kinh%20doanh/2025/03/16/testpost26.html';
+ };
+     
+ (function() {
+ var d = document, s = d.createElement('script');
+ s.type = 'text/javascript'; s.async = true;
+ s.src = 'https://quan.disqus.com/embed.js';
+ s.setAttribute('data-timestamp', +new Date());
+ (d.head || d.body).appendChild(s);
+ })();
+    
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+ </div>
+    </main>
+    <div class="footer">
+  © 2025 platsaver | Built with Jekyll
+</div>
+  </body>
+</html>

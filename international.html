@@ -6,3 +6,30 @@ pagination:
     enabled: true
 position: 2
 ---
+<h1>Quốc tế</h1>
+
+<!-- Lấy danh sách subcategory từ collection -->
+{% assign subcategories = site.subcategories | where: "category", "Quốc tế" %}
+<ul class="subcategory-filter">
+  {% for subcategory in subcategories %}
+    <li><a href="{{ subcategory.url | relative_url }}">{{ subcategory.title }}</a></li>
+  {% endfor %}
+</ul>
+
+<!-- Hiển thị bài viết theo subcategory -->
+{% for subcategory in subcategories %}
+  <h2 id="{{ subcategory.title | slugify }}">{{ subcategory.title }}</h2>
+  {% assign posts = site.posts | where: "category", "Quốc tế" | where: "subcategory", subcategory.title %}
+  {% if posts.size > 0 %}
+    <ul>
+      {% for post in posts %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <p>{{ post.subhed }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Chưa có bài viết nào trong {{ subcategory.title }}.</p>
+  {% endif %}
+{% endfor %}

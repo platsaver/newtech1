@@ -16,13 +16,13 @@
   <!-- OpenGraph Metadata -->
   <meta property="og:title" content="Đời sống" />
   <meta property="og:url" content="http://localhost:4000/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng" />
-  <meta property="og:site_name" content="Jekyll News" />
-  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1/newtech1/assets/flag.png" />
+  <meta property="og:site_name" content="PNews" />
+  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1/newtech1/assets/57c2d4726267e16dbad01549dac68326.png" />
   <!-- OpenGraph Type--><meta property="og:type" content="website"/><!-- Description --><meta name="description" content="Built with Jekyll" />
   <meta property="og:description" content="Built with Jekyll" />
 
 
-  <title>Đời sống | Jekyll News</title>
+  <title>Đời sống | PNews</title>
   <style>
     .search-container {
       position: relative;
@@ -147,7 +147,271 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
     }
+
+    /*Pagination*/
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .pagination-button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .pagination-button:hover {
+      background-color: #ddd;
+    }
+
+    .pagination-button.active {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .prev-next {
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+    }
+
+    .prev-next:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    
+    /*Dropdown menu*/
+    /* Đảm bảo menu chính hiển thị bình thường */
+    .nav-list {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      position: relative; /* Để dropdown hiển thị đúng vị trí */
+    }
+
+    .nav-link {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #000;
+      display: block;
+    }
+
+    /* Ẩn dropdown mặc định */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      list-style: none;
+      padding: 10px 0;
+      min-width: 150px;
+      z-index: 1000;
+    }
+
+    .dropdown li a {
+      padding: 8px 15px;
+      color: #333;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown li a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Hiển thị dropdown khi hover (Desktop) */
+    .nav-item:hover .dropdown {
+      display: block;
+    }
+
+    /* Sidebar (Mobile) */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .sidebar-nav .nav-item {
+      position: relative;
+    }
+
+    .sidebar-nav .dropdown {
+      position: static; /* Không cần absolute trong sidebar */
+      display: none;
+      padding-left: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .sidebar-nav .dropdown.active {
+      display: block; /* Hiển thị khi click trên mobile */
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #000;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
     </style>
+    <!--Dropdown handler-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+        const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+    
+        // Xử lý hamburger menu
+        hamburger.addEventListener('click', function() {
+          this.classList.toggle('active');
+          sidebar.classList.toggle('active');
+        });
+    
+        // Đóng sidebar khi click ra ngoài
+        document.addEventListener('click', function(event) {
+          if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+          }
+        });
+    
+        // Xử lý dropdown trong sidebar (mobile)
+        navItems.forEach(item => {
+          item.addEventListener('click', function(e) {
+            const dropdown = this.querySelector('.dropdown');
+            if (dropdown) {
+              e.preventDefault(); // Ngăn chuyển hướng ngay lập tức
+              dropdown.classList.toggle('active');
+            }
+          });
+        });
+      });
+    </script>
+
+    <!--Pagination handler-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const pages = document.querySelectorAll(".page");
+  const paginationButtons = document.querySelectorAll(".pagination-button");
+  const prevButton = document.getElementById("prev-page");
+  const nextButton = document.getElementById("next-page");
+
+  let currentPage = 1; // Trang hiện tại
+
+  // Hiển thị trang đầu tiên khi tải trang
+  showPage(currentPage);
+
+  // Thêm sự kiện click cho các nút pagination
+  paginationButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const pageNumber = parseInt(button.getAttribute("data-page"));
+      if (!isNaN(pageNumber)) {
+        currentPage = pageNumber;
+        showPage(currentPage);
+      }
+    });
+  });
+
+  // Sự kiện cho nút "Trang trước"
+  prevButton.addEventListener("click", function () {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  // Sự kiện cho nút "Trang sau"
+  nextButton.addEventListener("click", function () {
+    if (currentPage < pages.length) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  // Hàm hiển thị trang cụ thể
+  function showPage(pageNumber) {
+    // Ẩn tất cả các trang
+    pages.forEach((page) => {
+      page.style.display = "none";
+    });
+
+    // Hiển thị trang được chọn
+    const selectedPage = document.querySelector(`.page[data-page="${pageNumber}"]`);
+    if (selectedPage) {
+      selectedPage.style.display = "block";
+    }
+
+    // Đánh dấu nút pagination được chọn
+    paginationButtons.forEach((button) => {
+      button.classList.remove("active");
+      const buttonPage = parseInt(button.getAttribute("data-page"));
+      if (buttonPage === pageNumber) {
+        button.classList.add("active");
+      }
+    });
+
+    // Vô hiệu hóa nút "Trang trước" nếu ở trang đầu tiên
+    if (currentPage === 1) {
+      prevButton.disabled = true;
+      prevButton.style.opacity = "0.5";
+    } else {
+      prevButton.disabled = false;
+      prevButton.style.opacity = "1";
+    }
+
+    // Vô hiệu hóa nút "Trang sau" nếu ở trang cuối cùng
+    if (currentPage === pages.length) {
+      nextButton.disabled = true;
+      nextButton.style.opacity = "0.5";
+    } else {
+      nextButton.disabled = false;
+      nextButton.style.opacity = "1";
+    }
+  }
+});
+    </script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     
@@ -163,7 +427,7 @@
   </div>
     <div>
 <a href="/newtech1/index.html">
-  <img class="header-flag" src="/newtech1/assets/flag.png" alt="Jekyll News"/>
+  <img class="header-flag" src="/newtech1/assets/57c2d4726267e16dbad01549dac68326.png" alt="PNews"/>
 </a>
 <nav class="header-nav">
     <div class="hamburger">
@@ -171,59 +435,55 @@
       <span></span>
       <span></span>
     </div>
-    <ul class="nav-list desktop-nav"><li>
-            <a class="nav-link" href="/newtech1/">Trang chủ</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
-          </li></ul>
-    <div class="sidebar">
-      <ul class="nav-list sidebar-nav"><li>
+
+    <!-- Menu trên Desktop -->
+    <ul class="nav-list desktop-nav"><li class="nav-item">
               <a class="nav-link" href="/newtech1/">Trang chủ</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
-            </li></ul>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+
+    <!-- Menu trong Sidebar (Mobile) -->
+    <div class="sidebar">
+      <ul class="nav-list sidebar-nav"><li class="nav-item">
+                <a class="nav-link" href="/newtech1/">Trang chủ</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
     </div>
   </nav>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const sidebar = document.querySelector('.sidebar');
-  
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');
-      sidebar.classList.toggle('active');
-    });
-  
-    // Đóng sidebar khi click ra ngoài
-    document.addEventListener('click', function(event) {
-      if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
-        hamburger.classList.remove('active');
-        sidebar.classList.remove('active');
-      }
-    });
-  });
-</script>
     <main class="page-content" aria-label="Content">
         <h1>Đời sống</h1>
-<div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/phunuvn1.jpg" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/08/test-post10/">Đàn ông cả xóm rủ nhau dựng rạp, mở tiệc 8/3</a><p class="post-list-byline">Thanh Lam, Thực hiện | March 8, 2025</p><span class="post-list-summary">Hà Nội: Xóm Đoàn Kết tổ chức tiệc 8/3 đặc biệt cho phụ nữ 17h, sau khi cùng đàn ông trong xóm hoàn thành 20 mâm cỗ, anh Đỗ Kiến Vọng thay vest, lên sân...</span></div>
+<div id="post-list"><!-- Hiển thị bài viết của trang hiện tại --><div class="page" data-page="1" ><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/vuonrau1.webp" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost22.html">Anh nông dân kiếm triệu USD từ 'vườn rau một mét'</a><p class="post-list-byline">Bảo Nhiên,  | March 16, 2025</p><span class="post-list-summary">Huw Richards, 26 tuổi, người phát minh mô hình “vườn rau một mét” đã nhân gấp bội thu nhập bằng cách bán nông sản kết hợp bán tri thức Chàng trai ở xứ Wales bắt...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/thucpham0.webp" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost19.html">5 loại thực phẩm thường bị bảo quản sai</a><p class="post-list-byline">Ngọc Ngân,  | March 16, 2025</p><span class="post-list-summary">Các loại thực phẩm đặt nhầm chỗ trong tủ lạnh sẽ khiến chúng nhanh hỏng Sữa ở cánh cửa tủ lạnh Người dùng thường có thói quen này nhưng trên thực tế, việc đặt sữa...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/sinhvien1.webp" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost17.html">Trở thành sinh viên sau khi về hưu</a><p class="post-list-byline">Thanh Thanh,  | March 16, 2025</p><span class="post-list-summary"><p>Ở tuổi 56, con cái có công việc ổn định, bà Wang Xiaoxi quyết định du học để có thêm trải nghiệm cuộc sống.</p></span></div></div><div class="page" data-page="2" style="display: none;"><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/phunuvn1.jpg" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/08/test-post10.html">Đàn ông cả xóm rủ nhau dựng rạp, mở tiệc 8/3</a><p class="post-list-byline">Thanh Lam, Thực hiện | March 8, 2025</p><span class="post-list-summary">Hà Nội: Xóm Đoàn Kết tổ chức tiệc 8/3 đặc biệt cho phụ nữ 17h, sau khi cùng đàn ông trong xóm hoàn thành 20 mâm cỗ, anh Đỗ Kiến Vọng thay vest, lên sân...</span></div><div class="post-list-post"><img class="list-image" src="/newtech1/assets/img/tietkiem1.webp" /><a class="post-list-headline" href="/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2023/03/16/test-post20.html">Những việc không nên tiết kiệm</a><p class="post-list-byline">Nhật Minh,  | March 16, 2023</p><span class="post-list-summary"><p>Khi thu nhập giảm và phí sinh hoạt tăng, nhiều người cắt giảm chi phí bằng mọi cách nhưng tiết kiệm không đúng cách thường gây hậu quả khó lường.</p></span></div></div></div>
+
+<!-- Pagination Controls -->
+<div class="pagination">
+  <button class="pagination-button prev-next" id="prev-page">← Trang trước</button><button class="pagination-button" data-page="1">1</button><button class="pagination-button prev-next" id="next-page">Trang sau →</button>
 </div>
     </main>
     <div class="footer">

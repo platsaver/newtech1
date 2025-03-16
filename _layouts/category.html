@@ -2,38 +2,56 @@
 layout: base
 ---
 <h1>{{ page.title }}</h1>
-<div>
-  {%- for post in site.categories[page.title] -%}
-    {%- if post.featured-image.path -%}
-    <div class="post-list-post">
-      {%- if post.featured-image.path -%}
-        <img class="list-image" src="{{ post.featured-image.path }}" />
-      {%- endif -%}
+<div id="post-list">
+  {%- assign posts = site.categories[page.title] -%}
+  {%- assign posts_per_page = 3 -%}
+  {%- assign total_posts = posts.size -%}
+  {%- assign total_pages = total_posts | divided_by: posts_per_page | ceil -%}
 
-      <a class="post-list-headline" href="/newtech1{{ post.url }}">{{ post.title }}</a>
-      {%- assign date = post.date | date: "%B %-d, %Y" -%}
-      {%- if post.author and post.author-title -%}
-        <p class="post-list-byline">{{post.author}}, {{post.author-title}} | {{ date }}</p>
-      {%- else -%}
-        <p class="post-list-byline">{{ date }}</p>
-      {%- endif -%}
+  <!-- Hiển thị bài viết của trang hiện tại -->
+  {%- for i in (0..total_pages) -%}
+    {%- assign start_index = i | times: posts_per_page -%}
+    {%- assign end_index = start_index | plus: posts_per_page -%}
+    <div class="page" data-page="{{ i | plus: 1 }}" {% if i != 0 %}style="display: none;"{% endif %}>
+      {%- for post in posts limit: posts_per_page offset: start_index -%}
+        <div class="post-list-post">
+          {%- if post.featured-image.path -%}
+            <img class="list-image" src="{{ post.featured-image.path }}" />
+          {%- endif -%}
 
-      {%- if post.description -%}
-        {%- assign excerpt = post.description -%}
-      {%- else -%}
-        {%- assign paragraphs = post.content | split: '</p>' -%}
-        {%- assign excerpt = paragraphs[0] | append: '</p>' -%}
-      {%- endif -%}
+          <a class="post-list-headline" href="/newtech1{{ post.url }}">{{ post.title }}</a>
+          {%- assign date = post.date | date: "%B %-d, %Y" -%}
+          {%- if post.author and post.author-title -%}
+            <p class="post-list-byline">{{ post.author }}, {{ post.author-title }} | {{ date }}</p>
+          {%- else -%}
+            <p class="post-list-byline">{{ date }}</p>
+          {%- endif -%}
 
-      {%- assign words = excerpt | strip_html | number_of_words -%}
-      {%- if words > 35 -%}
-        {%- assign truncated_paragraph = excerpt | strip_html | truncatewords: 35, "" | append: "..." -%}
-        <span class="post-list-summary">{{ truncated_paragraph }}</span>
-      {%- else -%}
-        <span class="post-list-summary">{{ excerpt }}</span>
-      {%- endif -%}           
+          {%- if post.description -%}
+            {%- assign excerpt = post.description -%}
+          {%- else -%}
+            {%- assign paragraphs = post.content | split: '</p>' -%}
+            {%- assign excerpt = paragraphs[0] | append: '</p>' -%}
+          {%- endif -%}
+
+          {%- assign words = excerpt | strip_html | number_of_words -%}
+          {%- if words > 35 -%}
+            {%- assign truncated_paragraph = excerpt | strip_html | truncatewords: 35, "" | append: "..." -%}
+            <span class="post-list-summary">{{ truncated_paragraph }}</span>
+          {%- else -%}
+            <span class="post-list-summary">{{ excerpt }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
     </div>
-  {%- endif -%}
+  {%- endfor -%}
+</div>
 
-{% endfor %}
+<!-- Pagination Controls -->
+<div class="pagination">
+  <button class="pagination-button prev-next" id="prev-page">← Trang trước</button>
+  {%- for i in (1..total_pages) -%}
+    <button class="pagination-button" data-page="{{ i }}">{{ i }}</button>
+  {%- endfor -%}
+  <button class="pagination-button prev-next" id="next-page">Trang sau →</button>
 </div>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/newtech1/assets/css/style.css">
+  <script src="https://unpkg.com/akar-icons-fonts"></script>
+
+  <!-- Analytics -->
+    
+
+  <!-- AdSense -->
+  
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Người nước ngoài dùng Hàng Việt" />
+  <meta property="og:url" content="" />
+  <meta property="og:site_name" content="PNews" />
+  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1" />
+  <!-- OpenGraph Type--><meta property="og:type" content="article" />
+    <meta property="og:article:author" content="Vũ Kim Hạnh" />
+    <meta property="og:article:section" content="Góc nhìn" />
+    <meta property="og:article:published_time" content="2025-03-16T00:00:00+07:00" /><!-- Description --><meta name="description" content="Muốn cạnh tranh sòng phẳng với hàng hóa nước ngoài, phải tạo ra những sản phẩm 'tốt hơn cái tốt nhất'." />
+  <meta property="og:description" content="Muốn cạnh tranh sòng phẳng với hàng hóa nước ngoài, phải tạo ra những sản phẩm 'tốt hơn cái tốt nhất'." />
+
+
+  <title>Người nước ngoài dùng Hàng Việt | PNews</title>
+  <style>
+    .search-container {
+      position: relative;
+    }
+
+    .search-container input[type="text"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 150px; /* Điều chỉnh chiều rộng */
+      font-size: 14px;
+    }
+/* Quy tắc mặc định - Áp dụng cho tất cả ảnh trong thẻ <p> */
+  p > img {
+  display: block; /* Đảm bảo ảnh là phần tử khối để dễ căn chỉnh */
+  margin: 0 auto; /* Căn giữa ảnh */
+  max-width: 100%; /* Đảm bảo ảnh không vượt quá chiều rộng phần tử cha */
+  height: auto; /* Giữ tỷ lệ khung hình */
+}
+
+/* Responsive cho màn hình dưới 904px */
+@media (max-width: 904px) {
+  p > img {
+    width: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều rộng */
+    max-width: none; /* Loại bỏ giới hạn chiều rộng */
+  }
+}
+
+/* Responsive cho màn hình dưới 768px */
+@media (max-width: 768px) {
+  p > img {
+    width: 90%; /* Ảnh chiếm 90% màn hình */
+    margin: 0 auto; /* Căn giữa ảnh */
+  }
+}
+
+/* Responsive cho màn hình dưới 480px */
+@media (max-width: 480px) {
+  p > img {
+    width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+    max-width: none; /* Không giới hạn kích thước */
+  }
+}
+
+
+  </style>
+  <style>
+    .header-nav {
+      position: relative;
+    }
+    
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .desktop-nav {
+      display: flex;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+    
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+    
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #fff;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    
+    .sidebar.active {
+      left: 0;
+    }
+    
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px 0;
+    }
+    
+    @media screen and (max-width: 708px) {  /* Đã đổi từ 634px thành 708px */
+      .hamburger {
+        display: block;
+      }
+    
+      .desktop-nav {
+        display: none;
+      }
+    }
+    
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /*Pagination*/
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .pagination-button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .pagination-button:hover {
+      background-color: #ddd;
+    }
+
+    .pagination-button.active {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .prev-next {
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+    }
+
+    .prev-next:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    
+    /*Dropdown menu*/
+    /* Đảm bảo menu chính hiển thị bình thường */
+    .nav-list {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      position: relative; /* Để dropdown hiển thị đúng vị trí */
+    }
+
+    .nav-link {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #000;
+      display: block;
+    }
+
+    /* Ẩn dropdown mặc định */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      list-style: none;
+      padding: 10px 0;
+      min-width: 150px;
+      z-index: 1000;
+    }
+
+    .dropdown li a {
+      padding: 8px 15px;
+      color: #333;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown li a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Hiển thị dropdown khi hover (Desktop) */
+    .nav-item:hover .dropdown {
+      display: block;
+    }
+
+    /* Sidebar (Mobile) */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .sidebar-nav .nav-item {
+      position: relative;
+    }
+
+    .sidebar-nav .dropdown {
+      position: static; /* Không cần absolute trong sidebar */
+      display: none;
+      padding-left: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .sidebar-nav .dropdown.active {
+      display: block; /* Hiển thị khi click trên mobile */
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #000;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+    </style>
+    <!--Dropdown handler-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+        const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+    
+        // Xử lý hamburger menu
+        hamburger.addEventListener('click', function() {
+          this.classList.toggle('active');
+          sidebar.classList.toggle('active');
+        });
+    
+        // Đóng sidebar khi click ra ngoài
+        document.addEventListener('click', function(event) {
+          if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+          }
+        });
+    
+        // Xử lý dropdown trong sidebar (mobile)
+        navItems.forEach(item => {
+          item.addEventListener('click', function(e) {
+            const dropdown = this.querySelector('.dropdown');
+            if (dropdown) {
+              e.preventDefault(); // Ngăn chuyển hướng ngay lập tức
+              dropdown.classList.toggle('active');
+            }
+          });
+        });
+      });
+    </script>
+
+    <!--Pagination handler-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const pages = document.querySelectorAll(".page");
+  const paginationButtons = document.querySelectorAll(".pagination-button");
+  const prevButton = document.getElementById("prev-page");
+  const nextButton = document.getElementById("next-page");
+
+  let currentPage = 1; // Trang hiện tại
+
+  // Hiển thị trang đầu tiên khi tải trang
+  showPage(currentPage);
+
+  // Thêm sự kiện click cho các nút pagination
+  paginationButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const pageNumber = parseInt(button.getAttribute("data-page"));
+      if (!isNaN(pageNumber)) {
+        currentPage = pageNumber;
+        showPage(currentPage);
+      }
+    });
+  });
+
+  // Sự kiện cho nút "Trang trước"
+  prevButton.addEventListener("click", function () {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  // Sự kiện cho nút "Trang sau"
+  nextButton.addEventListener("click", function () {
+    if (currentPage < pages.length) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  // Hàm hiển thị trang cụ thể
+  function showPage(pageNumber) {
+    // Ẩn tất cả các trang
+    pages.forEach((page) => {
+      page.style.display = "none";
+    });
+
+    // Hiển thị trang được chọn
+    const selectedPage = document.querySelector(`.page[data-page="${pageNumber}"]`);
+    if (selectedPage) {
+      selectedPage.style.display = "block";
+    }
+
+    // Đánh dấu nút pagination được chọn
+    paginationButtons.forEach((button) => {
+      button.classList.remove("active");
+      const buttonPage = parseInt(button.getAttribute("data-page"));
+      if (buttonPage === pageNumber) {
+        button.classList.add("active");
+      }
+    });
+
+    // Vô hiệu hóa nút "Trang trước" nếu ở trang đầu tiên
+    if (currentPage === 1) {
+      prevButton.disabled = true;
+      prevButton.style.opacity = "0.5";
+    } else {
+      prevButton.disabled = false;
+      prevButton.style.opacity = "1";
+    }
+
+    // Vô hiệu hóa nút "Trang sau" nếu ở trang cuối cùng
+    if (currentPage === pages.length) {
+      nextButton.disabled = true;
+      nextButton.style.opacity = "0.5";
+    } else {
+      nextButton.disabled = false;
+      nextButton.style.opacity = "1";
+    }
+  }
+});
+    </script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    
+  </script></head>
+
+  <body>
+    <!-- Form tìm kiếm ở thanh điều hướng -->
+<div class="search-container">
+    <form action="/newtech1/search.html" method="get">
+      <input type="text" name="query" placeholder="Tìm kiếm..." />
+      <!-- Đổi name từ "q" thành "query" để khớp với mã JavaScript -->
+    </form>
+  </div>
+    <div>
+<a href="/newtech1/index.html">
+  <img class="header-flag" src="/newtech1/assets/57c2d4726267e16dbad01549dac68326.png" alt="PNews"/>
+</a>
+<nav class="header-nav">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Menu trên Desktop -->
+    <ul class="nav-list desktop-nav"><li class="nav-item">
+              <a class="nav-link" href="/newtech1/">Trang chủ</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+
+    <!-- Menu trong Sidebar (Mobile) -->
+    <div class="sidebar">
+      <ul class="nav-list sidebar-nav"><li class="nav-item">
+                <a class="nav-link" href="/newtech1/">Trang chủ</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+    </div>
+  </nav>
+</div>
+    <main class="page-content" aria-label="Content">
+        <h1 class="headline">Người nước ngoài dùng Hàng Việt</h1><hr/ class="hed-rule"><h2 class="subhed">Muốn cạnh tranh sòng phẳng với hàng hóa nước ngoài, phải tạo ra những sản phẩm 'tốt hơn cái tốt nhất'.</h2><h3 class="byline"><a href="">Vũ Kim Hạnh</a>,  | March 16, 2025</h3><div class="featured-image-container">
+  <figure class="featured-image">
+    <img src="" alt=""/>
+    <figcaption> - Ảnh bởi </figcaption>
+  </figure>
+  </div><article class="article-content">
+  <p>Tháng trước, xưởng sản xuất drone của công ty Realtime Robotics (RtR) Việt Nam ở đường Khổng Tử, Thủ Đức đón tiếp một vị khách đặc biệt - ông JT Von Lunen, Chủ tịch RMUS, nhà phân phối drone lớn nhất nhì thị trường Mỹ.</p>
+
+<p>Ba năm qua, RMUS nhận phân phối máy bay không người lái Hera drone của RtR ở Mỹ và các nước khác. Lần này, Lunen đến Việt Nam mang theo tin vui về thành công mới nhất của Hera.</p>
+
+<p>Đầu năm nay, RMUS chọn Hera để giới thiệu cho công ty Linebird - đơn vị chuyên làm dịch vụ bay kiểm tra đường điện cao thế ở Mỹ - để thử nghiệm nhiệm vụ này. Kết quả, Hera đạt yêu cầu. Sau khi Lunen trở về Mỹ, họ sẽ thảo luận tiếp về khả năng ký kết mua Hera. Trước đó, RMUS đã có nhiều hợp đồng cung cấp Hera cho các đơn vị khác. Số lượng nhập từ RtR ước tính chiếm 30% doanh số của hãng tại thị trường Mỹ và Canada.</p>
+
+<p>CEO Lương Việt Quốc của RtR giải thích thêm cho tôi hiểu, các tuyến đường điện cao thế ở Mỹ thường xuyên phải kiểm tra định kỳ để đảm bảo an toàn. Trước đây, kỹ thuật viên phải đi bộ trên các địa hình hiểm trở, nay với thiết bị bay không người lái, công việc trở nên nhẹ nhàng, nhanh và hiệu quả hơn. Nhưng để kiểm tra lưới điện, họ phải dùng tới 4 camera chuyên dụng, có loại rất nặng, để thu thập các dữ liệu khác nhau. Không phải drone nào cũng có khả năng chịu tải và có không gian lớn như thế. Hera vượt trội không chỉ ở lợi thế chịu tải và không gian- chỉ cần bay một lần là thu thập đủ dữ liệu, mà còn có thể bay trong điều kiện thời tiết khắc nghiệt như gió bão, nhiệt độ gần âm 30 độ C.</p>
+
+<p>Tôi quen Quốc đã lâu, biết anh từ một cậu bé nghèo quê Quảng Nam đã vươn lên tốt nghiệp tiến sĩ Kinh tế ở Mỹ rồi về nước, sáng lập và điều hành một start-up với đội ngũ khoảng 60 kỹ sư trẻ 100% người Việt được đào tạo trong nước. Cùng nhau, họ tạo nên những thiết bị bay không người lái có chất lượng vượt trội. Sau khi giành giải một cuộc thi thiết bị Phòng cháy chữa cháy và cứu nạn, cứu hộ của Bộ Công an, Hera bắt đầu được cung cấp cho các đơn vị phòng cháy chữa cháy và cứu nạn cứu hộ trong nước. Sản phẩm “của người Việt, sản xuất tại Việt Nam” cũng tự tin bay ra thế giới để tiếp thị bản thân tại các triển lãm công nghệ và triển lãm drone quốc tế. Lunen nói, khách hàng của ông biết đến sản phẩm này của Việt Nam nhờ ấn tượng mạnh từ các triển lãm như vậy.</p>
+
+<p>Thành công của Quốc và Hera có rất nhiều ý nghĩa với tôi. Gần 30 năm trước, chúng tôi khởi xướng chương trình “Hàng Việt Nam chất lượng cao”, trước hết là để cổ vũ ý thức “ưu tiên dùng hàng Việt Nam”, góp phần nâng cao năng lực cạnh tranh cho sản phẩm của doanh nghiệp trong nước ngay trên sân nhà.</p>
+
+<p>Nhưng không dừng lại ở mục tiêu người Việt dùng hàng Việt, giờ là lúc phải làm cho người nước ngoài dùng hàng Việt. Đất nước đang tiến sâu vào quá trình toàn cầu hóa, nền kinh tế đã mở hết sức để trao đổi hàng hóa đa phương. Cạnh tranh tại thị trường nội địa đã hiển nhiên là cuộc cạnh tranh quốc tế, do đó hàng Việt phải tính đường “cạnh tranh quốc tế” ngay khi ra tới cửa xưởng sản xuất. Đây là quá trình không dễ dàng và cũng không được mất kiên nhẫn.</p>
+
+<p>Khác với thời trước, có thể phần nào đó dựa vào tinh thần dân tộc để kêu gọi người Việt ưu tiên dùng hàng Việt, cuộc chinh phục khách hàng toàn cầu này không có yếu tố ưu tiên nào cả, chỉ có cạnh tranh sòng phẳng.</p>
+
+<p>Nhưng dựa vào điều gì để ta cạnh tranh với thế giới?</p>
+
+<p>Luôn băn khoăn với vấn đề này, tôi tận dụng mọi cơ hội tiếp xúc với các doanh nhân thành công để hỏi họ. Cách đây không lâu, khi gặp Tổng giám đốc Cholimex Food - Diệp Nam Hải, tôi hỏi bí quyết để Cholimex xuất hiện thường xuyên trên các kệ hàng siêu thị tại 30 quốc gia, anh trả lời ngay: kiên định giữ chất lượng. “Mọi người ở đây được truyền một thứ đạo lý thế này: khách mua đến lần thứ 100 mà thấy không ưng, thấy bị bội bạc là mình chết”, Nam nói.</p>
+
+<p>Gặp Quốc, tôi càng hỏi, vì khác với lĩnh vực nông sản, thực phẩm mà Việt Nam xưa nay vẫn có thế mạnh trên thị trường quốc tế, công nghệ cao là lĩnh vực mới mẻ, đầy thách thức và dường như là cuộc chơi của những nước giàu, sẵn sàng vung tiền đầu tư, thử nghiệm. Quốc nói, anh luôn tin rằng một thứ thậm chí đã rất tốt rồi vẫn có thể tốt hơn, khi bạn làm được thứ gì đó tốt hơn cái tốt nhất, nó sẽ có giá trị và chắc chắn cạnh tranh được với thế giới.</p>
+
+<p>Và con đường để Lương Việt Quốc quyết tâm làm được những thứ “tốt hơn cái tốt nhất” là đầu tư vào R&amp;D, vào khả năng sáng tạo và phát minh của người Việt, ngay cả ở các lĩnh vực đòi hỏi tri thức mới, công nghệ cao.</p>
+
+<p>Tới đây, tôi không thể không chia sẻ thêm câu chuyện nghe được từ Phạm Trọng Chinh, trưởng nhóm chuyên gia thị trường Hội Doanh nghiệp Hàng Việt Nam chất lượng cao và Trung tâm nghiên cứu kinh doanh hỗ trợ doanh nghiệp (BSA). Chinh có người bạn đang làm việc cho một định chế tài chính đóng trụ sở ở Singapore - đất nước đang dẫn đầu Đông Nam Á về phát triển công nghiệp AI. Cũng như Trung Quốc, Singapore đối mặt với tình trạng thiếu nhân sự AI, hiện chỉ được đáp ứng chưa đến một nửa so với nhu cầu. Nước này đang áp dụng chính sách tuyển dụng toàn cầu với các chế độ “săn đầu người” đặc biệt hấp dẫn. Họ lùng sục nhân tài ở cả Mỹ, châu Âu, châu Á… Chinh nghe bạn kể thế, vội vàng hỏi: người Việt có nằm trong danh sách không? Câu trả lời là “có chứ sao không”.</p>
+
+<p>Bạn anh giải thích thêm: trong hai năm gần đây, Việt Nam nổi lên tại châu Á như là một quốc gia đặt quyết tâm đầu tư chiến lược cho AI, phát triển công nghệ cao. Dù chỉ là bước đầu, người Singapore đã thấy Việt Nam sẽ là đối thủ tiềm năng, đang đầu tư cho đào tạo nhân tài AI và sẽ gặt hái. Họ nhìn hình ảnh Việt Nam 5-10 năm sau để mà cạnh tranh. Chưa kể họ còn đi sâu hơn, đánh giá Việt Nam là quốc gia mà học sinh sinh viên có nền tảng toán tốt, có năng khiếu về các môn tự nhiên, số lượng lớn, nên đó là nguồn nhân tài tiềm năng, nếu được quy hoạch và phát huy tốt.</p>
+
+<p>Tôi, có lẽ cũng như không ít người khác, có những băn khoăn nhất định khi nghĩ về mục tiêu tăng trưởng trước mắt 8% và sau đó là hai con số của Việt Nam trong những năm tới. Nhưng ở góc nhìn lạc quan, câu trả lời có thể nằm ở khả năng sáng tạo và phát minh cùa người Việt để làm ra được những thứ tốt hơn cái tốt nhất.</p>
+
+<p>Vũ Kim Hạnh</p>
+
+</article> <!-- Disqus comments section goes here (if comments are enabled) --><div class="comments">
+ <div id="disqus_thread"></div>
+     
+ <script type="text/javascript">
+     
+ /* * * STOP! * * */
+ /* You shouldn't need to edit ANYTHING below to get this working! */
+ /* Instead, edit the key `disqus.shortname` in _config.yml */
+     
+ var disqus_config = function (){
+ this.page.url = 'http://localhost:4000/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/testpost13.html';
+ this.page.identifier = '/g%C3%B3c%20nh%C3%ACn/2025/03/16/testpost13.html';
+ };
+     
+ (function() {
+ var d = document, s = d.createElement('script');
+ s.type = 'text/javascript'; s.async = true;
+ s.src = 'https://quan.disqus.com/embed.js';
+ s.setAttribute('data-timestamp', +new Date());
+ (d.head || d.body).appendChild(s);
+ })();
+    
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+ </div>
+    </main>
+    <div class="footer">
+  © 2025 platsaver | Built with Jekyll
+</div>
+  </body>
+</html>

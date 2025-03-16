@@ -16,13 +16,13 @@
   <!-- OpenGraph Metadata -->
   <meta property="og:title" content="" />
   <meta property="og:url" content="" />
-  <meta property="og:site_name" content="Jekyll News" />
-  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1/newtech1/assets/flag.png" />
+  <meta property="og:site_name" content="PNews" />
+  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1/newtech1/assets/57c2d4726267e16dbad01549dac68326.png" />
   <!-- OpenGraph Type--><meta property="og:type" content="website"/><!-- Description --><meta name="description" content="Built with Jekyll" />
   <meta property="og:description" content="Built with Jekyll" />
 
 
-  <title> | Jekyll News</title>
+  <title> | PNews</title>
   <style>
     .search-container {
       position: relative;
@@ -147,7 +147,271 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
     }
+
+    /*Pagination*/
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .pagination-button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .pagination-button:hover {
+      background-color: #ddd;
+    }
+
+    .pagination-button.active {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .prev-next {
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+    }
+
+    .prev-next:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    
+    /*Dropdown menu*/
+    /* Đảm bảo menu chính hiển thị bình thường */
+    .nav-list {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      position: relative; /* Để dropdown hiển thị đúng vị trí */
+    }
+
+    .nav-link {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #000;
+      display: block;
+    }
+
+    /* Ẩn dropdown mặc định */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      list-style: none;
+      padding: 10px 0;
+      min-width: 150px;
+      z-index: 1000;
+    }
+
+    .dropdown li a {
+      padding: 8px 15px;
+      color: #333;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown li a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Hiển thị dropdown khi hover (Desktop) */
+    .nav-item:hover .dropdown {
+      display: block;
+    }
+
+    /* Sidebar (Mobile) */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .sidebar-nav .nav-item {
+      position: relative;
+    }
+
+    .sidebar-nav .dropdown {
+      position: static; /* Không cần absolute trong sidebar */
+      display: none;
+      padding-left: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .sidebar-nav .dropdown.active {
+      display: block; /* Hiển thị khi click trên mobile */
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #000;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
     </style>
+    <!--Dropdown handler-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+        const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+    
+        // Xử lý hamburger menu
+        hamburger.addEventListener('click', function() {
+          this.classList.toggle('active');
+          sidebar.classList.toggle('active');
+        });
+    
+        // Đóng sidebar khi click ra ngoài
+        document.addEventListener('click', function(event) {
+          if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+          }
+        });
+    
+        // Xử lý dropdown trong sidebar (mobile)
+        navItems.forEach(item => {
+          item.addEventListener('click', function(e) {
+            const dropdown = this.querySelector('.dropdown');
+            if (dropdown) {
+              e.preventDefault(); // Ngăn chuyển hướng ngay lập tức
+              dropdown.classList.toggle('active');
+            }
+          });
+        });
+      });
+    </script>
+
+    <!--Pagination handler-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const pages = document.querySelectorAll(".page");
+  const paginationButtons = document.querySelectorAll(".pagination-button");
+  const prevButton = document.getElementById("prev-page");
+  const nextButton = document.getElementById("next-page");
+
+  let currentPage = 1; // Trang hiện tại
+
+  // Hiển thị trang đầu tiên khi tải trang
+  showPage(currentPage);
+
+  // Thêm sự kiện click cho các nút pagination
+  paginationButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const pageNumber = parseInt(button.getAttribute("data-page"));
+      if (!isNaN(pageNumber)) {
+        currentPage = pageNumber;
+        showPage(currentPage);
+      }
+    });
+  });
+
+  // Sự kiện cho nút "Trang trước"
+  prevButton.addEventListener("click", function () {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  // Sự kiện cho nút "Trang sau"
+  nextButton.addEventListener("click", function () {
+    if (currentPage < pages.length) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  // Hàm hiển thị trang cụ thể
+  function showPage(pageNumber) {
+    // Ẩn tất cả các trang
+    pages.forEach((page) => {
+      page.style.display = "none";
+    });
+
+    // Hiển thị trang được chọn
+    const selectedPage = document.querySelector(`.page[data-page="${pageNumber}"]`);
+    if (selectedPage) {
+      selectedPage.style.display = "block";
+    }
+
+    // Đánh dấu nút pagination được chọn
+    paginationButtons.forEach((button) => {
+      button.classList.remove("active");
+      const buttonPage = parseInt(button.getAttribute("data-page"));
+      if (buttonPage === pageNumber) {
+        button.classList.add("active");
+      }
+    });
+
+    // Vô hiệu hóa nút "Trang trước" nếu ở trang đầu tiên
+    if (currentPage === 1) {
+      prevButton.disabled = true;
+      prevButton.style.opacity = "0.5";
+    } else {
+      prevButton.disabled = false;
+      prevButton.style.opacity = "1";
+    }
+
+    // Vô hiệu hóa nút "Trang sau" nếu ở trang cuối cùng
+    if (currentPage === pages.length) {
+      nextButton.disabled = true;
+      nextButton.style.opacity = "0.5";
+    } else {
+      nextButton.disabled = false;
+      nextButton.style.opacity = "1";
+    }
+  }
+});
+    </script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     
@@ -163,7 +427,7 @@
   </div>
     <div>
 <a href="/newtech1/index.html">
-  <img class="header-flag" src="/newtech1/assets/flag.png" alt="Jekyll News"/>
+  <img class="header-flag" src="/newtech1/assets/57c2d4726267e16dbad01549dac68326.png" alt="PNews"/>
 </a>
 <nav class="header-nav">
     <div class="hamburger">
@@ -171,56 +435,48 @@
       <span></span>
       <span></span>
     </div>
-    <ul class="nav-list desktop-nav"><li>
-            <a class="nav-link" href="/newtech1/">Trang chủ</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
-          </li><li>
-            <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
-          </li></ul>
-    <div class="sidebar">
-      <ul class="nav-list sidebar-nav"><li>
+
+    <!-- Menu trên Desktop -->
+    <ul class="nav-list desktop-nav"><li class="nav-item">
               <a class="nav-link" href="/newtech1/">Trang chủ</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
-            </li><li>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
               <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
-            </li></ul>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+
+    <!-- Menu trong Sidebar (Mobile) -->
+    <div class="sidebar">
+      <ul class="nav-list sidebar-nav"><li class="nav-item">
+                <a class="nav-link" href="/newtech1/">Trang chủ</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
     </div>
   </nav>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const sidebar = document.querySelector('.sidebar');
-  
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');
-      sidebar.classList.toggle('active');
-    });
-  
-    // Đóng sidebar khi click ra ngoài
-    document.addEventListener('click', function(event) {
-      if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
-        hamburger.classList.remove('active');
-        sidebar.classList.remove('active');
-      }
-    });
-  });
-</script>
     <main class="page-content" aria-label="Content">
         <div class="search-results">
   <h1>Tìm kiếm bài viết</h1>
@@ -252,9 +508,165 @@
   // Dữ liệu sẽ được tự động tạo từ Jekyll
   
   {
+    title: "Cổ phiếu liên quan ông Nguyễn Hồ Nam bị bán tháo",
+    subhed: "Các cổ phiếu “họ” Bamboo Capital gồm BCG, BCR, BGE, TCD giảm hết biên độ và không có bên mua trong sáng đầu tuần.",
+    url: "/newtech1/kinh%20doanh/2025/03/16/testpost27.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Kinh doanh",
+    keywords: ["BCG","BCR","BGE","TCD","giảm hết biên độ","ngược dòng thị trường","bán tháo cổ phiếu","Nguyễn Hồ Nam","Eximbank"],
+    author: "Phương Đông",
+    featuredImage: "/newtech1{\"path\"=>\"/newtech1/assets/img/banthao1.webp\", \"cutline\"=>\"\", \"credit\"=>\"BCG\"}"
+  },
+  
+  {
+    title: "Ông Nguyễn Hồ Nam bị bán giải chấp gần 11 triệu cổ phiếu Bamboo Capital",
+    subhed: "Cựu Chủ tịch Bamboo Capital Nguyễn Hồ Nam bị công ty chứng khoán buộc bán giải chấp gần 11 triệu cổ phiếu BCG.",
+    url: "/newtech1/kinh%20doanh/2025/03/16/testpost26.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Kinh doanh",
+    keywords: ["Nguyễn Hồ Nam","Bamboo Capital","BCG","Cổ phiểu BCG","Bán giải chấp cổ phiếu","Khởi tố","bán tháo","tỷ lệ sở hữu BCG","giá cổ phiếu BCG"],
+    author: "Tất Đạt",
+    featuredImage: "/newtech1{\"path\"=>\"/newtech1/assets/img/bamboo1.webp\", \"cutline\"=>\"\", \"credit\"=>\"BCG\"}"
+  },
+  
+  {
+    title: "Tài sản của tỷ phú Trần Đình Long giảm",
+    subhed: "Trong bối cảnh VN-Index khởi sắc, ông Trần Đình Long là người duy nhất trong 5 tỷ phú Việt bị giảm tài sản từ đầu năm đến nay.",
+    url: "/newtech1/kinh%20doanh/2025/03/16/testpost25.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Kinh doanh",
+    keywords: ["tỷ phú","tài sản giảm","Dung Quất","Thaco","chứng khoán","Bộ công thương"],
+    author: "Việt Hưng",
+    featuredImage: "/newtech1{\"path\"=>\"/newtech1/assets/img/typhu1.webp\", \"cutline\"=>\"\", \"credit\"=>\"Hòa Phát\"}"
+  },
+  
+  {
+    title: "Người già, ai nuôi?",
+    subhed: "Không phải người già nào cũng có chốn nương thân, và không phải cha mẹ nào cũng nương tựa được vào con cái.",
+    url: "/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/testpost24.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Góc nhìn",
+    keywords: ["nương tựa","phụ thuộc","định kiến xã hội","nhà dưỡng lãolão"],
+    author: "Mai Quốc Bửu",
+    featuredImage: "/newtech1{\"path\"=>\"\", \"cutline\"=>\"\", \"credit\"=>\"\"}"
+  },
+  
+  {
+    title: "Nhập tỉnh - bỏ huyện thế nào?",
+    subhed: "Việc sáp nhập tỉnh nhận được sự đồng thuận cao, còn chủ trương bỏ cấp huyện, sắp xếp lại xã phường gây ra nhiều trăn trở.",
+    url: "/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/testpost23.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Góc nhìn",
+    keywords: ["nhập tỉnh","bỏ huyện","trăn trở","lãng phí","đầu tư công"],
+    author: "Lê Viết Thái",
+    featuredImage: "/newtech1{\"path\"=>\"\", \"cutline\"=>\"\", \"credit\"=>\"\"}"
+  },
+  
+  {
+    title: "Anh nông dân kiếm triệu USD từ 'vườn rau một mét'",
+    subhed: "Anh - Huw Richards, 26 tuổi, người phát minh mô hình \"vườn rau một mét\" đã nhân gấp bội thu nhập bằng cách bán nông sản kết hợp bán tri thức.",
+    url: "/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost22.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Đời sống",
+    keywords: ["nông dân","vườn rau","kiếm tiền","một mét","",""],
+    author: "Bảo Nhiên",
+    featuredImage: "/newtech1{\"path\"=>\"/newtech1/assets/img/vuonrau1.webp\", \"cutline\"=>\"\", \"credit\"=>\"Sina/Baidu\"}"
+  },
+  
+  {
+    title: "5 loại thực phẩm thường bị bảo quản sai",
+    subhed: "Các loại thực phẩm đặt nhầm chỗ trong tủ lạnh sẽ khiến chúng nhanh hỏng.",
+    url: "/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost19.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Đời sống",
+    keywords: ["bảo quản","sữa","trứng","cà chua","khoai tây"],
+    author: "Ngọc Ngân",
+    featuredImage: "/newtech1{\"path\"=>\"/newtech1/assets/img/thucpham0.webp\", \"cutline\"=>\"\", \"credit\"=>\"The Best Life\"}"
+  },
+  
+  {
+    title: "Trở thành sinh viên sau khi về hưu",
+    subhed: "Ở tuổi 56, con cái có công việc ổn định, bà Wang Xiaoxi quyết định du học để có thêm trải nghiệm cuộc sống.",
+    url: "/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/16/testpost17.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Đời sống",
+    keywords: [],
+    author: "Thanh Thanh",
+    featuredImage: "/newtech1{\"path\"=>\"/newtech1/assets/img/sinhvien1.webp\", \"cutline\"=>\"\", \"credit\"=>\"Pexels\"}"
+  },
+  
+  {
+    title: "Ôtô cháy rụi giữa trung tâm Đà Nẵng",
+    subhed: "Ôtô 4 chỗ đậu qua đêm dưới lòng đường, khi chủ ra khởi động thì bất ngờ gầm xe phát ra tiếng nổ và bốc cháy dữ dội, sáng 14/3.",
+    url: "/newtech1/th%E1%BB%9Di%20s%E1%BB%B1/2025/03/16/testpost15.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Thời sự",
+    keywords: ["ô tô","Đà Nẵng","cháy rụi","đậu qua đêm","Chevrolet"],
+    author: "Ngọc Trường",
+    featuredImage: "/newtech1{\"path\"=>\"/newtech1/assets/img/chayrui1.webp\", \"cutline\"=>\"\", \"credit\"=>\"Ngọc Trường\"}"
+  },
+  
+  {
+    title: "TP HCM sẽ giới thiệu việc làm cho cán bộ bị tinh giản",
+    subhed: "Cán bộ bị tinh giản do sắp xếp bộ máy muốn làm việc sẽ được TP HCM giới thiệu đến doanh nghiệp nhà nước, hỗ trợ khởi nghiệp hoặc kết nối với khối tư nhân.",
+    url: "/newtech1/th%E1%BB%9Di%20s%E1%BB%B1/2025/03/16/testpost14.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Thời sự",
+    keywords: ["tinh giản","cán bộ","doanh nghiệp tư nhân","sắp xếp bộ máy","tinh gọn bộ máy","lao động đôi dư"],
+    author: "Quỳnh Trần",
+    featuredImage: "/newtech1{\"path\"=>\"/newtech1/assets/img/tinhgian1.webp\", \"cutline\"=>\"\", \"credit\"=>\"Quỳnh Trần\"}"
+  },
+  
+  {
+    title: "Người nước ngoài dùng Hàng Việt",
+    subhed: "Muốn cạnh tranh sòng phẳng với hàng hóa nước ngoài, phải tạo ra những sản phẩm 'tốt hơn cái tốt nhất'.",
+    url: "/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/testpost13.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Góc nhìn",
+    keywords: [],
+    author: "Vũ Kim Hạnh",
+    featuredImage: "/newtech1{\"path\"=>\"\", \"cutline\"=>\"\", \"credit\"=>\"\"}"
+  },
+  
+  {
+    title: "Mua nhà bằng tiền của bố mẹ",
+    subhed: "Nếu không có tài sản thừa kế hoặc 'mượn' từ bố mẹ, nhiều người trẻ có thể phải ở thuê suốt đời.",
+    url: "/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/test-post12.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Góc nhìn",
+    keywords: [],
+    author: "Hoàng Thảo Nguyên",
+    featuredImage: "/newtech1{\"path\"=>\"\", \"cutline\"=>\"\", \"credit\"=>\"\"}"
+  },
+  
+  {
+    title: "'Bẫy' mua hàng livestream",
+    subhed: "Sau nhiều lần thành nạn nhân của 'chú bé chăn cừu', người tiêu dùng có còn tin vào các KOL bán hàng online?",
+    url: "/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/test-post11.html",
+    date: "2025-03-16",
+    formattedDate: "16/03/2025",
+    category: "Góc nhìn",
+    keywords: [],
+    author: "Phạm Minh Đức",
+    featuredImage: "/newtech1{\"path\"=>\"\", \"cutline\"=>\"\", \"credit\"=>\"\"}"
+  },
+  
+  {
     title: "Đấu giá thành công loạt lô đất từng được 'trả 30 tỷ đồng một m2' ",
     subhed: "36 thửa đất tại xã Quang Tiến, huyện Sóc Sơn được đấu giá thành công, trong đó lô trúng cao nhất gần 49 triệu đồng một m2.",
-    url: "/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post8/",
+    url: "/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post8.html",
     date: "2025-03-10",
     formattedDate: "10/03/2025",
     category: "Bất động sản",
@@ -266,7 +678,7 @@
   {
     title: "Bình Dương có khu nhà ở xã hội theo tiêu chuẩn xanh",
     subhed: "Nằm cạnh các khu công nghiệp lớn như Vsip 2, Đồng An 2... khu dân cư rộng 26 ha được định hướng xây dựng nhà ở xã hội theo tiêu chuẩn xanh.",
-    url: "/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post7/",
+    url: "/newtech1/b%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n/2025/03/10/test-post7.html",
     date: "2025-03-10",
     formattedDate: "10/03/2025",
     category: "Bất động sản",
@@ -278,7 +690,7 @@
   {
     title: "Tổng Bí thư: Tạo thuận lợi cho doanh nghiệp Indonesia đầu tư tại Việt Nam",
     subhed: "Tiếp lãnh đạo các tập đoàn, doanh nghiệp lớn của Indonesia, Tổng Bí thư khẳng định Việt Nam sẽ tiếp tục cải cách thể chế, tạo thuận lợi cho doanh nghiệp đầu tư, hợp tác.",
-    url: "/newtech1/kinh%20doanh/2025/03/10/test-post6/",
+    url: "/newtech1/kinh%20doanh/2025/03/10/test-post6.html",
     date: "2025-03-10",
     formattedDate: "10/03/2025",
     category: "Kinh doanh",
@@ -290,7 +702,7 @@
   {
     title: "Chủ mưu vụ lũng đoạn đấu giá đất 30 tỷ đồng một m2 bị tuyên 3 năm tù",
     subhed: "Tòa đánh giá sai phạm của 6 bị cáo trong phiên đấu giá đất 30 tỷ đồng mỗi m2 đã \"gây rối loạn thị trường bất động sản, gây bức xúc bất bình trong xã hội\", cần nghiêm trị để răn đe.",
-    url: "/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post9/",
+    url: "/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post9.html",
     date: "2025-03-09",
     formattedDate: "09/03/2025",
     category: "Pháp luật",
@@ -302,7 +714,7 @@
   {
     title: "Thủ đoạn mạo danh trường học gọi điện hoàn học phí",
     subhed: "Công an cảnh báo đang có thủ đoạn lợi dụng chính sách miễn học phí cho học sinh công lập để giả danh nhà trường gọi điện thông báo \"hoàn học phí\" nhằm chiếm đoạt tài sản.",
-    url: "/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post4/",
+    url: "/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post4.html",
     date: "2025-03-09",
     formattedDate: "09/03/2025",
     category: "Pháp luật",
@@ -314,7 +726,7 @@
   {
     title: "Cảnh sát đánh sập web cá độ bóng đá 400 tỷ đồng ở Kiên Giang",
     subhed: "Công an Kiên Giang cáo buộc Nguyễn Đăng Khoa, 51 tuổi, và đồng phạm điều hành trang web cá độ bóng đá với giao dịch khoảng 400 tỷ đồng trong 6 tháng.",
-    url: "/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post3/",
+    url: "/newtech1/ph%C3%A1p%20lu%E1%BA%ADt/2025/03/09/test-post3.html",
     date: "2025-03-09",
     formattedDate: "09/03/2025",
     category: "Pháp luật",
@@ -326,7 +738,7 @@
   {
     title: "Syria kêu gọi đoàn kết sau loạt đụng độ khiến hơn 1.000 người chết",
     subhed: "Lãnh đạo Syria kêu gọi cả nước đoàn kết, sau khi lực lượng an ninh và phe ủng hộ cựu tổng thống Assad đụng độ khiến hơn 1.000 người chết.",
-    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post/",
+    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post.html",
     date: "2025-03-09",
     formattedDate: "09/03/2025",
     category: "Quốc tế",
@@ -338,7 +750,7 @@
   {
     title: "Không có đợt phát hành trái phiếu doanh nghiệp nào trong tháng 2.",
     subhed: "Tháng 2, không có đợt phát hành trái phiếu doanh nghiệp nào diễn ra, theo dữ liệu của VBMA.",
-    url: "/newtech1/kinh%20doanh/2025/03/09/test-post-5/",
+    url: "/newtech1/kinh%20doanh/2025/03/09/test-post-5.html",
     date: "2025-03-09",
     formattedDate: "09/03/2025",
     category: "Kinh doanh",
@@ -350,7 +762,7 @@
   {
     title: "NATO Đứng Ngồi Không Yên Khi Mỹ Đổi Lập Trường Về Nga",
     subhed: "Những động thái cải thiện quan hệ với Nga gần đây của chính quyền ông Trump khiến các thành viên NATO gấp rút chuẩn bị tương lai không còn Mỹ sát cánh.",
-    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post2/",
+    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/test-post2.html",
     date: "2025-03-09",
     formattedDate: "09/03/2025",
     category: "Quốc tế",
@@ -362,7 +774,7 @@
   {
     title: "Indonesia bắn đại bác chào mừng Tổng Bí thư Tô Lâm",
     subhed: "Indonesia bắn 7 phát đại bác khi Tổng Bí thư Tô Lâm và phu nhân đáp xuống sân bay ở Jakarta, nghi thức thể hiện sự coi trọng chuyến thăm.",
-    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/another-test-post/",
+    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/another-test-post.html",
     date: "2025-03-09",
     formattedDate: "09/03/2025",
     category: "Quốc tế",
@@ -374,7 +786,7 @@
   {
     title: "Mật vụ Mỹ bắn người mang súng gần Nhà Trắng",
     subhed: "Mật vụ Mỹ đụng độ và bắn một người đàn ông có vũ trang ở gần Nhà Trắng, sau khi nhận tin báo từ cảnh sát.",
-    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/different-test-post/",
+    url: "/newtech1/qu%E1%BB%91c%20t%E1%BA%BF/2025/03/09/different-test-post.html",
     date: "2025-03-09",
     formattedDate: "09/03/2025",
     category: "Quốc tế",
@@ -386,13 +798,25 @@
   {
     title: "Đàn ông cả xóm rủ nhau dựng rạp, mở tiệc 8/3",
     subhed: "17h, sau khi cùng đàn ông trong xóm hoàn thành 20 mâm cỗ, anh Đỗ Kiến Vọng thay vest, lên sân khấu khai mạc chương trình chào mừng 8/3.",
-    url: "/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/08/test-post10/",
+    url: "/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2025/03/08/test-post10.html",
     date: "2025-03-08",
     formattedDate: "08/03/2025",
     category: "Đời sống",
     keywords: ["8/3","đàn ông","lễ hội","tiệc","Đỗ Kiến Vọng","chương trình"],
     author: "Thanh Lam",
     featuredImage: "/newtech1{\"path\"=>\"/newtech1/assets/img/phunuvn1.jpg\", \"cutline\"=>\"\", \"credit\"=>\"Danh Lam\"}"
+  },
+  
+  {
+    title: "Những việc không nên tiết kiệm",
+    subhed: "Khi thu nhập giảm và phí sinh hoạt tăng, nhiều người cắt giảm chi phí bằng mọi cách nhưng tiết kiệm không đúng cách thường gây hậu quả khó lường.",
+    url: "/newtech1/%C4%91%E1%BB%9Di%20s%E1%BB%91ng/2023/03/16/test-post20.html",
+    date: "2023-03-16",
+    formattedDate: "16/03/2023",
+    category: "Đời sống",
+    keywords: ["bảo dưỡng xe","thực phẩm kém chất lượng","y tế","công việc độc hại","tiết kiệm"],
+    author: "Nhật Minh",
+    featuredImage: "/newtech1{\"path\"=>\"/newtech1/assets/img/tietkiem1.webp\", \"cutline\"=>\"\", \"credit\"=>\"\"}"
   }
   
 ];

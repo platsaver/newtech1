@@ -1,21 +1,21 @@
-title: Jekyll News
+title: PNews 
 description: "Built with Jekyll"
 author: platsaver
 
 # Basic Site Info
-title: Jekyll News
+title: PNews
 description: "Built with Jekyll"
 author: platsaver
 
 # Site Flag
 flag:
   show: true
-  path: /newtech1/assets/flag.png
+  path: /newtech1/assets/57c2d4726267e16dbad01549dac68326.png
 
 # Comments
 disqus:
   enabled: true
-  shortname: jekyll-news-demo  #REPLACEME
+  shortname: quan
 
 # Analytics
 google_analytics: G-GRV8PX7ZN1
@@ -46,10 +46,6 @@ baseurl: '/newtech1'  # Subdirectory where the site lives
 github: 
   username: platsaver
 
-disqus:
-  enabled: true
-  shortname: quan
-
 jekyll_admin:
   homepage: "posts"
 
@@ -69,3 +65,8 @@ defaults:
         credit: ""
       category: ""
       keywords: []
+
+collections:
+  subcategories:
+    output: true
+    permalink: /:collection/:name/

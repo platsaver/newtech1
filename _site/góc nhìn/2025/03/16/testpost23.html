@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/newtech1/assets/css/style.css">
+  <script src="https://unpkg.com/akar-icons-fonts"></script>
+
+  <!-- Analytics -->
+    
+
+  <!-- AdSense -->
+  
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Nhập tỉnh - bỏ huyện thế nào?" />
+  <meta property="og:url" content="" />
+  <meta property="og:site_name" content="PNews" />
+  <!-- OpenGraph Image  --><meta property="og:image" content="http://localhost:4000/newtech1" />
+  <!-- OpenGraph Type--><meta property="og:type" content="article" />
+    <meta property="og:article:author" content="Lê Viết Thái" />
+    <meta property="og:article:section" content="Góc nhìn" />
+    <meta property="og:article:published_time" content="2025-03-16T00:00:00+07:00" /><!-- Description --><meta name="description" content="Việc sáp nhập tỉnh nhận được sự đồng thuận cao, còn chủ trương bỏ cấp huyện, sắp xếp lại xã phường gây ra nhiều trăn trở." />
+  <meta property="og:description" content="Việc sáp nhập tỉnh nhận được sự đồng thuận cao, còn chủ trương bỏ cấp huyện, sắp xếp lại xã phường gây ra nhiều trăn trở." />
+
+
+  <title>Nhập tỉnh - bỏ huyện thế nào? | PNews</title>
+  <style>
+    .search-container {
+      position: relative;
+    }
+
+    .search-container input[type="text"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 150px; /* Điều chỉnh chiều rộng */
+      font-size: 14px;
+    }
+/* Quy tắc mặc định - Áp dụng cho tất cả ảnh trong thẻ <p> */
+  p > img {
+  display: block; /* Đảm bảo ảnh là phần tử khối để dễ căn chỉnh */
+  margin: 0 auto; /* Căn giữa ảnh */
+  max-width: 100%; /* Đảm bảo ảnh không vượt quá chiều rộng phần tử cha */
+  height: auto; /* Giữ tỷ lệ khung hình */
+}
+
+/* Responsive cho màn hình dưới 904px */
+@media (max-width: 904px) {
+  p > img {
+    width: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều rộng */
+    max-width: none; /* Loại bỏ giới hạn chiều rộng */
+  }
+}
+
+/* Responsive cho màn hình dưới 768px */
+@media (max-width: 768px) {
+  p > img {
+    width: 90%; /* Ảnh chiếm 90% màn hình */
+    margin: 0 auto; /* Căn giữa ảnh */
+  }
+}
+
+/* Responsive cho màn hình dưới 480px */
+@media (max-width: 480px) {
+  p > img {
+    width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+    max-width: none; /* Không giới hạn kích thước */
+  }
+}
+
+
+  </style>
+  <style>
+    .header-nav {
+      position: relative;
+    }
+    
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .desktop-nav {
+      display: flex;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+    
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+    
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #fff;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    
+    .sidebar.active {
+      left: 0;
+    }
+    
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px 0;
+    }
+    
+    @media screen and (max-width: 708px) {  /* Đã đổi từ 634px thành 708px */
+      .hamburger {
+        display: block;
+      }
+    
+      .desktop-nav {
+        display: none;
+      }
+    }
+    
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /*Pagination*/
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .pagination-button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .pagination-button:hover {
+      background-color: #ddd;
+    }
+
+    .pagination-button.active {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .prev-next {
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+    }
+
+    .prev-next:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    
+    /*Dropdown menu*/
+    /* Đảm bảo menu chính hiển thị bình thường */
+    .nav-list {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      position: relative; /* Để dropdown hiển thị đúng vị trí */
+    }
+
+    .nav-link {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #000;
+      display: block;
+    }
+
+    /* Ẩn dropdown mặc định */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      list-style: none;
+      padding: 10px 0;
+      min-width: 150px;
+      z-index: 1000;
+    }
+
+    .dropdown li a {
+      padding: 8px 15px;
+      color: #333;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown li a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Hiển thị dropdown khi hover (Desktop) */
+    .nav-item:hover .dropdown {
+      display: block;
+    }
+
+    /* Sidebar (Mobile) */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar-nav {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .sidebar-nav .nav-item {
+      position: relative;
+    }
+
+    .sidebar-nav .dropdown {
+      position: static; /* Không cần absolute trong sidebar */
+      display: none;
+      padding-left: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .sidebar-nav .dropdown.active {
+      display: block; /* Hiển thị khi click trên mobile */
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #000;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+    </style>
+    <!--Dropdown handler-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+        const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+    
+        // Xử lý hamburger menu
+        hamburger.addEventListener('click', function() {
+          this.classList.toggle('active');
+          sidebar.classList.toggle('active');
+        });
+    
+        // Đóng sidebar khi click ra ngoài
+        document.addEventListener('click', function(event) {
+          if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+          }
+        });
+    
+        // Xử lý dropdown trong sidebar (mobile)
+        navItems.forEach(item => {
+          item.addEventListener('click', function(e) {
+            const dropdown = this.querySelector('.dropdown');
+            if (dropdown) {
+              e.preventDefault(); // Ngăn chuyển hướng ngay lập tức
+              dropdown.classList.toggle('active');
+            }
+          });
+        });
+      });
+    </script>
+
+    <!--Pagination handler-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const pages = document.querySelectorAll(".page");
+  const paginationButtons = document.querySelectorAll(".pagination-button");
+  const prevButton = document.getElementById("prev-page");
+  const nextButton = document.getElementById("next-page");
+
+  let currentPage = 1; // Trang hiện tại
+
+  // Hiển thị trang đầu tiên khi tải trang
+  showPage(currentPage);
+
+  // Thêm sự kiện click cho các nút pagination
+  paginationButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const pageNumber = parseInt(button.getAttribute("data-page"));
+      if (!isNaN(pageNumber)) {
+        currentPage = pageNumber;
+        showPage(currentPage);
+      }
+    });
+  });
+
+  // Sự kiện cho nút "Trang trước"
+  prevButton.addEventListener("click", function () {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  // Sự kiện cho nút "Trang sau"
+  nextButton.addEventListener("click", function () {
+    if (currentPage < pages.length) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  // Hàm hiển thị trang cụ thể
+  function showPage(pageNumber) {
+    // Ẩn tất cả các trang
+    pages.forEach((page) => {
+      page.style.display = "none";
+    });
+
+    // Hiển thị trang được chọn
+    const selectedPage = document.querySelector(`.page[data-page="${pageNumber}"]`);
+    if (selectedPage) {
+      selectedPage.style.display = "block";
+    }
+
+    // Đánh dấu nút pagination được chọn
+    paginationButtons.forEach((button) => {
+      button.classList.remove("active");
+      const buttonPage = parseInt(button.getAttribute("data-page"));
+      if (buttonPage === pageNumber) {
+        button.classList.add("active");
+      }
+    });
+
+    // Vô hiệu hóa nút "Trang trước" nếu ở trang đầu tiên
+    if (currentPage === 1) {
+      prevButton.disabled = true;
+      prevButton.style.opacity = "0.5";
+    } else {
+      prevButton.disabled = false;
+      prevButton.style.opacity = "1";
+    }
+
+    // Vô hiệu hóa nút "Trang sau" nếu ở trang cuối cùng
+    if (currentPage === pages.length) {
+      nextButton.disabled = true;
+      nextButton.style.opacity = "0.5";
+    } else {
+      nextButton.disabled = false;
+      nextButton.style.opacity = "1";
+    }
+  }
+});
+    </script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    
+  </script></head>
+
+  <body>
+    <!-- Form tìm kiếm ở thanh điều hướng -->
+<div class="search-container">
+    <form action="/newtech1/search.html" method="get">
+      <input type="text" name="query" placeholder="Tìm kiếm..." />
+      <!-- Đổi name từ "q" thành "query" để khớp với mã JavaScript -->
+    </form>
+  </div>
+    <div>
+<a href="/newtech1/index.html">
+  <img class="header-flag" src="/newtech1/assets/57c2d4726267e16dbad01549dac68326.png" alt="PNews"/>
+</a>
+<nav class="header-nav">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Menu trên Desktop -->
+    <ul class="nav-list desktop-nav"><li class="nav-item">
+              <a class="nav-link" href="/newtech1/">Trang chủ</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+              <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+
+    <!-- Menu trong Sidebar (Mobile) -->
+    <div class="sidebar">
+      <ul class="nav-list sidebar-nav"><li class="nav-item">
+                <a class="nav-link" href="/newtech1/">Trang chủ</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Qu%E1%BB%91c%20t%E1%BA%BF">Quốc tế</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Kinh%20doanh">Kinh doanh</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Ph%C3%A1p%20lu%E1%BA%ADt">Pháp luật</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/%C4%90%E1%BB%9Di%20s%E1%BB%91ng">Đời sống</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n">Bất động sản</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/G%C3%B3c%20nh%C3%ACn">Góc nhìn</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li><li class="nav-item">
+                <a class="nav-link" href="/newtech1/Th%E1%BB%9Di%20s%E1%BB%B1">Thời sự</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter --></li></ul>
+    </div>
+  </nav>
+</div>
+    <main class="page-content" aria-label="Content">
+        <h1 class="headline">Nhập tỉnh - bỏ huyện thế nào?</h1><hr/ class="hed-rule"><h2 class="subhed">Việc sáp nhập tỉnh nhận được sự đồng thuận cao, còn chủ trương bỏ cấp huyện, sắp xếp lại xã phường gây ra nhiều trăn trở.</h2><h3 class="byline"><a href="">Lê Viết Thái</a>,  | March 16, 2025</h3><div class="featured-image-container">
+  <figure class="featured-image">
+    <img src="" alt=""/>
+    <figcaption> - Ảnh bởi </figcaption>
+  </figure>
+  </div><article class="article-content">
+  <p>Nhiều năm trước, tôi từng đi khắp 63 tỉnh thành trong những ngày được giao nghiên cứu đề án liên kết vùng nhằm phát triển các không gian kinh tế lớn đang bị chia cắt bởi địa giới hành chính và cát cứ cấp tỉnh.</p>
+
+<p>Chẳng hạn, tỉnh nào cũng muốn được xây sân bay, cảng biển (bằng ngân sách trung ương), dẫn đến lãng phí nguồn lực đầu tư công, gây ra sự cạnh tranh thiếu lành mạnh giữa các địa phương.</p>
+
+<p>Số lượng tỉnh thành nhiều, mà không có cấp trung gian quản lý, là thách thức lớn đối với hiệu quả và hiệu lực hoạt động của bộ máy nhà nước. Vì vậy, sáp nhập là một chủ trương đúng, nhằm nâng cao hiệu lực, hiệu quả quản lý nhà nước, tận dụng tốt hơn nguồn lực địa phương, tinh gọn bộ máy hành chính, dành ngân sách cho đầu tư phát triển và an sinh xã hội. Về lâu dài, việc này cũng sẽ tạo thuận lợi cho vấn đề an ninh quốc phòng cũng như phát triển các không gian kinh tế.</p>
+
+<p>Cải cách kinh tế và cải cách hành chính giống như hai chân của con người, luôn phải bước song hành mới có thể tiến xa. Nhưng so với cải cách kinh tế, cải cách hành chính khó hơn nhiều. Cải cách kinh tế là cơ hội giúp cho “miếng bánh” tăng trưởng to hơn, cả người dân lẫn quan chức đều được hưởng. Nhưng cải cách hành chính thường sẽ không làm “miếng bánh” to ra trong thời gian ngắn, mà chỉ thay đổi cách “chia bánh” theo hướng quan chức nhận phần ít đi. Do đó cải cách hành chính muốn thành công rất cần sự quyết đoán, quyết liệt của lãnh đạo cấp cao nhất cùng với tính đúng đắn, khoa học trong quá trình triển khai. Để tránh hệ lụy không đáng có, quá trình sáp nhập các tỉnh theo tôi nên lưu ý một số điểm sau.</p>
+
+<p>Thứ nhất, những lần sáp nhập trước đây cho thấy, sự thay đổi này dễ gây ra bất đồng giữa các địa phương, đặc biệt là trong việc bổ nhiệm lãnh đạo, lựa chọn thành phố làm tỉnh lỵ. Một trong những cuộc cải cách hành chính lớn nhất trong lịch sử nước ta diễn ra dưới thời Minh Mạng. Vị vua này chia đất nước thành 31 tỉnh và bổ dụng quan chức theo nguyên tắc “hồi tỵ” với một số quy định cơ bản như: quan chức không tại vị trên chính quê hương mình; anh em, cha con, thầy trò… không làm quan cùng một tổ chức.</p>
+
+<p>Thời nay, hoàn toàn có thể áp dụng cách làm này thông qua việc “luân chuyển cán bộ” đứng đầu tỉnh sau sáp nhập, nhằm hạn chế tình trạng tham nhũng, bè phái, lợi ích nhóm… Còn cán bộ chuyên môn thì nên giữ lại vì họ là những người am hiểu địa phương nhất (mà không có quyền ra quyết định, ban hành chính sách nên không sợ “cục bộ địa phương”).</p>
+
+<p>Điểm thứ hai cần lưu tâm khi chọn sáp nhập các tỉnh là sự tương đồng về văn hóa, lịch sử, dân tộc. Ví dụ văn hóa, tập quán, tính cách con người ở nhiều tỉnh Nam bộ là có tính đồng nhất cao, nhưng một số tỉnh miền Trung lại khác, cạnh nhau đấy chưa chắc đã giống nhau. Yếu tố này nếu không được chú trọng sẽ gây ra những khó khăn nhất định trong việc hợp nhất nhiều mặt về sau.</p>
+
+<p>Cuối cùng, tên của địa phương mới cần lựa chọn kỹ, tránh trùng lặp với các địa danh đã có, và phải hợp lý để dân tỉnh nào cũng thấy có mình trong đó. Năm 1962, khi Quốc hội bàn việc sáp nhập Bắc Ninh và Bắc Giang, một khó khăn nảy sinh là đặt tên gọi cho tỉnh mới, vì tỉnh nào cũng muốn có tên của mình. Cuối cùng Hồ Chủ tịch tham khảo ý kiến của cụ Nguyễn Đình Ngân, một cử nhân Nho học, đại biểu quốc hội. Cụ Ngân đề xuất tên Hà Bắc với chữ “Bắc” là tên chung của hai tỉnh, thêm chữ “Hà” phía trước, thể hiện vị trí “phía bắc Hà Nội” của tỉnh mới.</p>
+
+<p>Nếu như sáp nhập tỉnh nhận được sự đồng thuận cao, thì chủ trương bỏ cấp huyện, sắp xếp lại xã phường gây ra nhiều trăn trở. Điều này là dễ hiểu, do có nhiều băn khoăn chưa được giải thích thấu đáo. Cấp huyện đã tồn tại lâu đời, quen thuộc trong lịch sử, liệu có dễ dàng bỏ đi? Bỏ huyện thì khoảng cách giữa người dân đến cấp “trên xã” liệu có quá xa? Cấp tỉnh có đủ năng lực để quản lý trực tiếp hàng trăm xã, kể cả khi thủ tục hành chính đã được số hóa?</p>
+
+<p>Lâu nay “cấp hành chính” thường được hiểu là một cấp “đầy đủ” với cơ quan dân bầu (HĐND), cơ quan hành pháp (UBND), các cơ quan tư pháp và có ngân sách độc lập. Nếu hiểu như vậy thì việc bỏ cấp huyện có thể tạo ra không ít khó khăn trong quản lý xã hội.</p>
+
+<p>Nhưng đây cũng không phải là chuyện bất khả thi nếu chúng ta nhìn rõ thực trạng cấp huyện hiện nay và đưa ra được mô hình quản lý khoa học hơn.</p>
+
+<p>Là cấp hành chính đầy đủ với HĐND, UBND, Tòa án, Viện Kiểm sát, nhiệm vụ của cấp huyện trải ra nhiều lĩnh vực kinh tế, xã hội, an ninh, quốc phòng… nhưng thẩm quyền lại quá khiêm tốn. Huyện nhìn chung chỉ có “chức năng thực thi”, hoặc ra quyết định với các vấn đề quy mô “liên xã”, hầu như không có thẩm quyền và khả năng ban hành cơ chế, chính sách.</p>
+
+<p>Mô hình tôi đề xuất dưới đây dựa trên một số nội dung thuộc lý thuyết về phân cấp trong tổ chức bộ máy nhà nước.</p>
+
+<p>Phân cấp hành chính là khái niệm bao gồm nhiều hình thức với các mức độ khác nhau. Hình thức cao nhất là “phân quyền” (devolution), tức là giao toàn bộ thẩm quyền và nhiệm vụ cho cấp dưới. Cấp dưới hoàn toàn chịu trách nhiệm với các quyết định của mình. Hình thức thứ hai là “ủy quyền” (delegation), tức cho phép cấp dưới thực thi một số nhiệm vụ nào đó, nhưng cấp trên phải “giám sát” và chịu trách nhiệm liên đới. Hai hình thức này thường được thực hiện khi cấp dưới có đủ khả năng đảm nhận nhiệm vụ được giao hoặc ít nhất là đang trong quá trình “thử nghiệm”.</p>
+
+<p>Hình thức cuối là “tản quyền” hoặc “quyền lực phi tập trung” (deconcentration), tức cấp trên thành lập một cơ sở trung gian, có thẩm quyền của cấp trên, thực thi nhiệm vụ trong một khu vực bao gồm nhiều tổ chức cấp dưới. Cách này có thể hình dung dễ hiểu như việc bố trí quan khâm sai đại thần thời phong kiến - những người được ủy quyền thay mặt vua thực thi công vụ ở các địa phương.</p>
+
+<p>Khi bỏ cấp huyện, bộ máy quản trị mới có thể áp dụng hình thức “tản quyền”, trong đó: các nhiệm vụ trước kia được giao cho huyện thì nay một phần chuyển xuống xã, phần còn lại chuyển lên tỉnh; với những nhiệm vụ được chuyển lên tỉnh thì tỉnh sẽ lập một “cơ quan đại diện” ở khu vực (bao gồm nhiều xã) để thực thi.</p>
+
+<p>Mô hình này nếu áp dụng có thể mang lại “lợi thế” hơn hẳn so với trước, cụ thể:</p>
+
+<p>Cơ quan đại diện cấp tỉnh ở địa phương (liên xã) có tổ chức nhỏ gọn nhưng thẩm quyền mạnh hơn cấp huyện (vì mang thẩm quyền của tỉnh).</p>
+
+<p>Đơn vị được “tản quyền” này bám sát cơ sở, hiểu dân và kịp thời giải quyết các vấn đề ngoài thẩm quyền của xã, thu hẹp khoảng cách giữa dân với tỉnh, đồng thời đỡ ùn ứ công việc ở cấp tỉnh. Cơ quan này cũng có thể luân chuyển cán bộ theo nguyên tắc hồi tỵ, tránh tình trạng tham nhũng, bè phái ở các xã phường mình quản lý.</p>
+
+<p>Việc hình thành các cơ quan “tản quyền” sẽ thu hút một phần nhân sự cấp huyện, giảm nỗi lo âu mất việc của rất nhiều người trong số họ hiện nay.</p>
+
+<p>Riêng tư pháp là một lĩnh vực phải cân nhắc xem có nên bỏ cấp huyện. Vì lập tòa án, cơ quan kiểm sát cấp xã là điều rất khó khả thi. Còn nếu chỉ duy trì tòa án tỉnh, kiểm sát tỉnh thì sẽ không giải quyết hết sự vụ. Do vậy, có thể nghĩ đến việc hình thành hệ thống tư pháp trên cơ sở kinh nghiệm quốc tế và thực tế lịch sử Việt Nam theo mô hình tòa án tối cao, tòa án tỉnh, tòa án khu vực - chịu trách nhiệm nhiều xã trong tỉnh.</p>
+
+<p>Cuối cùng, tương tự đợt giảm biên chế chiều ngang (các bộ ngành), tinh gọn chiều dọc - nhập tỉnh và bỏ cấp huyện - cũng sẽ khiến một lượng khổng lồ công chức, viên chức mất việc. Để giảm gánh nặng ập xuống cùng lúc với ngân sách nhà nước, có thể áp dụng hình thức “trả góp”, tức người nghỉ việc không “về một cục”, mà được trả theo tháng trong một số năm nhất định. Cách này vừa có lợi cho người nhận, vừa giúp Nhà nước có thời gian “để thở”, tập trung ngân sách vào mục tiêu tăng trưởng 8%, sau đó là hai con số như đã đề ra.</p>
+
+<p>Cuộc cải cách hành chính quy mô lớn tất yếu không tránh khỏi gây ra xáo trộn. Nhưng một khi thế hệ này nỗ lực vượt qua sự bất ổn, các thế hệ sau sẽ được hưởng thành quả tốt đẹp.</p>
+
+<p><strong>Lê Viết Thái</strong></p>
+
+</article> <!-- Disqus comments section goes here (if comments are enabled) --><div class="comments">
+ <div id="disqus_thread"></div>
+     
+ <script type="text/javascript">
+     
+ /* * * STOP! * * */
+ /* You shouldn't need to edit ANYTHING below to get this working! */
+ /* Instead, edit the key `disqus.shortname` in _config.yml */
+     
+ var disqus_config = function (){
+ this.page.url = 'http://localhost:4000/newtech1/g%C3%B3c%20nh%C3%ACn/2025/03/16/testpost23.html';
+ this.page.identifier = '/g%C3%B3c%20nh%C3%ACn/2025/03/16/testpost23.html';
+ };
+     
+ (function() {
+ var d = document, s = d.createElement('script');
+ s.type = 'text/javascript'; s.async = true;
+ s.src = 'https://quan.disqus.com/embed.js';
+ s.setAttribute('data-timestamp', +new Date());
+ (d.head || d.body).appendChild(s);
+ })();
+    
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+ </div>
+    </main>
+    <div class="footer">
+  © 2025 platsaver | Built with Jekyll
+</div>
+  </body>
+</html>

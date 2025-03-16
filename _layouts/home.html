@@ -4,55 +4,70 @@ layout: base
 {%- include featured-stories.html -%}
 <div class="content-container">
   <div class="main-content">
-    {%- for category in site.categories -%}
-      <div>
-        <h2>{{ category | first }}</h2>
-        {%- assign count = 0 -%}
-        {%- assign category_posts = category[1] | sort: "date" | reverse | limit: 3 -%}
-          {%- for post in category_posts -%}
-            {%- assign count = count | plus: 1 -%}
-            {%- if count <= 3 -%}
-              <div class="post-list-post">
-                {%- if post.featured-image.path -%}
-                  <img class="list-image" src="{{ post.featured-image.path }}" alt="{{ post.featured-image.alt-text }}"/>
-                {%- endif -%}
-
-                <a class="post-list-headline" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-                {%- assign date = post.date | date: "%B %-d, %Y" -%}
-                {%- if post.author and post.author-title -%}
-                  <p class="post-list-byline">{{post.author}}, {{post.author-title}} | {{ date }}</p>
+    <!-- Hiển thị các category khác (trừ "Góc nhìn") -->
+    <div class="left-categories">
+      {%- for category in site.categories -%}
+        {%- unless category[0] == "Góc nhìn" -%}
+          <div class="category-section">
+            <h2>{{ category | first }}</h2>
+            {%- assign category_posts = category[1] | sort: "date" | reverse -%}
+            <!-- Phần hiển thị bài viết của category -->
+            {%- assign latest_post = category_posts | first -%}
+            <div class="category-latest">
+              <div class="latest-text">
+                <a class="post-list-headline" href="{{ site.baseurl }}{{ latest_post.url }}">{{ latest_post.title }}</a>
+                {%- assign date = latest_post.date | date: "%B %-d, %Y" -%}
+                {%- if latest_post.author and latest_post.author-title -%}
+                  <p class="post-list-byline">{{ latest_post.author }}, {{ latest_post.author-title }} | {{ date }}</p>
                 {%- else -%}
                   <p class="post-list-byline">{{ date }}</p>
                 {%- endif -%}
-
-                {%- if post.description -%}
-                  {%- assign excerpt = post.description -%}
+                {%- if latest_post.description -%}
+                  {%- assign excerpt = latest_post.description -%}
                 {%- else -%}
-                  {%- assign paragraphs = post.content | split: '</p>' -%}
+                  {%- assign paragraphs = latest_post.content | split: '</p>' -%}
                   {%- assign excerpt = paragraphs[0] | append: '</p>' -%}
                 {%- endif -%}
-
-                {%- assign words = excerpt | strip_html | number_of_words -%}
-                {%- if words > 35 -%}
-                  {%- assign truncated_paragraph = excerpt | strip_html | truncatewords: 35, "" | append: "..." -%}
-                  <span class="post-list-summary">{{ truncated_paragraph }}</span>
-                {%- else -%}
-                  <span class="post-list-summary">{{ excerpt }}</span>
-                {%- endif -%}          
+                <span class="post-list-summary">{{ excerpt | strip_html | truncatewords: 35, "..." }}</span>
               </div>
-            {%- else -%}
-              {%- break -%}
-            {%- endif -%}
-          {%- endfor -%}
+              <div class="latest-image">
+                {%- if latest_post.featured-image.path -%}
+                  <img src="{{ latest_post.featured-image.path }}" alt="{{ latest_post.featured-image.alt-text }}"/>
+                {%- endif -%}
+              </div>
+            </div>
+            <div class="other-posts">
+              {%- for post in category_posts offset: 1 limit: 2 -%}
+                <div class="post-list-post">
+                  <a class="post-list-headline" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+
+    <!-- Hiển thị riêng category "Góc nhìn" -->
+    <div class="right-categories">
+      <h2>Góc nhìn</h2>
+      <div class="grid-titles">
+        {%- for category in site.categories -%}
+          {%- if category[0] == "Góc nhìn" -%}
+            {%- assign category_posts = category[1] | sort: "date" | reverse -%}
+            {%- for post in category_posts limit: 5 -%} <!-- Giới hạn 4 bài viết -->
+              <div class="grid-item">
+                <a class="grid-title" href="{{ site.baseurl }}{{ post.url }}">
+                  <strong>{{ post.title }}</strong> <!-- Thêm thẻ <strong> để làm đậm tiêu đề -->
+                  {%- if post.description -%}
+                    <span class="grid-description">{{ post.description }}</span>
+                  {%- endif -%}
+                </a>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
       </div>
-    {%- endfor -%}
-    {%- unless page.is-sidebar -%}
-      {{ content }}
-    {%- endunless -%}
+    </div>
   </div>
-  {%- if page.is-sidebar -%}
-  <div class="sidebar">
-    {{ content }}
-  </div>
-  {%- endif -%}
 </div>

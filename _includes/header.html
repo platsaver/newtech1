@@ -6,6 +6,8 @@
       <span></span>
       <span></span>
     </div>
+
+    <!-- Menu trên Desktop -->
     <ul class="nav-list desktop-nav">
       {%- assign default_paths = site.pages | map: "path" -%}
       {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -19,14 +21,27 @@
         {%- endif -%}
         {%- if title != "" -%}
           {%- unless my_page.exclude -%}
-          <li>
-            <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ title | escape }}</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ title | escape }}</a>
+              <!-- Kiểm tra nếu có subcategories trong front matter -->
+              {%- if my_page.subcategories -%}
+                <ul class="dropdown">
+                  {%- for subcategory in my_page.subcategories -%}
+                    <li>
+                      <!-- Tạo link cho subcategory (có thể tùy chỉnh URL) -->
+                      <a href="{{ my_page.url | relative_url }}#{{ subcategory | slugify }}">{{ subcategory | escape }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
           {%- endunless -%}
         {%- endif -%}
         {%- assign title = "" -%}
       {%- endfor -%}
     </ul>
+
+    <!-- Menu trong Sidebar (Mobile) -->
     <div class="sidebar">
       <ul class="nav-list sidebar-nav">
         {%- assign default_paths = site.pages | map: "path" -%}
@@ -41,9 +56,19 @@
           {%- endif -%}
           {%- if title != "" -%}
             {%- unless my_page.exclude -%}
-            <li>
-              <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ title | escape }}</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ title | escape }}</a>
+                <!-- Kiểm tra nếu có subcategories trong front matter -->
+                {%- if my_page.subcategories -%}
+                  <ul class="dropdown">
+                    {%- for subcategory in my_page.subcategories -%}
+                      <li>
+                        <a href="{{ my_page.url | relative_url }}#{{ subcategory | slugify }}">{{ subcategory | escape }}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
             {%- endunless -%}
           {%- endif -%}
           {%- assign title = "" -%}
@@ -52,23 +77,3 @@
     </div>
   </nav>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const sidebar = document.querySelector('.sidebar');
-  
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');
-      sidebar.classList.toggle('active');
-    });
-  
-    // Đóng sidebar khi click ra ngoài
-    document.addEventListener('click', function(event) {
-      if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
-        hamburger.classList.remove('active');
-        sidebar.classList.remove('active');
-      }
-    });
-  });
-</script>

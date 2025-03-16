@@ -1,5 +1,5 @@
 ---
-title: Mật vụ Mỹ bắn người mang súng gần Nhà Trắng
+title: "Mật vụ Mỹ bắn người mang súng gần Nhà Trắng"
 subhed: Mật vụ Mỹ đụng độ và bắn một người đàn ông có vũ trang ở gần Nhà Trắng, sau khi nhận tin báo từ cảnh sát.
 author: Như Tâm (Theo Reuters, Fox News)
 author-title: Thực hiện
@@ -10,6 +10,7 @@ featured-image:
   credit: AFP
 layout: post
 category: Quốc tế
+subcategory: Thế giới
 keywords: ['Mật vụ Mỹ', 'Nhà Trắng', 'súng', 'Donald Trump', 'điều tra']
 ---
 

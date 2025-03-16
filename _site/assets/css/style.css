@@ -1,4 +1,5 @@
-body, html { margin-left: 7%; margin-right: 7%; background-color: white; }
+@charset "UTF-8";
+body, html { margin-left: 3%; margin-right: 3%; background-color: white; }
 
 @media screen and (max-width: 800px) { body, html { margin-left: 2%; margin-right: 2%; } }
 a { color: black; }
@@ -78,3 +79,99 @@ hr { border-top: 1px solid black; }
 .staff-mug { float: left; padding-right: 15px; width: 200px; height: 200px; object-fit: cover; display: block; margin-left: auto; margin-right: auto; }
 
 @media screen and (max-width: calc(800px - 200px)) { .staff-mug { float: none; } }
+/* Thêm vào file CSS hiện tại của bạn */
+/* Category Section */
+.category-section { margin-bottom: 30px; }
+
+.category-latest { display: flex; flex-wrap: wrap; align-items: flex-start; margin-bottom: 15px; }
+
+.latest-text { flex: 1; padding-right: 15px; min-width: 300px; /* Đảm bảo không bị co quá nhỏ */ }
+
+.latest-image { flex: 2; min-width: 300px; /* Đảm bảo không bị co quá nhỏ */ }
+
+.latest-image img { width: 100%; height: auto; object-fit: cover; max-height: 400px; /* Giới hạn chiều cao ảnh để giống Washington Post */ }
+
+.other-posts { display: flex; flex-direction: column; }
+
+.post-list-post { margin-bottom: 15px; }
+
+.post-list-headline { font-weight: bold; color: black; font-size: 16pt; }
+
+.post-list-byline { margin: 5px 0; }
+
+.post-list-summary { color: grey; }
+
+/* Responsive Adjustments */
+@media screen and (max-width: 800px) { .category-latest { flex-direction: column; }
+  .latest-text { padding-right: 0; margin-bottom: 15px; }
+  .latest-image { width: 100%; }
+  .latest-image img { max-height: 300px; /* Giảm chiều cao ảnh trên mobile */ } }
+/* Grid Layout for "Góc nhìn" Category */
+.category-grid { display: grid; grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */ gap: 15px; /* Space between grid items */ margin-bottom: 15px; }
+
+.grid-post { display: flex; flex-direction: column; background-color: #fff; /* Background color for each grid item */ border: 1px solid #e0e0e0; /* Optional: Add a border to each grid item */ border-radius: 5px; /* Optional: Rounded corners */ overflow: hidden; /* Ensure content doesn't overflow */ }
+
+.grid-post-image img { width: 100%; height: 150px; /* Fixed height for images */ object-fit: cover; /* Ensure images cover the area without distortion */ }
+
+.grid-post-text { padding: 10px; flex: 1; /* Allow text area to take remaining space */ }
+
+.grid-post-text .post-list-headline { font-size: 14pt; /* Slightly smaller headline for grid */ margin-bottom: 5px; line-height: 1.2; /* Adjust line height for readability */ }
+
+.grid-post-text .post-list-byline { font-size: 10pt; color: #707070; /* Lighter color for byline */ margin-bottom: 5px; }
+
+.grid-post-text .post-list-summary { font-size: 10pt; color: grey; line-height: 1.4; /* Adjust line height for readability */ }
+
+/* Responsive Adjustments for Grid Layout */
+@media screen and (max-width: calc(800px + 200px)) { .category-grid { grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */ } }
+@media screen and (max-width: 800px) { .category-grid { grid-template-columns: 1fr; /* 1 column for mobile */ }
+  .grid-post-image img { height: 200px; /* Slightly taller images on mobile */ } }
+/* Grid Layout for "Góc nhìn" Category */
+.category-grid { display: grid; grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */ gap: 15px; /* Space between grid items */ margin-bottom: 15px; }
+
+.grid-post { display: flex; flex-direction: column; background-color: #fff; /* Background color for each grid item */ border: 1px solid #e0e0e0; /* Optional: Add a border to each grid item */ border-radius: 5px; /* Optional: Rounded corners */ overflow: hidden; /* Ensure content doesn't overflow */ }
+
+.grid-post-image img { width: 100%; height: 150px; /* Fixed height for images */ object-fit: cover; /* Ensure images cover the area without distortion */ }
+
+.grid-post-text { padding: 10px; flex: 1; /* Allow text area to take remaining space */ overflow: hidden; /* Ensure content doesn't overflow */ }
+
+/* Float the author's image to the left */
+.grid-staff-mug { float: left; /* Float the image to the left */ width: 40px; /* Small size for the author's image */ height: 40px; border-radius: 50%; /* Circular image */ object-fit: cover; /* Ensure the image fits well */ margin-right: 10px; /* Space between the image and the title */ margin-bottom: 5px; /* Ensure the image doesn't overlap with content below */ }
+
+.grid-post-text .post-list-headline { font-size: 14pt; /* Slightly smaller headline for grid */ line-height: 1.2; /* Adjust line height for readability */ display: inline; /* Ensure the title wraps around the floated image */ }
+
+/* Clearfix to prevent layout issues with floated elements */
+.grid-post-text::after { content: ""; display: block; clear: both; /* Clear the float to ensure proper layout */ }
+
+/* Responsive Adjustments for Grid Layout */
+@media screen and (max-width: calc(800px + 200px)) { .category-grid { grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */ } }
+@media screen and (max-width: 800px) { .category-grid { grid-template-columns: 1fr; /* 1 column for mobile */ }
+  .grid-post-image img { height: 200px; /* Slightly taller images on mobile */ }
+  .grid-staff-mug { width: 50px; /* Slightly larger on mobile for better visibility */ height: 50px; margin-right: 12px; /* Slightly more space on mobile */ }
+  .grid-post-text .post-list-headline { font-size: 16pt; /* Slightly larger title on mobile for readability */ } }
+/* Grid Layout cho container */
+.main-content { display: grid; grid-template-columns: 2.08fr 0.92fr; /* 2 phần cho left, 1 phần cho right */ gap: 20px; /* Khoảng cách giữa hai phần */ }
+
+/* Phần bên trái */
+/* Phần bên phải */
+/* Responsive adjustments */
+@media screen and (max-width: 800px) { .content-container { grid-template-columns: 1fr; /* Hiển thị một cột trên mobile */ } }
+/* Grid Layout cho phần title */
+.grid-titles { display: grid; /*grid-template-columns: repeat(2, 1fr); 2 cột */ gap: 10px; /* Khoảng cách giữa các title */ }
+
+/* Style cho mỗi title */
+.grid-title { display: block; padding: 10px; background-color: #f0f0f0; /* Màu nền */ color: #333; /* Màu chữ */ text-decoration: none; /* Bỏ gạch chân */ border-radius: 5px; /* Bo góc */ transition: background-color 0.3s ease; /* Hiệu ứng hover */ }
+
+.grid-title:hover { background-color: #ddd; /* Màu nền khi hover */ }
+
+/* Responsive adjustments */
+@media screen and (max-width: 800px) { .grid-titles { grid-template-columns: 1fr; /* 1 cột trên mobile */ } }
+@media screen and (max-width: 800px) { .main-content { display: flex; flex-direction: column; } }
+.grid-titles { display: grid; gap: 15px; /* Khoảng cách giữa các bài viết */ }
+
+.grid-item { background-color: #f9f9f9; /* Màu nền cho mỗi bài viết */ padding: 10px; border-radius: 5px; /* Bo góc */ }
+
+.grid-title { font-size: 16px; color: #333; text-decoration: none; display: block; /* Đảm bảo tiêu đề và mô tả hiển thị trên cùng một block */ }
+
+.grid-title strong { font-weight: bold; /* Làm đậm tiêu đề */ }
+
+.grid-description { font-size: 14px; color: #666; display: block; /* Hiển thị mô tả trên một dòng mới */ margin-top: 5px; /* Khoảng cách giữa tiêu đề và mô tả */ }
